@@ -37,20 +37,10 @@ alias a="distrobox-enter arch"
 conditional_alias "fucking" "sudo"
 conditional_alias "micro" "a -- micro"
 conditional_alias "paru" "a -- paru"
-# if ! command -v micro &> /dev/null
-# then
-# 	alias micro="a -- micro"
-# fi
-# if ! command -v paru &> /dev/null
-# then
-# 	alias paru="a -- paru"
-# fi
-
-
 alias m="micro"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias cfg='config'
-# alias docker="podman"
+
 ### bling.sh source start
 test -f /usr/share/ublue-os/bluefin-cli/bling.sh && source /usr/share/ublue-os/bluefin-cli/bling.sh
 ### bling.sh source end
