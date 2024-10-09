@@ -1,0 +1,12 @@
+[credential]
+	helper = "!f() { /var/home/aurora/.vscode-server/bin/fee1edb8d6d72a0ddff41e5f71a671c23ed924b9/node /tmp/vscode-remote-containers-22858922-106e-4bc3-95e4-7f4ce6c0293e.js git-credential-helper $*; }; f"
+
+[includeIf "gitdir:~/Documents/Code/WiDuMu/*"]
+	[user]
+	name = "Duncan Murphy"
+	email = "wduncanmurphy@gmail.com"
+
+	[core]
+	sshCommand = ssh -i ~/.ssh/WiDuMu-deploy-key
+[init]
+	defaultBranch = main
