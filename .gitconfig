@@ -12,7 +12,9 @@
     editor = nano
     excludesFile = ~/.dotfiles/.gitignore
 [init]
-	defaultBranch = main
+    defaultBranch = main
+[push]
+    autoSetupRemote = true
 [alias]
     s = status
     l = log
