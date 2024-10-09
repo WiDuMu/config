@@ -4,7 +4,7 @@
 [includeIf "gitdir:~/Documents/Code/WiDuMu/*"]
 	[user]
 	name = "Duncan Murphy"
-	email = "wduncanmurphy@gmail.com"
+	email = "97642890+WiDuMu@users.noreply.github.com"
 
 	[core]
 	sshCommand = ssh -i ~/.ssh/WiDuMu-deploy-key
