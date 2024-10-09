@@ -8,5 +8,22 @@
 
 	[core]
 	sshCommand = ssh -i ~/.ssh/WiDuMu-deploy-key
+[core]
+    editor = micro
 [init]
 	defaultBranch = main
+[alias]
+    s = status
+    l = log
+    c = commit
+    b = branch
+    cl = clone
+    f = fetch
+    update = add -u
+    up = add -u
+    u = add -u
+    save = add -u && commit
+    sa = add -u && commit
+    i = init
+    pl = pull
+    ps = push

@@ -24,7 +24,7 @@ if [ -d ~/.bashrc.d ]; then
 fi
 unset rc
 
-# Aurora's own aliases
+# User's own aliases
 alias a="distrobox-enter arch"
 alias fucking="sudo"
 if ! command -v micro &> /dev/null 
@@ -35,7 +35,8 @@ if ! command -v paru &> /dev/null
 then
 	alias paru="a -- paru"
 fi
-alias m="micro"
 
+
+alias m="micro"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 # alias docker="podman"
