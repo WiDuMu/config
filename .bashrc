@@ -24,19 +24,33 @@ if [ -d ~/.bashrc.d ]; then
 fi
 unset rc
 
+# Alias a command if it does not exist
+conditional_alias() {
+    if ! command -v "$1" &> /dev/null
+    then
+        alias "$1"="$2"
+    fi
+}
+
 # User's own aliases
 alias a="distrobox-enter arch"
-alias fucking="sudo"
-if ! command -v micro &> /dev/null 
-then
-	alias micro="a -- micro"
-fi
-if ! command -v paru &> /dev/null 
-then
-	alias paru="a -- paru"
-fi
+conditional_alias "fucking" "sudo"
+conditional_alias "micro" "a -- micro"
+conditional_alias "paru" "a -- paru"
+# if ! command -v micro &> /dev/null
+# then
+# 	alias micro="a -- micro"
+# fi
+# if ! command -v paru &> /dev/null
+# then
+# 	alias paru="a -- paru"
+# fi
 
 
 alias m="micro"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias cfg='config'
 # alias docker="podman"
+### bling.sh source start
+test -f /usr/share/ublue-os/bluefin-cli/bling.sh && source /usr/share/ublue-os/bluefin-cli/bling.sh
+### bling.sh source end
