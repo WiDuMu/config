@@ -35,7 +35,7 @@ conditional_alias() {
 # User's own aliases
 alias a="distrobox-enter arch"
 conditional_alias "fucking" "sudo"
-conditional_alias "micro" "a -- micro"
+conditional_alias "micro" "flatpak run io.github.zyedidia.micro --"
 conditional_alias "paru" "a -- paru"
 alias m="micro"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
