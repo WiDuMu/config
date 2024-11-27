@@ -16,7 +16,7 @@
       devShells = forEachSupportedSystem ({ pkgs }: {
         default = pkgs.mkShell {
           packages = with pkgs; [ ocaml ocamlformat cargo clang lldb gdb neovim bun ] ++
-            (with pkgs.ocamlPackages; [ dune_3 odoc utop ]);
+            (with pkgs.ocamlPackages; [ dune_3 odoc utop ocaml-lsp ]);
         };
       });
     };
