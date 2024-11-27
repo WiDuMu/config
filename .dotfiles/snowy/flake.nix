@@ -15,8 +15,13 @@
     {
       devShells = forEachSupportedSystem ({ pkgs }: {
         default = pkgs.mkShell {
-          packages = with pkgs; [ ocaml ocamlformat cargo clang lldb gdb neovim bun ] ++
+          packages = with pkgs; [ ocaml ocamlformat cargo clang lldb gdb neovim bun micro ] ++
             (with pkgs.ocamlPackages; [ dune_3 odoc utop ocaml-lsp ]);
+          shellHook = ''
+	    unalias micro &> /dev/null
+	    export FLAKE=true
+            export EDITOR=micro
+          '';
         };
       });
     };

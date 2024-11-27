@@ -9,7 +9,6 @@
 	[core]
 	sshCommand = ssh -i ~/.ssh/WiDuMu-deploy-key
 [core]
-    editor = nano
     excludesFile = ~/.dotfiles/.gitignore
 [init]
     defaultBranch = main

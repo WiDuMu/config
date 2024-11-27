@@ -40,6 +40,7 @@ alias_if_command() {
 	    fi
 }
 
+export EDITOR=/usr/bin/nano
 # User's own aliases
 alias a="distrobox-enter arch"
 conditional_alias "fucking" "sudo"
@@ -48,8 +49,8 @@ conditional_alias "paru" "a -- paru"
 alias m="micro"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias cfg='config'
-
 alias develop=":"
+alias dev="develop"
 alias_if_command "nix" "develop" "nix develop ~/.dotfiles/snowy/"
 alias d="develop"
 
