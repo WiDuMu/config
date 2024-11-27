@@ -32,6 +32,14 @@ conditional_alias() {
     fi
 }
 
+# Alias a command if another exists. Used for nix integration
+alias_if_command() {
+	if command -v "$1" &> /dev/null
+	    then
+	        alias "$2"="$3"
+	    fi
+}
+
 # User's own aliases
 alias a="distrobox-enter arch"
 conditional_alias "fucking" "sudo"
@@ -40,6 +48,11 @@ conditional_alias "paru" "a -- paru"
 alias m="micro"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias cfg='config'
+
+alias develop=":"
+alias_if_command "nix" "develop" "nix develop ~/.dotfiles/snowy/"
+alias d="develop"
+
 
 ### bling.sh source start
 test -f /usr/share/ublue-os/bluefin-cli/bling.sh && source /usr/share/ublue-os/bluefin-cli/bling.sh
