@@ -53,6 +53,7 @@ alias develop=":"
 alias dev="develop"
 alias_if_command "nix" "develop" "nix develop ~/.dotfiles/snowy/"
 alias d="develop"
+alias codev="develop -c code"
 
 
 ### bling.sh source start

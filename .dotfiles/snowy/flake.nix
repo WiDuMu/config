@@ -15,7 +15,7 @@
     {
       devShells = forEachSupportedSystem ({ pkgs }: {
         default = pkgs.mkShell {
-          packages = with pkgs; [ ocaml ocamlformat cargo clang lldb gdb neovim bun micro ] ++
+          packages = with pkgs; [ ocaml ocamlformat cargo clang lldb gdb neovim bun micro biome swc zoxide eza bat ] ++
             (with pkgs.ocamlPackages; [ dune_3 odoc utop ocaml-lsp ]);
           shellHook = ''
 	    unalias micro &> /dev/null
