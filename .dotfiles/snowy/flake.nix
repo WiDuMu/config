@@ -22,8 +22,8 @@
         shellHook = ''
           unalias micro &> /dev/null
           export FLAKE=true
-                 export EDITOR=micro
-        '';
+          export EDITOR=micro
+          '';
       };
     });
   };
