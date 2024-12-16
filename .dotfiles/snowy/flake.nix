@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    nixvim.url = "github:jordanisaacs/neovim-flake";
+    nixvim.url = "path:./nuka/";
   };
 
   outputs = { self, nixpkgs, nixvim }: let
