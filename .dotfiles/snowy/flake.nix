@@ -17,7 +17,7 @@
     devShells = forEachSupportedSystem ({pkgs}: {
       default = pkgs.mkShell {
         packages = with pkgs;
-          [ ocaml ocamlformat cargo clang lldb gdb bun micro biome swc zoxide eza bat ]
+          [ ocaml ocamlformat cargo clang lldb gdb bun micro swc zoxide eza bat ]
           ++ (with pkgs.ocamlPackages; [ dune_3 odoc utop ocaml-lsp ])
           ++ (with pkgs.vimPlugins; [  ])
           ++ ( [ nixvim.packages.x86_64-linux.default ] );
