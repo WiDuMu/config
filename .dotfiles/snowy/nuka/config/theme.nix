@@ -1,6 +1,6 @@
 {
-  colorthemes = {
-    onedark = {
+  colorschemes = {
+    modus = {
       enable = true;
     };
   };

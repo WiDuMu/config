@@ -3,6 +3,7 @@
   imports = [ 
     ./bufferline.nix
     ./lualine.nix
+    ./options.nix
     ./theme.nix
     ];
 }
