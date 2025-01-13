@@ -20,7 +20,7 @@
     devShells = forEachSupportedSystem ({pkgs}: {
       default = pkgs.mkShell {
         packages = with pkgs;
-          [ ocaml ocamlformat cargo clang gdb bun zoxide eza bat ]
+          [ fd rust-parallel ocaml ocamlformat cargo clang gdb bun zoxide eza bat ]
           ++ (with pkgs.ocamlPackages; [ dune_3 odoc utop ocaml-lsp ])
           ++ (with pkgs.vimPlugins; [  ])
           ++ ( [ nuka.packages.x86_64-linux.default ] );

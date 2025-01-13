@@ -56,6 +56,3 @@ alias d="develop"
 alias codev="develop -c code"
 
 
-### bling.sh source start
-test -f /usr/share/ublue-os/bluefin-cli/bling.sh && source /usr/share/ublue-os/bluefin-cli/bling.sh
-### bling.sh source end

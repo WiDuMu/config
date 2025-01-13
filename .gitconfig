@@ -1,6 +1,3 @@
-[credential]
-	helper = "!f() { /var/home/aurora/.vscode-server/bin/138f619c86f1199955d53b4166bef66ef252935c/node /tmp/vscode-remote-containers-c006c476-7890-410c-a6d7-89564d4ffb99.js git-credential-helper $*; }; f"
-
 [includeIf "gitdir:~/Documents/Code/WiDuMu/*"]
 	[user]
 	name = "Duncan Murphy"
