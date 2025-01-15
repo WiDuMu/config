@@ -54,5 +54,6 @@ alias dev="develop"
 alias_if_command "nix" "develop" "nix develop ~/.dotfiles/snowy/"
 alias d="develop"
 alias codev="develop -c code"
+alias diffi="diff --color=always --minimal"
 
 
