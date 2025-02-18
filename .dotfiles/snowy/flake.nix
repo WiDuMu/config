@@ -24,16 +24,16 @@
       rust-packages = with pkgs; [ cargo ];
       js-packages = with pkgs; [ bun biome ];
       c-packages = with pkgs; [ gdb ];
+      vs-packages = with pkgs; [ vscodium ];
     in {
       default = pkgs.mkShell {
-        packages = with pkgs;
-          [ ocaml ocamlformat cargo clang gdb bun ]
-          ++ (with pkgs.ocamlPackages; [ dune_3 odoc utop ocaml-lsp ])
-          ++ (with pkgs.vimPlugins; [  ])
-          ++ ( [ nuka.packages.x86_64-linux.default ] );
+        packages = default-packages ++ c-packages ++ js-packages ++ rust-packages ++ [ nuka.packages.x86_64-linux.default ];
       };
       basic = pkgs.mkShell {
-        packages = with pkgs; [ fd rust-parallel zoxide eza bat ];
+        packages = default-packages;
+      };
+      vscodium = pkgs.mkShell {
+        packages = default-packages ++ vs-packages ++ js-packages;
       };
     });
   };
