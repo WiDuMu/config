@@ -2,15 +2,19 @@
 if [ -d "/var/home/$USER/.dotfiles/snowy" ]
 then
     develop() {
-        nix develop "/var/home/$USER/.dotfiles/snowy#$1"
+        VERSION=$1
+	    shift 1
+        nix develop "/var/home/$USER/.dotfiles/snowy#$VERSION" "$@"
+        unset VERSION
     }
-#     alias_if_command "nix" "develop" "nix develop /var/home/$USER/.dotfiles/snowy/"
 else
     develop() {
-        nix develop "~/.dotfiles/snowy#$1"
+        VERSION=$1
+	    shift 1
+        nix develop "/var/home/$USER/.dotfiles/snowy#$VERSION" "$@"
+        unset VERSION
     }
-#     alias_if_command "nix" "develop" "nix develop ~/.dotfiles/snowy/"
 fi
 alias_if_command "develop" "d" "develop"
 alias_if_command "develop" "dev" "develop"
-alias_if_2_command "develop" "code" "codev" "develop -c code"
+alias_if_command "develop" "codev" "develop vscodium -c codium"
