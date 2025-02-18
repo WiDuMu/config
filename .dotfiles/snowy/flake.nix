@@ -20,7 +20,7 @@
     devShells = forEachSupportedSystem ({pkgs}:
     let
       default-packages = with pkgs; [ bat eza fd rust-parallel zoxide ];
-      ocaml-packages = with pkgs; [ ocaml ocamlformat ] ++ (with pkgs.ocamlPackages; [ dune_3 udoc utop ocaml-lsp ]);
+      ocaml-packages = with pkgs; [ ocaml ocamlformat ] ++ (with pkgs.ocamlPackages; [ dune_3 odoc utop ocaml-lsp ]);
       rust-packages = with pkgs; [ cargo ];
       js-packages = with pkgs; [ bun biome ];
       c-packages = with pkgs; [ gdb ];
@@ -29,11 +29,17 @@
       default = pkgs.mkShell {
         packages = default-packages ++ c-packages ++ js-packages ++ rust-packages ++ [ nuka.packages.x86_64-linux.default ];
       };
+      full = pkgs.mkShell {
+        packages = default-packages ++ c-packages ++ js-packages ++ rust-packages ++ ocaml-packages ++ [ nuka.packages.x86_64-linux.default ];
+      };
       basic = pkgs.mkShell {
         packages = default-packages;
       };
       vscodium = pkgs.mkShell {
-        packages = default-packages ++ vs-packages ++ js-packages;
+        packages = default-packages ++ vs-packages ++ js-packages ++ rust-packages;
+      };
+      vscodium-ocaml = pkgs.mkShell {
+        packages = default-packages ++ vs-packages ++ js-packages ++ ocaml-packages ++ rust-packages;
       };
     });
   };

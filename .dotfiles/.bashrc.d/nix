@@ -1,9 +1,15 @@
 # Stupid silverblue stuff
 if [ -d "/var/home/$USER/.dotfiles/snowy" ]
 then
-    alias_if_command "nix" "develop" "nix develop /var/home/$USER/.dotfiles/snowy/"
+    develop() {
+        nix develop "/var/home/$USER/.dotfiles/snowy#$1"
+    }
+#     alias_if_command "nix" "develop" "nix develop /var/home/$USER/.dotfiles/snowy/"
 else
-    alias_if_command "nix" "develop" "nix develop ~/.dotfiles/snowy/"
+    develop() {
+        nix develop "~/.dotfiles/snowy#$1"
+    }
+#     alias_if_command "nix" "develop" "nix develop ~/.dotfiles/snowy/"
 fi
 alias_if_command "develop" "d" "develop"
 alias_if_command "develop" "dev" "develop"
