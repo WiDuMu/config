@@ -17,18 +17,23 @@
           pkgs = import nixpkgs {inherit system;};
         });
   in {
-    devShells = forEachSupportedSystem ({pkgs}: {
+    devShells = forEachSupportedSystem ({pkgs}:
+    let
+      default-packages = with pkgs; [ bat eza fd rust-parallel zoxide ];
+      ocaml-packages = with pkgs; [ ocaml ocamlformat ] ++ (with pkgs.ocamlPackages; [ dune_3 udoc utop ocaml-lsp ]);
+      rust-packages = with pkgs; [ cargo ];
+      js-packages = with pkgs; [ bun biome ];
+      c-packages = with pkgs; [ gdb ];
+    in {
       default = pkgs.mkShell {
         packages = with pkgs;
-          [ fd rust-parallel ocaml ocamlformat cargo clang gdb bun zoxide eza bat ]
+          [ ocaml ocamlformat cargo clang gdb bun ]
           ++ (with pkgs.ocamlPackages; [ dune_3 odoc utop ocaml-lsp ])
           ++ (with pkgs.vimPlugins; [  ])
           ++ ( [ nuka.packages.x86_64-linux.default ] );
-        shellHook = ''
-          unalias micro &> /dev/null
-          export FLAKE=true
-          # export EDITOR=micro
-          '';
+      };
+      basic = pkgs.mkShell {
+        packages = with pkgs; [ fd rust-parallel zoxide eza bat ];
       };
     });
   };
