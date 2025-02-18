@@ -1,0 +1,30 @@
+# Alias a command if it does not exist
+conditional_alias() {
+    if ! command -v "$1" &> /dev/null
+    then
+        alias "$1"="$2"
+    fi
+}
+
+# Alias a command if another exists.
+alias_if_command() {
+	if command -v "$1" &> /dev/null
+	    then
+	        alias "$2"="$3"
+    fi
+}
+
+# Alias a command if 2 others exist.
+alias_if_2_command() {
+	if command -v "$1" &> /dev/null && command -v "$2" &> /dev/null
+	    then
+	        alias "$3"="$4"
+    fi
+}
+
+
+alias "fucking"="sudo"
+alias "please"="sudo"
+alias diffi="diff --color=always --minimal"
+alias m="micro"
+alias ls="ls -A"

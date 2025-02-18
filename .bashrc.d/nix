@@ -1,0 +1,4 @@
+alias_if_command "nix" "develop" "nix develop ~/.dotfiles/snowy/"
+alias_if_command "develop" "d" "develop"
+alias_if_command "develop" "dev" "develop"
+alias_if_2_command "develop" "code" "codev" "develop -c code"
