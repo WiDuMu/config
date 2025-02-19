@@ -32,3 +32,5 @@
     undo-hard = reset --hard
 [gpg]
 format = ssh
+[credential]
+	helper = "!f() { /var/home/aurora/.vscode-server/bin/cd4ee3b1c348a13bafd8f9ad8060705f6d4b9cba/node /tmp/vscode-remote-containers-6d1af5e5-b8f7-489b-bd20-fe3742a43066.js git-credential-helper $*; }; f"
