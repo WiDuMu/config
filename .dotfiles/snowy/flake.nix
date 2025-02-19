@@ -36,7 +36,7 @@
           buildInputs = with pkgs; [bashInteractive];
           packages = shell-packages;
         };
-      default-packages = with pkgs; [bat eza fd rust-parallel zoxide];
+      default-packages = with pkgs; [bat eza fd zoxide];
       ocaml-packages = with pkgs; [ocaml ocamlformat] ++ (with pkgs.ocamlPackages; [dune_3 odoc utop ocaml-lsp]);
       rust-packages = with pkgs; [cargo];
       js-packages = with pkgs; [bun biome];
