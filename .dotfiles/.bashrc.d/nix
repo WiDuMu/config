@@ -7,12 +7,18 @@ then
         nix develop "/var/home/$USER/.dotfiles/snowy#$VERSION" "$@"
         unset VERSION
     }
+    snowy-update() {
+        nix flake update --flake "/var/home/$USER/.dotfiles/snowy/"
+    }
 else
     develop() {
         VERSION=$1
 	    shift 1
-        nix develop "/var/home/$USER/.dotfiles/snowy#$VERSION" "$@"
+        nix develop "~/.dotfiles/snowy#$VERSION" "$@"
         unset VERSION
+    }
+    snowy-update() {
+        nix flake update --flake "~/.dotfiles/snowy/"
     }
 fi
 alias_if_command "develop" "d" "develop"

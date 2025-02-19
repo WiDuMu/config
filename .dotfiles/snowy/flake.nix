@@ -9,7 +9,12 @@
       };
     };
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    nuka.url = "path:./nuka/";
+    nuka = {
+      url = "path:./nuka/";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
   };
 
   outputs = {
@@ -42,12 +47,17 @@
       nix-packages = with pkgs; [alejandra];
       c-packages = with pkgs; [gdb];
       vs-packages = with pkgs; [codine.packages.x86_64-linux.default];
+      vlang-packages = with pkgs; [vlang];
+      # Package-sets
+      basic = default-packages;
+      default = default-packages ++ c-packages ++ js-packages ++ rust-packages ++ vlang-packages ++ [nuka.packages.x86_64-linux.default];
+      full = default ++ ocaml-packages;
     in {
       basic = shell default-packages;
-      default = shell (default-packages ++ c-packages ++ js-packages ++ rust-packages ++ [nuka.packages.x86_64.default]);
-      full = shell (default-packages ++ c-packages ++ js-packages ++ nix-packages ++ rust-packages ++ ocaml-packages ++ [nuka.packages.x86_64-linux.default]);
-      vscodium = shell (default-packages ++ vs-packages ++ js-packages ++ nix-packages ++ rust-packages);
-      vscodium-ocaml = shell (default-packages ++ vs-packages ++ js-packages ++ nix-packages ++ ocaml-packages ++ rust-packages);
+      default = shell default;
+      full = shell full;
+      vscodium = shell default ++ vs-packages;
+      vscodium-ocaml = shell full ++ vs-packages;
     });
   };
 }
