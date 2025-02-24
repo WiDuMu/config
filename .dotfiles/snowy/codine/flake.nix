@@ -30,6 +30,7 @@
               binx.modus-vivendi-code
               biomejs.biome
               bradlc.vscode-tailwindcss
+	      chamboug.js-auto-backticks
               #              castrogusttavo.symbols
               golang.go
               kamadorueda.alejandra
@@ -49,6 +50,8 @@
               #              nvarner.typst-lsp
               redhat.java
               rust-lang.rust-analyzer
+	      svelte.svelte-vscode
+
               vlanguage.vscode-vlang
               yandeu.five-server
               ziglang.vscode-zig

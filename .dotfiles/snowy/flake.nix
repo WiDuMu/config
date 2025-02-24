@@ -41,6 +41,7 @@
       rust-packages = with pkgs; [cargo];
       js-packages = with pkgs; [bun biome];
       nix-packages = with pkgs; [alejandra];
+      nvim-packages = [nuka.packages.${system}.default];
       c-packages = with pkgs; [gdb];
       vs-packages = with pkgs; [codine.packages.${system}.default];
       vlang-packages = with pkgs; [vlang];
@@ -55,6 +56,8 @@
         full = shell full;
         vscodium = shell (default ++ vs-packages);
         vscodium-full = shell (full ++ vs-packages);
+	nvim = shell (default ++ nvim-packages);
+	nvim-full = shell (full ++ nvim-packages);
       };
     });
 }
