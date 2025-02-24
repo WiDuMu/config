@@ -2,7 +2,7 @@
 	[user]
         name = "Duncan Murphy"
         email = "97642890+WiDuMu@users.noreply.github.com"
-        signingkey = ~/.ssh/WiDuMu-deploy-key
+        signingkey = ~/.ssh/WiDuMu-deploy-key.pub
 	[core]
         sshCommand = ssh -i ~/.ssh/WiDuMu-deploy-key
 [core]
