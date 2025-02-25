@@ -14,8 +14,8 @@
     update = add -u
     up = add -u
     u = add -u
-    save = commit -a
-    sa = commit -a
+    save = commit -a -S
+    sa = commit -a -S
     amend = commit --amend --no-edit
     amend-msg = commit --amend
     i = init
