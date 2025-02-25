@@ -2,6 +2,8 @@
    name = "Duncan Murphy"
    email = "97642890+WiDuMu@users.noreply.github.com"
    signingkey = ~/.ssh/WiDuMu/WiDuMu-signing-key
+[commit]
+   gpgsign = true
 [core]
    sshCommand = ssh -i ~/.ssh/WiDuMu/WiDuMu-deploy-key
 [alias]
