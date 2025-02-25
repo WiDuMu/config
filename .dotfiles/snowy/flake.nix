@@ -56,8 +56,8 @@
         full = shell full;
         vscodium = shell (default ++ vs-packages);
         vscodium-full = shell (full ++ vs-packages);
-	nvim = shell (default ++ nvim-packages);
-	nvim-full = shell (full ++ nvim-packages);
+        nvim = shell (default ++ nvim-packages);
+        nvim-full = shell (full ++ nvim-packages);
       };
     });
 }
