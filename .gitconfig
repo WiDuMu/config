@@ -17,10 +17,14 @@
    path = ~/.dotfiles/gitconfig/WiDuMu
 [alias]
     s = status
-    l = log
+    l = log --decorate --date=short
     c = commit
     b = branch
+    branch-delete = branch -D
     cl = clone
+    co = checkout
+    cob = checkout -b
+    d = diff
     f = fetch
     update = add -u
     up = add -u
