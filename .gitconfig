@@ -4,6 +4,17 @@
     defaultBranch = main
 [push]
     autoSetupRemote = true
+[gpg]
+   format = ssh
+[user]
+   name = "Anonymous"
+   email = "<>"
+[includeIf "gitdir:~/Documents/Code/WiDuMu/*"]
+   path = ~/.dotfiles/gitconfig/WiDuMu
+[includeIf "gitdir:~/Documents/WiDuMu/*"]
+   path = ~/.dotfiles/gitconfig/WiDuMu
+[includeIf "gitdir:~/.cfg"]
+   path = ~/.dotfiles/gitconfig/WiDuMu
 [alias]
     s = status
     l = log
@@ -23,14 +34,3 @@
     ps = push
     undo = reset HEAD~1 --mixed
     undo-hard = reset --hard
-[gpg]
-   format = ssh
-[user]
-   name = "Anonymous"
-   email = "<>"
-[includeIf "gitdir:~/Documents/Code/WiDuMu/*"]
-   path = ~/.dotfiles/gitconfig/WiDuMu
-[includeIf "gitdir:~/Documents/WiDuMu/*"]
-   path = ~/.dotfiles/gitconfig/WiDuMu
-[includeIf "gitdir:~/.cfg"]
-   path = ~/.dotfiles/gitconfig/WiDuMu
