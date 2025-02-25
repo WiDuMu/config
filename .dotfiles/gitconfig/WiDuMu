@@ -4,4 +4,5 @@
    signingkey = ~/.ssh/WiDuMu/WiDuMu-signing-key
 [core]
    sshCommand = ssh -i ~/.ssh/WiDuMu/WiDuMu-deploy-key
-
+[alias]
+commit = commit -S
