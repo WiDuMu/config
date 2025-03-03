@@ -5,4 +5,4 @@
 [commit]
    gpgsign = true
 [core]
-   sshCommand = ssh -i ~/.ssh/WiDuMu/wid-auth-key-2
+   sshCommand = ssh -i ~/.ssh/WiDuMu/WiDuMu-deploy-key
