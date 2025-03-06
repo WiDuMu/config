@@ -9,6 +9,8 @@
 [user]
    name = "Anonymous"
    email = "<>"
+[include]
+   path = ~/.dotfiles/gitconfig/WiDuMu
 [includeIf "gitdir:~/Documents/Code/WiDuMu/*"]
    path = ~/.dotfiles/gitconfig/WiDuMu
 [includeIf "gitdir:~/Documents/Code/WiDuMu/"]

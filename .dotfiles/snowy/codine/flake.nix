@@ -29,6 +29,7 @@
               bierner.markdown-preview-github-styles
               binx.modus-vivendi-code
               biomejs.biome
+              blueglassblock.better-json5
               bradlc.vscode-tailwindcss
 	      chamboug.js-auto-backticks
               #              castrogusttavo.symbols
