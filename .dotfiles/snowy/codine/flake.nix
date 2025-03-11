@@ -17,9 +17,11 @@
         pkgs = import inputs.nixpkgs {
           system = system;
           config.allowUnfree = true;
+          # Hacky workaround for a bug in upstream nix-vscode-extensions issue #99
           overlays = [inputs.nix-vscode-extensions.overlays.default];
         };
-        extensions = inputs.nix-vscode-extensions.extensions.${system};
+        # Workaround pt.2
+        extensions = pkgs;
         inherit (pkgs) vscode-with-extensions vscodium;
 
         packages.default = vscode-with-extensions.override {
