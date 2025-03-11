@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "aurora";
@@ -20,6 +22,7 @@
   home.packages = [
     pkgs.biome
     pkgs.bun
+    pkgs.clang
     pkgs.eza
     pkgs.cargo
     pkgs.fd
