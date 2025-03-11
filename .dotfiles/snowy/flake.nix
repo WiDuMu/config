@@ -30,7 +30,10 @@
     eachDefaultSystem = flake-utils.lib.eachDefaultSystem;
   in
     eachDefaultSystem (system: let
-      pkgs = import nixpkgs {inherit system;};
+      pkgs = import nixpkgs {
+        inherit system;
+        allowUnfree = true;
+      };
       shell = shell-packages:
         pkgs.mkShell {
           buildInputs = with pkgs; [bashInteractive];
