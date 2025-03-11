@@ -13,7 +13,12 @@
   outputs = inputs:
     inputs.flake-utils.lib.eachDefaultSystem (
       system: let
-        pkgs = inputs.nixpkgs.legacyPackages.${system};
+        # pkgs = inputs.nixpkgs.legacyPackages.${system};
+        pkgs = import inputs.nixpkgs {
+          system = system;
+          config.allowUnfree = true;
+          overlays = [inputs.nix-vscode-extensions.overlays.default];
+        };
         extensions = inputs.nix-vscode-extensions.extensions.${system};
         inherit (pkgs) vscode-with-extensions vscodium;
 
@@ -31,10 +36,14 @@
               biomejs.biome
               blueglassblock.better-json5
               bradlc.vscode-tailwindcss
-	      chamboug.js-auto-backticks
+              chamboug.js-auto-backticks
+              chrmarti.regex
+              donjayamanne.githistory
+              formulahendry.auto-rename-tag
               #              castrogusttavo.symbols
               golang.go
               kamadorueda.alejandra
+              levrotech.zig-znippets
               ms-azuretools.vscode-docker
               ms-python.debugpy
               ms-python.python
@@ -47,12 +56,12 @@
               ms-vscode.vscode-typescript-next
               ms-vsliveshare.vsliveshare
               myax.short-js-doc
+              oderwat.indent-rainbow
               #              myriad-dreamin.tinymist
               #              nvarner.typst-lsp
               redhat.java
               rust-lang.rust-analyzer
-	      svelte.svelte-vscode
-
+              svelte.svelte-vscode
               vlanguage.vscode-vlang
               yandeu.five-server
               ziglang.vscode-zig
