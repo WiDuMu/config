@@ -29,7 +29,6 @@
           vscodeExtensions =
             (with extensions.vscode-marketplace; [
               alexdauenhauer.catppuccin-noctis
-              alvarosannas.nix
               batisteo.vscode-django
               bbenoist.nix
               bierner.lit-html
@@ -38,14 +37,19 @@
               biomejs.biome
               blueglassblock.better-json5
               bradlc.vscode-tailwindcss
+              catppuccin.catppuccin-vsc-icons
+              catppuccin.catppuccin-vsc
               chamboug.js-auto-backticks
               chrmarti.regex
               donjayamanne.githistory
               formulahendry.auto-rename-tag
-              #              castrogusttavo.symbols
+              github.vscode-pull-request-github
               golang.go
               kamadorueda.alejandra
               levrotech.zig-znippets
+              llvm-vs-code-extensions.vscode-clangd
+              mhutchie.git-graph
+              miguelsolorio.symbols
               ms-azuretools.vscode-docker
               ms-python.debugpy
               ms-python.python
@@ -59,17 +63,22 @@
               ms-vsliveshare.vsliveshare
               myax.short-js-doc
               oderwat.indent-rainbow
-              #              myriad-dreamin.tinymist
-              #              nvarner.typst-lsp
+              myriad-dreamin.tinymist
               redhat.java
               rust-lang.rust-analyzer
               svelte.svelte-vscode
+              vadimcn.vscode-lldb
               vlanguage.vscode-vlang
+              tomoki1207.pdf
+              vue.volar
               yandeu.five-server
               ziglang.vscode-zig
             ])
-            ++ (with extensions.open-vsx-release; [
-              ]);
+            ++ (with extensions.open-vsx; [
+              amerey.markdown-emoji
+              amerey.markdown-math-snippets
+              gitlab.gitlab-workflow
+            ]);
         };
 
         devShells.default = pkgs.mkShell {

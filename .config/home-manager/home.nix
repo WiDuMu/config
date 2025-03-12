@@ -27,8 +27,10 @@
     pkgs.cargo
     pkgs.fd
     pkgs.gdb
+    pkgs.lldb
     pkgs.rr
     pkgs.tokei
+    pkgs.typst
     pkgs.vlang
     pkgs.zig
     pkgs.zoxide
