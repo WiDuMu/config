@@ -1,10 +1,10 @@
 {
   # Import all your configuration modules here
-  imports = [ 
+  imports = [
     ./bufferline.nix
     ./lsp.nix
     ./lualine.nix
     ./options.nix
     ./theme.nix
-    ];
+  ];
 }
