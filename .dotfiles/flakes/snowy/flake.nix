@@ -10,6 +10,10 @@
       };
     };
     flake-utils.url = "github:numtide/flake-utils";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nuka = {
       url = "path:./nuka/";
@@ -23,6 +27,7 @@
     self,
     codine,
     flake-utils,
+    home-manager,
     nixpkgs,
     nuka,
     ...
@@ -63,6 +68,23 @@
         vscodium-full = shell (full ++ vs-packages);
         nvim = shell (default ++ nvim-packages);
         nvim-full = shell (full ++ nvim-packages);
+      };
+      packages.homeConfigurations."aurora" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+
+        # Specify your home configuration modules here, for example,
+        # the path to your home.nix.
+        modules = [
+          ./home.nix
+          {
+            home.packages = [
+              nuka.packages.${system}.default
+              codine.packages.${system}.default
+            ];
+          }
+        ];
+        # Optionally use extraSpecialArgs
+        # to pass through arguments to home.nix
       };
     });
 }
