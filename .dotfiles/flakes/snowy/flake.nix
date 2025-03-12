@@ -32,18 +32,22 @@
     nuka,
     ...
   }: let
+    # Function that creates outputs for each system
     eachDefaultSystem = flake-utils.lib.eachDefaultSystem;
   in
     eachDefaultSystem (system: let
+      # Packages for each system
       pkgs = import nixpkgs {
         inherit system;
         allowUnfree = true;
       };
+      # Make a dev shell given a list of packages
       shell = shell-packages:
         pkgs.mkShell {
           buildInputs = with pkgs; [bashInteractive];
           packages = shell-packages;
         };
+      # Lists of packages for dev shells
       default-packages = with pkgs; [bat eza fd micro zoxide];
       full-packages = with pkgs; [tokei];
       ocaml-packages = with pkgs; [ocaml ocamlformat] ++ (with pkgs.ocamlPackages; [dune_3 odoc utop ocaml-lsp]);
@@ -55,11 +59,12 @@
       vs-packages = with pkgs; [codine.packages.${system}.default];
       vlang-packages = with pkgs; [vlang];
       zig-packages = with pkgs; [zig zls];
-      # Package-sets
+      # Composite package sets
       basic = default-packages;
       default = default-packages ++ c-packages ++ js-packages ++ nix-packages ++ rust-packages ++ [nuka.packages.${system}.default];
       full = default ++ full-packages ++ ocaml-packages ++ vlang-packages ++ zig-packages;
     in {
+      # Dev shell (`nix develop`)
       devShells = {
         basic = shell basic;
         default = shell default;
@@ -69,6 +74,7 @@
         nvim = shell (default ++ nvim-packages);
         nvim-full = shell (full ++ nvim-packages);
       };
+      # Home-manager configuration
       packages.homeConfigurations."aurora" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
