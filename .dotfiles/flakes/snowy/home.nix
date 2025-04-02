@@ -28,13 +28,17 @@
     pkgs.eza
     pkgs.cargo
     pkgs.fd
+    pkgs.ffmpeg-full
     pkgs.gdb
     pkgs.lldb
+    pkgs.mediainfo
     pkgs.rr
     pkgs.tokei
     pkgs.typst
     pkgs.vlang
+    pkgs.yt-dlp
     pkgs.zig
+    pkgs.zls
     pkgs.zoxide
 
     # # It is sometimes useful to fine-tune packages, for example, by applying

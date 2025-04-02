@@ -83,10 +83,7 @@
         modules = [
           ./home.nix
           {
-            home.packages = [
-              nuka.packages.${system}.default
-              codine.packages.${system}.default
-            ];
+            home.packages = nvim-packages ++ vs-packages;
           }
         ];
         # Optionally use extraSpecialArgs
