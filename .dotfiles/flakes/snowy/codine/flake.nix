@@ -29,6 +29,7 @@
           vscodeExtensions =
             (with extensions.vscode-marketplace; [
               alexdauenhauer.catppuccin-noctis
+              attilabuti.brainfuck-syntax
               batisteo.vscode-django
               bbenoist.nix
               bierner.lit-html
@@ -66,6 +67,7 @@
               myriad-dreamin.tinymist
               redhat.java
               rust-lang.rust-analyzer
+	      slint.slint
               svelte.svelte-vscode
               vadimcn.vscode-lldb
               vlanguage.vscode-vlang
