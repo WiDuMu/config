@@ -30,6 +30,7 @@
     pkgs.fd
     pkgs.ffmpeg-full
     pkgs.gdb
+    pkgs.jan
     pkgs.lldb
     pkgs.mediainfo
     pkgs.rr
