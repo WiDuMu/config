@@ -32,6 +32,7 @@
     nuka,
     ...
   }: let
+    linuxSystems = ["x86_64-linux" "aarch64-linux"];
     # Function that creates outputs for each system
     eachDefaultSystem = flake-utils.lib.eachDefaultSystem;
   in
@@ -64,6 +65,8 @@
       default = default-packages ++ c-packages ++ js-packages ++ nix-packages ++ rust-packages ++ [nuka.packages.${system}.default];
       full = default ++ full-packages ++ ocaml-packages ++ vlang-packages ++ zig-packages;
     in {
+      # Formatter for a system
+      formatter = pkgs.alejandra;
       # Dev shell (`nix develop`)
       devShells = {
         basic = shell basic;
