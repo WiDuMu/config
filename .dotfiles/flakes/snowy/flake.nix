@@ -34,6 +34,7 @@
   }: let
     linuxSystems = ["x86_64-linux" "aarch64-linux"];
     # Function that creates outputs for each system
+    eachSystem = flake-utils.lib.eachSystem;
     eachDefaultSystem = flake-utils.lib.eachDefaultSystem;
   in
     eachDefaultSystem (system: let
@@ -92,5 +93,7 @@
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
       };
-    });
+    })
+    # NixOS configurations
+    // eachSystem linuxSystems (system: {});
 }

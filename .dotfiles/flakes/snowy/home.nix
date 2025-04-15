@@ -20,7 +20,7 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
-  	pkgs.bat
+    pkgs.bat
     pkgs.biome
     pkgs.bun
     pkgs.clang
