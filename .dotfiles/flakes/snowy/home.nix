@@ -20,7 +20,8 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
-  	pkgs.bat
+  	pkgs.av1an
+    pkgs.bat
     pkgs.biome
     pkgs.bun
     pkgs.clang
@@ -30,6 +31,7 @@
     pkgs.fd
     pkgs.ffmpeg-full
     pkgs.gdb
+    pkgs.jan
     pkgs.lldb
     pkgs.mediainfo
     pkgs.rr
