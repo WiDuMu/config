@@ -30,6 +30,7 @@
             (with extensions.vscode-marketplace; [
               alexdauenhauer.catppuccin-noctis
               attilabuti.brainfuck-syntax
+              barbosshack.crates-io
               batisteo.vscode-django
               bbenoist.nix
               bierner.lit-html
