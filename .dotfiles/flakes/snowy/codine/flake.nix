@@ -68,7 +68,7 @@
               myriad-dreamin.tinymist
               redhat.java
               rust-lang.rust-analyzer
-	      	  slint.slint
+              slint.slint
               svelte.svelte-vscode
               tamasfe.even-better-toml
               vadimcn.vscode-lldb

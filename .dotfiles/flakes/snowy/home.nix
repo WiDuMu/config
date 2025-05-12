@@ -20,7 +20,7 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
-  	pkgs.av1an
+    pkgs.av1an
     pkgs.bat
     pkgs.biome
     pkgs.bun
@@ -96,6 +96,17 @@
 
   home.shellAliases = {
     la = "ls -alh";
+    gc = "git clone";
+    ga = "git add";
+    gl = "git pull";
+    gs = "git sa";
+    gp = "git push";
+    ".." = "cd ..";
+    py = "python";
+    ff = "ffmpeg";
+    mi = "mediainfo";
+    wget = "wget -c";
+    suspend = "systemctl suspend -i";
   };
 
   # Let Home Manager install and manage itself.
