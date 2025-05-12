@@ -94,6 +94,15 @@
         # to pass through arguments to home.nix
       };
     })
-    # NixOS configurations
-    // eachSystem linuxSystems (system: {});
+    // {
+      # spare thinkpad
+      nixosConfigurations.ruby = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./ruby.nix
+        ];
+      };
+    };
+  # NixOS configurations
+  # // eachSystem linuxSystems (system: {});
 }
