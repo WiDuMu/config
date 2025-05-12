@@ -35,6 +35,7 @@
     pkgs.lldb
     pkgs.mediainfo
     pkgs.rr
+    pkgs.rustc
     pkgs.tokei
     pkgs.typst
     pkgs.vlang
