@@ -1,7 +1,8 @@
 {
   inputs = {
     nix-vscode-extensions = {
-      url = "github:nix-community/nix-vscode-extensions";
+      #TODO: remove this pin when the nix-vscode repo fixes their latex extension.
+      url = "github:nix-community/nix-vscode-extensions/5809c8500215e5a46ca2e3469daff8f2c0a80665";
       inputs = {
         nixpkgs.follows = "nixpkgs";
       };

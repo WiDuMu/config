@@ -12,7 +12,7 @@
       },
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-7BGOGa5ZfcrfUeRZ/wdaDXixxWrCLxsKsEGX9n9cl2I=",
+        "narHash": "sha256-RbpIuRzKrxfUkw1GR+4NOttTP77+piaHb9JosbluOzs=",
         "path": "./codine",
         "type": "path"
       },
@@ -122,11 +122,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1747007620,
-        "narHash": "sha256-ugDvua2Q1cbHWqE3mof/OQkeFaHmqptOIi9mXS7qatE=",
+        "lastModified": 1747009742,
+        "narHash": "sha256-TNhbM7R45fpq2cdWzvFj+H5ZTcE//I5XSe78GFh0cDY=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "7a3f3e550737c3ed43f6abf33a560cb58537d21f",
+        "rev": "c74665abd6e4e37d3140e68885bc49a994ffa53c",
         "type": "github"
       },
       "original": {
@@ -174,16 +174,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1743645260,
-        "narHash": "sha256-HW8a6ZDYhPi0wzLovZoja5CEvnkaa8fDkbNTb+zSlKQ=",
+        "lastModified": 1746362215,
+        "narHash": "sha256-f1N9rw5GiQZjUuAd14z2yml9IPt16v+RrteLEYyCMvo=",
         "owner": "nix-community",
         "repo": "nix-vscode-extensions",
-        "rev": "42f203eec4a77d61cb7299039ef465b67cf3481a",
+        "rev": "5809c8500215e5a46ca2e3469daff8f2c0a80665",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
         "repo": "nix-vscode-extensions",
+        "rev": "5809c8500215e5a46ca2e3469daff8f2c0a80665",
         "type": "github"
       }
     },

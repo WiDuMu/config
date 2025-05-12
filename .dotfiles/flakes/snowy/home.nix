@@ -105,6 +105,8 @@
     py = "python";
     ff = "ffmpeg";
     mi = "mediainfo";
+    m = "micro";
+    n = "nano";
     wget = "wget -c";
     suspend = "systemctl suspend -i";
   };
