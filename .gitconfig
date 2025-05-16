@@ -15,6 +15,8 @@
    path = ~/.dotfiles/gitconfig/WiDuMu
 [includeIf "gitdir:~/Documents/Code/WiDuMu/"]
    path = ~/.dotfiles/gitconfig/WiDuMu
+[includeIf "gitdir:/var/mnt/storage/Code/WiDuMu/*"]
+   path = ~/.dotfiles/gitconfig/WiDuMu
 [includeIf "gitdir:~/Documents/WiDuMu/*"]
    path = ~/.dotfiles/gitconfig/WiDuMu
 [includeIf "gitdir:~/.cfg"]

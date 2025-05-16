@@ -38,6 +38,7 @@
     pkgs.rustc
     pkgs.tokei
     pkgs.typst
+    pkgs.valgrind
     pkgs.vlang
     pkgs.yt-dlp
     pkgs.zig
@@ -98,9 +99,13 @@
     la = "ls -alh";
     gc = "git clone";
     ga = "git add";
+    cfa = "cfg add";
     gl = "git pull";
+    cfl = "cfg pull";
     gs = "git sa";
+    cfs = "cfg sa";
     gp = "git push";
+    cfp = "cfg push";
     ".." = "cd ..";
     py = "python";
     ff = "ffmpeg";
