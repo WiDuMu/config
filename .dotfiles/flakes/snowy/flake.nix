@@ -5,20 +5,20 @@
     codine = {
       url = "path:./codine";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "nixpkgs-unstable";
         flake-utils.follows = "flake-utils";
       };
     };
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nuka = {
       url = "path:./nuka/";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "nixpkgs-unstable";
       };
     };
   };
@@ -28,14 +28,30 @@
     codine,
     flake-utils,
     home-manager,
-    nixpkgs,
+    nixpkgs-unstable,
     nuka,
     ...
-  }: let
-    linuxSystems = ["x86_64-linux" "aarch64-linux"];
+  } @ inputs: let
+    nixpkgs = nixpkgs-unstable;
     # Function that creates outputs for each system
     eachSystem = flake-utils.lib.eachSystem;
     eachDefaultSystem = flake-utils.lib.eachDefaultSystem;
+    defaultHomeManager = system: [
+      {
+        home-manager.users.aurora = import ./home.nix;
+      }
+    ];
+    defaultNixOS = system: ([
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = {
+            inherit inputs system;
+          };
+        }
+      ]
+      ++ defaultHomeManager system);
   in
     eachDefaultSystem (system: let
       # Packages for each system
@@ -81,28 +97,28 @@
       # Home-manager configuration
       packages.homeConfigurations."aurora" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
+        extraSpecialArgs = {
+          inherit inputs system;
+        };
 
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
         modules = [
           ./home.nix
-          {
-            home.packages = nvim-packages ++ vs-packages;
-          }
         ];
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
       };
     })
-    // {
+    // (let
+      system = "x86_64-linux";
+    in {
       # spare thinkpad
-      nixosConfigurations.ruby = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./ruby.nix
-        ];
+      nixosConfigurations.ruby = nixpkgs-unstable.lib.nixosSystem {
+        inherit system;
+        modules =
+          [
+            ./systems/ruby.nix
+          ]
+          ++ (defaultNixOS system);
       };
-    };
-  # NixOS configurations
-  # // eachSystem linuxSystems (system: {});
+    });
 }

@@ -1,6 +1,8 @@
 {
   config,
   pkgs,
+  system,
+  inputs,
   ...
 }: {
   # Home Manager needs a bit of information about you and the paths it should
@@ -19,45 +21,50 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
-    pkgs.av1an
-    pkgs.bat
-    pkgs.biome
-    pkgs.bun
-    pkgs.clang
-    pkgs.clang-tools
-    pkgs.eza
-    pkgs.cargo
-    pkgs.fd
-    pkgs.ffmpeg-full
-    pkgs.gdb
-    pkgs.jan
-    pkgs.lldb
-    pkgs.mediainfo
-    pkgs.rr
-    pkgs.rustc
-    pkgs.tokei
-    pkgs.typst
-    pkgs.valgrind
-    pkgs.vlang
-    pkgs.yt-dlp
-    pkgs.zig
-    pkgs.zls
-    pkgs.zoxide
+  home.packages = with pkgs;
+    [
+      av1an
+      bat
+      biome
+      bun
+      clang
+      clang-tools
+      eza
+      cargo
+      fd
+      ffmpeg-full
+      gdb
+      jan
+      lldb
+      mediainfo
+      rr
+      rustc
+      tokei
+      typst
+      valgrind
+      vlang
+      yt-dlp
+      zig
+      zls
+      zoxide
 
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+      # # It is sometimes useful to fine-tune packages, for example, by applying
+      # # overrides. You can do that directly here, just don't forget the
+      # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
+      # # fonts?
+      # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
 
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
-  ];
+      # # You can also create simple shell scripts directly inside your
+      # # configuration. For example, this adds a command 'my-hello' to your
+      # # environment:
+      # (pkgs.writeShellScriptBin "my-hello" ''
+      #   echo "Hello, ${config.home.username}!"
+      # '')
+    ]
+    ++ [
+      inputs.nuka.packages.${system}.default
+      inputs.codine.packages.${system}.default
+    ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
