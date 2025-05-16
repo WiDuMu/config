@@ -95,6 +95,7 @@
       };
       # Home-manager configuration
       packages.homeConfigurations."aurora" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
         extraSpecialArgs = {
           inherit inputs system;
         };
