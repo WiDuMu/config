@@ -11,15 +11,14 @@
         ]
       },
       "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-P2tlqVEnqF154gz5FcP3wlomwlQ1H9UgT0j2KExjH7w=",
         "path": "./codine",
         "type": "path"
       },
       "original": {
         "path": "./codine",
         "type": "path"
-      }
+      },
+      "parent": []
     },
     "flake-parts": {
       "inputs": {
@@ -264,15 +263,14 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-zAtz+E4AXJ8zRZH8eA2TXf0+MWwZ7F6dqpR5Eux3nDg=",
         "path": "./nuka/",
         "type": "path"
       },
       "original": {
         "path": "./nuka/",
         "type": "path"
-      }
+      },
+      "parent": []
     },
     "nuschtosSearch": {
       "inputs": {

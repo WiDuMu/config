@@ -64,35 +64,13 @@
           buildInputs = with pkgs; [bashInteractive];
           packages = shell-packages;
         };
-      # Lists of packages for dev shells
-      default-packages = with pkgs; [bat eza fd micro zoxide];
-      full-packages = with pkgs; [tokei];
-      ocaml-packages = with pkgs; [ocaml ocamlformat] ++ (with pkgs.ocamlPackages; [dune_3 odoc utop ocaml-lsp]);
-      rust-packages = with pkgs; [cargo];
-      js-packages = with pkgs; [bun biome];
-      nix-packages = with pkgs; [alejandra];
-      nvim-packages = [nuka.packages.${system}.default];
-      c-packages = with pkgs; [gdb rr];
-      vs-packages = with pkgs; [codine.packages.${system}.default];
-      vlang-packages = with pkgs; [vlang];
-      zig-packages = with pkgs; [zig zls];
-      # Composite package sets
-      basic = default-packages;
-      default = default-packages ++ c-packages ++ js-packages ++ nix-packages ++ rust-packages ++ [nuka.packages.${system}.default];
-      full = default ++ full-packages ++ ocaml-packages ++ vlang-packages ++ zig-packages;
+      mkShells = builtins.mapAttrs (name: packages: (shell packages));
+      shellPackages = (import ./shellpkgs.nix) {pkgs = nixpkgs.legacyPackages.${system};};
     in {
       # Formatter for a system
       formatter = pkgs.alejandra;
       # Dev shell (`nix develop`)
-      devShells = {
-        basic = shell basic;
-        default = shell default;
-        full = shell full;
-        vscodium = shell (default ++ vs-packages);
-        vscodium-full = shell (full ++ vs-packages);
-        nvim = shell (default ++ nvim-packages);
-        nvim-full = shell (full ++ nvim-packages);
-      };
+      devShells = mkShells shellPackages;
       # Home-manager configuration
       packages.homeConfigurations."aurora" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
@@ -100,8 +78,6 @@
           inherit inputs system;
         };
 
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
         modules = [
           ./home.nix
         ];

@@ -1,11 +1,12 @@
-{
-  default-packages = with pkgs; [bat eza fd micro zoxide];
-  full-packages = with pkgs; [tokei];
-  ocaml-packages = with pkgs; [ocaml ocamlformat] ++ (with pkgs.ocamlPackages; [dune_3 odoc utop ocaml-lsp]);
-  rust-packages = with pkgs; [cargo];
-  js-packages = with pkgs; [bun biome];
-  nix-packages = with pkgs; [alejandra];
-  c-packages = with pkgs; [gdb rr];
-  vlang-packages = with pkgs; [vlang];
-  zig-packages = with pkgs; [zig zls];
+# Lists of packages for dev shells
+{pkgs}: {
+  ocaml = with pkgs; [ocaml ocamlformat] ++ (with pkgs.ocamlPackages; [dune_3 odoc utop ocaml-lsp]);
+  rust = with pkgs; [cargo];
+  js = with pkgs; [bun biome];
+  nix = with pkgs; [alejandra];
+  c = with pkgs; [gdb rr];
+  vlang = with pkgs; [vlang];
+  zig = with pkgs; [zig zls];
+  default = with pkgs; [bat eza fd zoxide] ++ c ++ js ++ nix ++ rust;
+  full = with pkgs; [tokei] ++ default ++ ocaml ++ vlang ++ zig;
 }

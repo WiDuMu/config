@@ -1,24 +1,24 @@
 # Stupid silverblue stuff
-if [ -d "/var/home/$USER/.dotfiles/snowy" ]
+if [ -d "/var/home/$USER/.dotfiles/flakes/snowy" ]
 then
     develop() {
         VERSION=$1
 	    shift 1
-        nix develop "/var/home/$USER/.dotfiles/snowy#$VERSION" "$@"
+        nix develop "/var/home/$USER/.dotfiles/flakes/snowy#$VERSION" "$@"
         unset VERSION
     }
     snowy-update() {
-        nix flake update --flake "/var/home/$USER/.dotfiles/snowy/"
+        nix flake update --flake "/var/home/$USER/.dotfiles/flakes/snowy/"
     }
 else
     develop() {
         VERSION=$1
 	    shift 1
-        nix develop "~/.dotfiles/snowy#$VERSION" "$@"
+        nix develop "~/.dotfiles/flakes/snowy#$VERSION" "$@"
         unset VERSION
     }
     snowy-update() {
-        nix flake update --flake "~/.dotfiles/snowy/"
+        nix flake update --flake "~/.dotfiles/flakes/snowy/"
     }
 fi
 alias_if_command "develop" "d" "develop"
