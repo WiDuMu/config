@@ -5,20 +5,20 @@
     codine = {
       url = "path:./codine";
       inputs = {
-        nixpkgs.follows = "nixpkgs-unstable";
+        nixpkgs.follows = "nixpkgs";
         flake-utils.follows = "flake-utils";
       };
     };
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nuka = {
       url = "path:./nuka/";
       inputs = {
-        nixpkgs.follows = "nixpkgs-unstable";
+        nixpkgs.follows = "nixpkgs";
       };
     };
   };
@@ -28,11 +28,10 @@
     codine,
     flake-utils,
     home-manager,
-    nixpkgs-unstable,
+    nixpkgs,
     nuka,
     ...
   } @ inputs: let
-    nixpkgs = nixpkgs-unstable;
     # Function that creates outputs for each system
     eachSystem = flake-utils.lib.eachSystem;
     eachDefaultSystem = flake-utils.lib.eachDefaultSystem;
@@ -96,7 +95,6 @@
       };
       # Home-manager configuration
       packages.homeConfigurations."aurora" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
         extraSpecialArgs = {
           inherit inputs system;
         };
@@ -112,7 +110,7 @@
       system = "x86_64-linux";
     in {
       # spare thinkpad
-      nixosConfigurations.ruby = nixpkgs-unstable.lib.nixosSystem {
+      nixosConfigurations.ruby = nixpkgs.lib.nixosSystem {
         inherit system;
         modules =
           [
