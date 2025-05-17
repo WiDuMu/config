@@ -10,6 +10,7 @@
     # Include the results of the hardware scan.
     ./ruby-hardware-configuration.nix
     ./default.nix
+    ./users.nix
   ];
 
   boot.initrd.luks.devices."luks-428b0b52-a19f-4fe6-9504-a450cad5e581".device = "/dev/disk/by-uuid/428b0b52-a19f-4fe6-9504-a450cad5e581";
@@ -21,16 +22,6 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.aurora = {
-    isNormalUser = true;
-    description = "aurora";
-    extraGroups = ["networkmanager" "wheel"];
-    packages = with pkgs; [
-      kdePackages.kate
-    ];
-  };
 
   # Install firefox.
   programs.firefox.enable = true;

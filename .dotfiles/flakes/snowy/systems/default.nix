@@ -27,7 +27,12 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    settings.PasswordAuthentication = false;
+  };
+
+  services.fail2ban.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -66,4 +71,10 @@
     wget
     git
   ];
+
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+    dockerSocket.enable = true;
+  };
 }
