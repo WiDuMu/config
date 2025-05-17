@@ -32,6 +32,13 @@
     settings.PasswordAuthentication = false;
   };
 
+  services.tailscale = {
+    enable = true;
+    openFirewall = true;
+    useRoutingFeatures = "both";
+    extraSetFlags = ["--advertise-exit-node"];
+  };
+
   services.fail2ban.enable = true;
 
   # Configure keymap in X11
