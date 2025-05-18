@@ -27,7 +27,7 @@
 
         packages.default = pkgs.vscode-with-extensions.override {
           vscode = pkgs.vscodium;
-          vscodeExtensions = import extension.nix pkgs;
+          vscodeExtensions = import ./extension.nix pkgs;
         };
 
         devShells.default = pkgs.mkShell {
