@@ -64,7 +64,7 @@
     ]
     ++ [
       input-packages.nuka.packages.${system}.default
-      input-packages.codine.packages.${system}.default
+      # input-packages.codine.packages.${system}.default
     ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -124,6 +124,14 @@
     suspend = "systemctl suspend -i";
   };
 
+  programs.vscode = {
+    package = pkgs.vscodium;
+    enable = true;
+    profiles.default.extensions = import ./codine/extension.nix pkgs;
+  };
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  nixpkgs.config.allowUnfree = true;
 }

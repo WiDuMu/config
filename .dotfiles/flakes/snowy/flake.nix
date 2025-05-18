@@ -21,6 +21,13 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
+    nix-vscode-extensions = {
+      #TODO: remove this pin when the nix-vscode repo fixes their latex extension.
+      url = "github:nix-community/nix-vscode-extensions/5809c8500215e5a46ca2e3469daff8f2c0a80665";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
   };
 
   outputs = {
@@ -36,6 +43,14 @@
     eachSystem = flake-utils.lib.eachSystem;
     eachDefaultSystem = flake-utils.lib.eachDefaultSystem;
     input-packages = {inherit nuka codine;};
+    opkgs = system:
+      import nixpkgs {
+        system = system;
+        allowUnfree = true;
+        overlays = [
+          inputs.nix-vscode-extensions.overlays.default
+        ];
+      };
     defaultHomeManager = system: [
       {
         home-manager.users.aurora = import ./home.nix;
@@ -54,11 +69,7 @@
       ++ defaultHomeManager system);
   in
     eachDefaultSystem (system: let
-      # Packages for each system
-      pkgs = import nixpkgs {
-        inherit system;
-        allowUnfree = true;
-      };
+      pkgs = opkgs system;
       # Make a dev shell given a list of packages
       shell = shell-packages:
         pkgs.mkShell {
@@ -86,6 +97,7 @@
     })
     // (let
       system = "x86_64-linux";
+      pkgs = opkgs system;
     in {
       # spare thinkpad
       nixosConfigurations.ruby = nixpkgs.lib.nixosSystem {
