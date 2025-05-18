@@ -2,7 +2,7 @@
   config,
   pkgs,
   system,
-  inputs,
+  input-packages,
   ...
 }: {
   # Home Manager needs a bit of information about you and the paths it should
@@ -63,8 +63,8 @@
       # '')
     ]
     ++ [
-      inputs.nuka.packages.${system}.default
-      inputs.codine.packages.${system}.default
+      input-packages.nuka.packages.${system}.default
+      input-packages.codine.packages.${system}.default
     ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

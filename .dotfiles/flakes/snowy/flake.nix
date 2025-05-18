@@ -35,6 +35,7 @@
     # Function that creates outputs for each system
     eachSystem = flake-utils.lib.eachSystem;
     eachDefaultSystem = flake-utils.lib.eachDefaultSystem;
+    input-packages = {inherit nuka codine;};
     defaultHomeManager = system: [
       {
         home-manager.users.aurora = import ./home.nix;
@@ -46,7 +47,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = {
-            inherit inputs system;
+            inherit input-packages system;
           };
         }
       ]
@@ -75,7 +76,7 @@
       packages.homeConfigurations."aurora" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = {
-          inherit inputs system;
+          inherit input-packages system;
         };
 
         modules = [
