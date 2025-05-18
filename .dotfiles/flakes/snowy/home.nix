@@ -29,6 +29,7 @@
       bun
       clang
       clang-tools
+      cmake
       eza
       cargo
       fd
