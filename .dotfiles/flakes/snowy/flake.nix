@@ -101,7 +101,14 @@
     in {
       # spare thinkpad
       nixosConfigurations.ruby = nixpkgs.lib.nixosSystem {
-        inherit system pkgs;
+        inherit system;
+        pkgs = import nixpkgs {
+          system = system;
+          allowUnfree = true;
+          overlays = [
+            inputs.nix-vscode-extensions.overlays.default
+          ];
+        };
         modules =
           [
             ./systems/ruby.nix
