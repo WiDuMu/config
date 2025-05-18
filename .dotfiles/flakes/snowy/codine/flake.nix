@@ -23,7 +23,7 @@
         };
         # Workaround pt.2
         extensions = pkgs;
-        inherit (pkgs) vscode-with-extensions vscodium;
+        # inherit (pkgs) vscode-with-extensions vscodium;
 
         packages.default = vscode-with-extensions.override {
           vscode = vscodium;
@@ -68,10 +68,12 @@
               oderwat.indent-rainbow
               myriad-dreamin.tinymist
               redhat.java
+              rsrickshaw.tint
               rust-lang.rust-analyzer
               slint.slint
               svelte.svelte-vscode
               tamasfe.even-better-toml
+              tintedtheming.base16-tinted-themes
               vadimcn.vscode-lldb
               vlanguage.vscode-vlang
               tomoki1207.pdf

@@ -1,26 +1,36 @@
 # Stupid silverblue stuff
-if [ -d "/var/home/$USER/.dotfiles/flakes/snowy" ]
-then
-    develop() {
+export SNOWY_FLAKE="$HOME/.dotfiles/flakes/snowy"
+# if [ -d "/var/home/$USER/.dotfiles/flakes/snowy" ]
+# then
+#     develop() {
+#         VERSION=$1
+# 	    shift 1
+#         nix develop "/var/home/$USER/.dotfiles/flakes/snowy#$VERSION" "$@"
+#         unset VERSION
+#     }
+#     snowy-update() {
+#         nix flake update --flake "/var/home/$USER/.dotfiles/flakes/snowy/"
+#     }
+# else
+#     develop() {
+#         VERSION=$1
+# 	    shift 1
+#         nix develop "~/.dotfiles/flakes/snowy#$VERSION" "$@"
+#         unset VERSION
+#     }
+#     snowy-update() {
+#         nix flake update --flake "~/.dotfiles/flakes/snowy/"
+#     }
+# fi
+develop() {
         VERSION=$1
 	    shift 1
-        nix develop "/var/home/$USER/.dotfiles/flakes/snowy#$VERSION" "$@"
+        nix develop "$SNOWY_FLAKE#$VERSION" "$@"
         unset VERSION
     }
     snowy-update() {
-        nix flake update --flake "/var/home/$USER/.dotfiles/flakes/snowy/"
+        nix flake update --flake "$SNOWY_FLAKE"
     }
-else
-    develop() {
-        VERSION=$1
-	    shift 1
-        nix develop "~/.dotfiles/flakes/snowy#$VERSION" "$@"
-        unset VERSION
-    }
-    snowy-update() {
-        nix flake update --flake "~/.dotfiles/flakes/snowy/"
-    }
-fi
 alias_if_command "develop" "d" "develop"
 alias_if_command "develop" "dev" "develop"
 alias_if_command "develop" "codev" "develop vscodium -c codium"

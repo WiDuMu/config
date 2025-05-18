@@ -124,6 +124,11 @@
     suspend = "systemctl suspend -i";
   };
 
+  # programs.vscode = {
+  #   package = input-packages.codine.packages.${system}.default.override {name = "vscodium";};
+  #   enable = true;
+  # };
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
