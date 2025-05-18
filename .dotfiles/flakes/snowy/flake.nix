@@ -40,12 +40,13 @@
     ...
   } @ inputs: let
     # Function that creates outputs for each system
+    # nixpkgs.config.allowUnfree = true;
     eachSystem = flake-utils.lib.eachSystem;
     eachDefaultSystem = flake-utils.lib.eachDefaultSystem;
     input-packages = {inherit nuka codine;};
     pkgs = import nixpkgs {
       system = "x86_64-linux";
-      allowUnfree = true;
+      config.allowUnfree = true;
       overlays = [
         inputs.nix-vscode-extensions.overlays.default
       ];
@@ -101,6 +102,7 @@
       # spare thinkpad
       nixosConfigurations.ruby = nixpkgs.lib.nixosSystem {
         inherit system pkgs;
+        # nixpkgs = pkgs;
         modules =
           [
             ./systems/ruby.nix
