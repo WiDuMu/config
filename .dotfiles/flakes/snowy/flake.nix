@@ -101,7 +101,7 @@
     in {
       # spare thinkpad
       nixosConfigurations.ruby = nixpkgs.lib.nixosSystem {
-        inherit system;
+        inherit system pkgs;
         modules =
           [
             ./systems/ruby.nix
