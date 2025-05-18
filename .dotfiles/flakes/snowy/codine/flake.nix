@@ -25,7 +25,7 @@
         extensions = pkgs;
         # inherit (pkgs) vscode-with-extensions vscodium;
 
-        packages.default = vscode-with-extensions.override {
+        packages.default = pkgs.vscode-with-extensions.override {
           vscode = vscodium;
           vscodeExtensions = import extension.nix pkgs;
         };
