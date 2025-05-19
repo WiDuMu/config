@@ -1,4 +1,6 @@
-{pkgs, ...}: (
+{pkgs, ...}:
+# A set function that returns the extensions wanted by VSCode.
+(
   (with pkgs.vscode-marketplace; [
     alexdauenhauer.catppuccin-noctis
     attilabuti.brainfuck-syntax

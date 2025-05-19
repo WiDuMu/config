@@ -127,7 +127,12 @@
   programs.vscode = {
     package = pkgs.vscodium;
     enable = true;
-    profiles.default.extensions = import ./codine/extension.nix pkgs;
+    profiles.default = {
+      userSettings = {
+        "workbench.colorTheme" = "base16-da-one-black";
+      };
+      extensions = import ./codine/extension.nix pkgs;
+    };
   };
 
   # Let Home Manager install and manage itself.
