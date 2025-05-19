@@ -23,11 +23,12 @@
     };
     nix-vscode-extensions = {
       #TODO: remove this pin when the nix-vscode repo fixes their latex extension.
-      url = "github:nix-community/nix-vscode-extensions/5809c8500215e5a46ca2e3469daff8f2c0a80665";
+      url = "github:nix-community/nix-vscode-extensions";
       inputs = {
         nixpkgs.follows = "nixpkgs";
       };
     };
+    stylix.url = "github:nix-community/stylix";
   };
 
   outputs = {
@@ -37,6 +38,7 @@
     home-manager,
     nixpkgs,
     nuka,
+    stylix,
     ...
   } @ inputs: let
     # Function that creates outputs for each system
@@ -44,13 +46,14 @@
     eachSystem = flake-utils.lib.eachSystem;
     eachDefaultSystem = flake-utils.lib.eachDefaultSystem;
     input-packages = {inherit nuka;};
-    opkgs = system: import nixpkgs {
-      system = system;
-      config.allowUnfree = true;
-      overlays = [
-        inputs.nix-vscode-extensions.overlays.default
-      ];
-    };
+    opkgs = system:
+      import nixpkgs {
+        system = system;
+        config.allowUnfree = true;
+        overlays = [
+          inputs.nix-vscode-extensions.overlays.default
+        ];
+      };
     defaultHomeManager = system: [
       {
         home-manager.users.aurora = import ./home.nix;
@@ -58,9 +61,11 @@
     ];
     defaultNixOS = system: ([
         home-manager.nixosModules.home-manager
+        stylix.nixosModules.stylix
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "hmbak";
           home-manager.extraSpecialArgs = {
             inherit input-packages system;
           };

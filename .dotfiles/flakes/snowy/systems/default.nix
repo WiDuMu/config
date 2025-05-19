@@ -93,13 +93,30 @@
     ];
   };
 
-  # Allow unfree packages
-  # nixpkgs.config.allowUnfree = true;
+  # ld fix
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    openssl
+  ];
 
   environment.systemPackages = with pkgs; [
+    fastfetch
     micro
     wget
     git
+  ];
+
+  fonts.packages = with pkgs; [
+    nerd-fonts.caskaydia-cove
+    nerd-fonts.monaspace
+    nerd-fonts.fira-code
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.space-mono
+    noto-fonts
+    roboto-flex
+    ubuntu-sans
+    eb-garamond
+    quicksand
   ];
 
   virtualisation.podman = {

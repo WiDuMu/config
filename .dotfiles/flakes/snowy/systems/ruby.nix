@@ -13,6 +13,9 @@
     ./users.nix
   ];
 
+  # stylix.enable = true;
+  # stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/da-one-black.yaml";
+
   boot.initrd.luks.devices."luks-428b0b52-a19f-4fe6-9504-a450cad5e581".device = "/dev/disk/by-uuid/428b0b52-a19f-4fe6-9504-a450cad5e581";
   networking.hostName = "ruby"; # Define your hostname.
 

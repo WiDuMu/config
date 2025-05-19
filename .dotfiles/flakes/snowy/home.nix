@@ -23,6 +23,7 @@
   # environment.
   home.packages = with pkgs;
     [
+      alejandra
       av1an
       bat
       biome
