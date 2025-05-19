@@ -43,9 +43,9 @@
     # nixpkgs.config.allowUnfree = true;
     eachSystem = flake-utils.lib.eachSystem;
     eachDefaultSystem = flake-utils.lib.eachDefaultSystem;
-    input-packages = {inherit nuka codine;};
-    pkgs = import nixpkgs {
-      system = "x86_64-linux";
+    input-packages = {inherit nuka;};
+    opkgs = system: import nixpkgs {
+      system = system;
       config.allowUnfree = true;
       overlays = [
         inputs.nix-vscode-extensions.overlays.default
@@ -69,7 +69,7 @@
       ++ defaultHomeManager system);
   in
     eachDefaultSystem (system: let
-      inherit pkgs;
+      pkgs = opkgs system;
       # Make a dev shell given a list of packages
       shell = shell-packages:
         pkgs.mkShell {
@@ -97,12 +97,11 @@
     })
     // (let
       system = "x86_64-linux";
-      # pkgs = opkgs system;
+      pkgs = opkgs system;
     in {
       # spare thinkpad
       nixosConfigurations.ruby = nixpkgs.lib.nixosSystem {
         inherit system pkgs;
-        # nixpkgs = pkgs;
         modules =
           [
             ./systems/ruby.nix

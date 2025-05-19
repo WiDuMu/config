@@ -128,9 +128,6 @@
     package = pkgs.vscodium;
     enable = true;
     profiles.default = {
-      userSettings = {
-        "workbench.colorTheme" = "base16-da-one-black";
-      };
       extensions = import ./codine/extension.nix pkgs;
     };
   };
