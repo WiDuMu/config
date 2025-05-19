@@ -45,6 +45,7 @@
     rust-lang.rust-analyzer
     slint.slint
     svelte.svelte-vscode
+    t3m1n4l.amoled-github
     tamasfe.even-better-toml
     tintedtheming.base16-tinted-themes
     vadimcn.vscode-lldb
