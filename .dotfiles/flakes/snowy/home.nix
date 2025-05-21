@@ -39,12 +39,18 @@
       cmake
       eza
       cargo
+      dav1d
       fd
       ffmpeg-full
       gdb
+      hyperfine
       jan
+      libjxl
       lldb
       mediainfo
+      meson
+      nasm
+      ninja
       rr
       rustc
       tokei
