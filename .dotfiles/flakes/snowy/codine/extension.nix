@@ -47,7 +47,7 @@
     svelte.svelte-vscode
     t3m1n4l.amoled-github
     tamasfe.even-better-toml
-    tintedtheming.base16-tinted-themes
+    # tintedtheming.base16-tinted-themes
     vadimcn.vscode-lldb
     vlanguage.vscode-vlang
     tomoki1207.pdf

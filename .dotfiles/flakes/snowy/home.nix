@@ -33,6 +33,7 @@
       av1an
       bat
       biome
+      blesh
       bun
       clang
       clang-tools
