@@ -36,6 +36,8 @@
       eza
       cargo
       dav1d
+      delta
+      dua
       fd
       ffmpeg-full
       gdb
@@ -43,6 +45,7 @@
       # jan
       libjxl
       lldb
+      mask
       mediainfo
       meson
       micro

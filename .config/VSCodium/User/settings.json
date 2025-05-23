@@ -1,0 +1,22 @@
+{
+    "editor.fontFamily": "'FiraCode Nerd Font','Noto Mono','Droid Sans Mono', 'monospace', monospace",
+    "editor.fontLigatures": true,// "'calt', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'ss09', 'liga'",
+    "workbench.settings.applyToAllProfiles": [
+        
+    ],
+    "[typescript]": {
+        "editor.defaultFormatter": "biomejs.biome"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "biomejs.biome"
+    },
+    "zig.zls.enabled": "on",
+    "editor.linkedEditing": true,
+    "workbench.iconTheme": "symbols",
+    "explorer.confirmDragAndDrop": false,
+    "editor.tabSize": 3,
+    "editor.wordWrap": "on",
+    "workbench.colorTheme": "AMOLED Github Theme",
+    "biome.lsp.bin": "biome",
+    "terminal.integrated.fontLigatures.enabled": true,
+}
