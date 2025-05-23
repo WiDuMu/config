@@ -5,8 +5,6 @@
   input-packages,
   ...
 }: {
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
   home.username = "aurora";
   home.homeDirectory = "/home/aurora";
 
@@ -16,17 +14,14 @@
     ./home-manager/nushell.nix
   ];
 
-  # This value determines the Home Manager release that your configuration is
-  # compatible with. This helps avoid breakage when a new Home Manager release
-  # introduces backwards incompatible changes.
-  #
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "24.11"; # Please read the comment before changing.
 
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
+  # Enable font management
+  fonts.fontconfig.enable = true;
+
   home.packages = with pkgs;
     [
       alejandra
@@ -45,11 +40,12 @@
       ffmpeg-full
       gdb
       hyperfine
-      jan
+      # jan
       libjxl
       lldb
       mediainfo
       meson
+      micro
       nasm
       ninja
       rr
@@ -76,9 +72,20 @@
       #   echo "Hello, ${config.home.username}!"
       # '')
     ]
+    ++ (with pkgs; [
+      nerd-fonts.caskaydia-cove
+      nerd-fonts.monaspace
+      nerd-fonts.fira-code
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.space-mono
+      noto-fonts
+      roboto-flex
+      ubuntu-sans
+      eb-garamond
+      quicksand
+    ])
     ++ [
       input-packages.nuka.packages.${system}.default
-      # input-packages.codine.packages.${system}.default
     ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -125,6 +132,7 @@
     gl = "git pull";
     cfl = "cfg pull";
     gs = "git sa";
+    hms = "home-manager switch";
     cfs = "cfg sa";
     gp = "git push";
     cfp = "cfg push";
@@ -134,6 +142,7 @@
     mi = "mediainfo";
     m = "micro";
     n = "nano";
+    nrs = "nixos-rebuild switch";
     wget = "wget -c";
     suspend = "systemctl suspend -i";
   };

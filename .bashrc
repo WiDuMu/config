@@ -20,3 +20,9 @@ if [ -d ~/.bashrc.d ]; then
     done
 fi
 unset rc
+
+if [[ ~/.nix-profile/etc/profile.d/hm-session-vars.sh ]] then
+    source ~/.nix-profile/etc/profile.d/hm-session-vars.sh
+fi
+
+eval "$(starship init bash)"

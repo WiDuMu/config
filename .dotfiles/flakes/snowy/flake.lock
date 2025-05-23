@@ -78,15 +78,14 @@
         ]
       },
       "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-juCMT/t1MmqsWoOlGqTuqi+f4OoBY9NP9/8UvI+kxeI=",
         "path": "./codine",
         "type": "path"
       },
       "original": {
         "path": "./codine",
         "type": "path"
-      }
+      },
+      "parent": []
     },
     "firefox-gnome-theme": {
       "flake": false,
@@ -540,15 +539,14 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-zAtz+E4AXJ8zRZH8eA2TXf0+MWwZ7F6dqpR5Eux3nDg=",
         "path": "./nuka/",
         "type": "path"
       },
       "original": {
         "path": "./nuka/",
         "type": "path"
-      }
+      },
+      "parent": []
     },
     "nur": {
       "inputs": {

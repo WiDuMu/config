@@ -82,12 +82,17 @@
           packages = shell-packages;
         };
       mkShells = builtins.mapAttrs (name: packages: (shell packages));
+      mkShellsPlusPackage = suffix: package:
+        nixpkgs.lib.attrsets.mapAttrs' (name: packages: {
+          name = "${name}${suffix}";
+          value = shell (packages ++ [package]);
+        });
       shellPackages = (import ./shellpkgs.nix) {pkgs = nixpkgs.legacyPackages.${system};};
     in {
       # Formatter for a system
       formatter = pkgs.alejandra;
       # Dev shell (`nix develop`)
-      devShells = mkShells shellPackages;
+      devShells = (mkShells shellPackages) // (mkShellsPlusPackage "-vim" inputs.nuka.packages.${system}.default shellPackages);
       # Home-manager configuration
       packages.homeConfigurations."aurora" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;

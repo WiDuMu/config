@@ -2,19 +2,19 @@
 # A set function that returns the extensions wanted by VSCode.
 (
   (with pkgs.vscode-marketplace; [
-    alexdauenhauer.catppuccin-noctis
+    # alexdauenhauer.catppuccin-noctis
     attilabuti.brainfuck-syntax
     barbosshack.crates-io
     batisteo.vscode-django
     bbenoist.nix
     bierner.lit-html
     bierner.markdown-preview-github-styles
-    binx.modus-vivendi-code
+    # binx.modus-vivendi-code
     biomejs.biome
     blueglassblock.better-json5
     bradlc.vscode-tailwindcss
     catppuccin.catppuccin-vsc-icons
-    catppuccin.catppuccin-vsc
+    # catppuccin.catppuccin-vsc
     chamboug.js-auto-backticks
     chrmarti.regex
     donjayamanne.githistory
