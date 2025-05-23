@@ -41,7 +41,7 @@
     oderwat.indent-rainbow
     myriad-dreamin.tinymist
     redhat.java
-    rsrickshaw.tint
+    # rsrickshaw.tint
     rust-lang.rust-analyzer
     slint.slint
     svelte.svelte-vscode
