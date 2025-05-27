@@ -16,7 +16,7 @@
     "explorer.confirmDragAndDrop": false,
     "editor.tabSize": 3,
     "editor.wordWrap": "on",
-    "workbench.colorTheme": "AMOLED Github Theme",
     "biome.lsp.bin": "biome",
     "terminal.integrated.fontLigatures.enabled": true,
+    "workbench.colorTheme": "AMOLED Github Theme",
 }

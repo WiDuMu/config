@@ -2,19 +2,16 @@
 # A set function that returns the extensions wanted by VSCode.
 (
   (with pkgs.vscode-marketplace; [
-    # alexdauenhauer.catppuccin-noctis
     attilabuti.brainfuck-syntax
     barbosshack.crates-io
     batisteo.vscode-django
     bbenoist.nix
     bierner.lit-html
     bierner.markdown-preview-github-styles
-    # binx.modus-vivendi-code
     biomejs.biome
     blueglassblock.better-json5
     bradlc.vscode-tailwindcss
     catppuccin.catppuccin-vsc-icons
-    # catppuccin.catppuccin-vsc
     chamboug.js-auto-backticks
     chrmarti.regex
     donjayamanne.githistory
@@ -41,13 +38,11 @@
     oderwat.indent-rainbow
     myriad-dreamin.tinymist
     redhat.java
-    # rsrickshaw.tint
     rust-lang.rust-analyzer
     slint.slint
     svelte.svelte-vscode
     t3m1n4l.amoled-github
     tamasfe.even-better-toml
-    # tintedtheming.base16-tinted-themes
     vadimcn.vscode-lldb
     vlanguage.vscode-vlang
     tomoki1207.pdf

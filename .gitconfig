@@ -1,5 +1,6 @@
 [core]
     excludesFile = ~/.dotfiles/.gitignore
+    pager = delta
 [init]
     defaultBranch = main
 [push]

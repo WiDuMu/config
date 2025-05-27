@@ -7,6 +7,7 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-utils.follows = "flake-utils";
+        nix-vscode-extensions.follows = "nix-vscode-extensions";
       };
     };
     flake-utils.url = "github:numtide/flake-utils";
@@ -22,13 +23,12 @@
       };
     };
     nix-vscode-extensions = {
-      #TODO: remove this pin when the nix-vscode repo fixes their latex extension.
-      url = "github:nix-community/nix-vscode-extensions";
+      url = "github:nix-community/nix-vscode-extensions/001f9f541edd406ff00aab49d968f535658778fa";
       inputs = {
         nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
       };
     };
-    stylix.url = "github:nix-community/stylix";
   };
 
   outputs = {
@@ -38,17 +38,14 @@
     home-manager,
     nixpkgs,
     nuka,
-    stylix,
     ...
   } @ inputs: let
-    # Function that creates outputs for each system
-    # nixpkgs.config.allowUnfree = true;
     eachSystem = flake-utils.lib.eachSystem;
     eachDefaultSystem = flake-utils.lib.eachDefaultSystem;
     input-packages = {inherit nuka;};
     opkgs = system:
       import nixpkgs {
-        system = system;
+        inherit system;
         config.allowUnfree = true;
         overlays = [
           inputs.nix-vscode-extensions.overlays.default
@@ -61,7 +58,6 @@
     ];
     defaultNixOS = system: ([
         home-manager.nixosModules.home-manager
-        stylix.nixosModules.stylix
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
@@ -92,7 +88,7 @@
       # Formatter for a system
       formatter = pkgs.alejandra;
       # Dev shell (`nix develop`)
-      devShells = (mkShells shellPackages) // (mkShellsPlusPackage "-vim" inputs.nuka.packages.${system}.default shellPackages);
+      devShells = (mkShells shellPackages) // (mkShellsPlusPackage "-vim" inputs.nuka.packages.${system}.default shellPackages) // (mkShellsPlusPackage "-vscode" inputs.codine.packages.${system}.default shellPackages);
       # Home-manager configuration
       packages.homeConfigurations."aurora" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
