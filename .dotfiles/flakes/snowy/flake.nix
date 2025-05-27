@@ -110,7 +110,7 @@
         inherit system pkgs;
         modules =
           [
-            ./systems/ruby.nix
+            ./systems/ruby
           ]
           ++ (defaultNixOS system);
       };
