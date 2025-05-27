@@ -123,10 +123,12 @@
   };
 
   home.shellAliases = {
+    ed25519-keygen = "ssh-keygen -t ed25519";
     la = "ls -alh";
     gc = "git clone";
     ga = "git add";
     cfa = "cfg add";
+    cfg = "git --git-dir=$HOME/.cfg/ --work-tree=$HOME";
     gl = "git pull";
     cfl = "cfg pull";
     gs = "git sa";
