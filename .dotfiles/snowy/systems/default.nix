@@ -84,7 +84,9 @@
   ];
 
   environment.systemPackages = with pkgs; [
+    bottom
     fastfetch
+    htop
     micro
     wget
     git

@@ -30,8 +30,6 @@ export_if_command() {
 }
 
 
-alias "fucking"="sudo"
-alias "please"="sudo"
 alias diffi="diff --color=always --minimal"
 alias m="micro"
 alias ls="ls -A"
@@ -39,4 +37,3 @@ alias_if_command "nvim" "n" "nvim"
 alias_if_command "micro" "m" "micro"
 alias_if_command "git" "g" "git"
 alias_if_command "zoxide" "z" "zoxide"
-# alias_if_command "bun" "b" "bun"
