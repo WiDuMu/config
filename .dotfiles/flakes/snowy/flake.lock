@@ -1,28 +1,5 @@
 {
   "nodes": {
-    "codine": {
-      "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nix-vscode-extensions": [
-          "nix-vscode-extensions"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-onpdPiNv1MFMBd4m33g4EiIbiRg5Nb/yvWQlTBGuSg0=",
-        "path": "./codine",
-        "type": "path"
-      },
-      "original": {
-        "path": "./codine",
-        "type": "path"
-      }
-    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": "nixpkgs-lib"
@@ -285,7 +262,6 @@
     },
     "root": {
       "inputs": {
-        "codine": "codine",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "nix-vscode-extensions": "nix-vscode-extensions",

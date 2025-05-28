@@ -2,14 +2,6 @@
   description = "A Nix-flake-based development environment intended for deployment on a silverblue-based envrionment.";
 
   inputs = {
-    codine = {
-      url = "path:./codine";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
-        nix-vscode-extensions.follows = "nix-vscode-extensions";
-      };
-    };
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -33,14 +25,13 @@
 
   outputs = {
     self,
-    codine,
+    # codine,
     flake-utils,
     home-manager,
     nixpkgs,
     nuka,
     ...
   } @ inputs: let
-    eachSystem = flake-utils.lib.eachSystem;
     eachDefaultSystem = flake-utils.lib.eachDefaultSystem;
     input-packages = {inherit nuka;};
     opkgs = system:
@@ -77,18 +68,30 @@
           buildInputs = with pkgs; [bashInteractive];
           packages = shell-packages;
         };
+      # Make a set of dev shells given an attribute set of package lists.
       mkShells = builtins.mapAttrs (name: packages: (shell packages));
+      # Make a set of dev shells given an attribute set of package lists, adding a package to each, suffixing the shells
       mkShellsPlusPackage = suffix: package:
         nixpkgs.lib.attrsets.mapAttrs' (name: packages: {
           name = "${name}${suffix}";
           value = shell (packages ++ [package]);
         });
+      # Package lists for various languages
       shellPackages = (import ./shellpkgs.nix) {pkgs = nixpkgs.legacyPackages.${system};};
+      # VSCodium with extensions for devShells
+      codium = pkgs.vscode-with-extensions.override {
+        vscode = pkgs.vscodium;
+        vscodeExtensions = import ./codine/extension.nix pkgs;
+      };
     in {
       # Formatter for a system
       formatter = pkgs.alejandra;
       # Dev shell (`nix develop`)
-      devShells = (mkShells shellPackages) // (mkShellsPlusPackage "-vim" inputs.nuka.packages.${system}.default shellPackages) // (mkShellsPlusPackage "-vscode" inputs.codine.packages.${system}.default shellPackages);
+      devShells =
+        ((mkShells shellPackages)
+          // (mkShellsPlusPackage "-vim" inputs.nuka.packages.${system}.default shellPackages))
+        // (mkShellsPlusPackage "-code" codium
+          shellPackages);
       # Home-manager configuration
       packages.homeConfigurations."aurora" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
