@@ -28,7 +28,7 @@
       av1an
       bat
       biome
-      blesh
+      # blesh
       bun
       clang
       clang-tools
@@ -105,18 +105,11 @@
   # 'home.sessionVariables'. These will be explicitly sourced when using a
   # shell provided by Home Manager. If you don't want to manage your shell
   # through Home Manager then you have to manually source 'hm-session-vars.sh'
-  # located at either
+  # located at either:
   #
   #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
   #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
   #  /etc/profiles/per-user/aurora/etc/profile.d/hm-session-vars.sh
-  #
   home.sessionVariables = {
     EDITOR = "micro";
     VISUAL = "micro";
@@ -142,7 +135,7 @@
     mi = "mediainfo";
     m = "micro";
     n = "nano";
-    nrs = "nixos-rebuild switch";
+    nrs = "sudo nixos-rebuild switch";
     wget = "wget -c";
     suspend = "systemctl suspend -i";
   };

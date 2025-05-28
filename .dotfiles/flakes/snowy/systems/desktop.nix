@@ -29,7 +29,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    foot
+    kitty
   ];
 
   fonts.packages = with pkgs; [
