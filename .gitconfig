@@ -10,17 +10,11 @@
 [user]
    name = "Anonymous"
    email = "<>"
-[includeIf "gitdir:~/Documents/Code/nova-aurora/*"]
+[includeIf "gitdir/i:**/nova-aurora/**"]
    path = ~/.dotfiles/gitconfig/nova-aurora
-[includeIf "gitdir:~/Documents/Code/WiDuMu/*"]
-   path = ~/.dotfiles/gitconfig/WiDuMu
-[includeIf "gitdir:~/Documents/Code/WiDuMu/"]
-   path = ~/.dotfiles/gitconfig/WiDuMu
-[includeIf "gitdir:/var/mnt/storage/Code/WiDuMu/*"]
-   path = ~/.dotfiles/gitconfig/WiDuMu
-[includeIf "gitdir:~/Documents/WiDuMu/*"]
-   path = ~/.dotfiles/gitconfig/WiDuMu
 [includeIf "gitdir:~/.cfg"]
+   path = ~/.dotfiles/gitconfig/WiDuMu
+[includeIf "gitdir/i:**/WiDuMu/**"]
    path = ~/.dotfiles/gitconfig/WiDuMu
 [alias]
     s = status

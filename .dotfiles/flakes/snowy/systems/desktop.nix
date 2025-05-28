@@ -28,6 +28,10 @@
     #media-session.enable = true;
   };
 
+  environment.systemPackages = with pkgs; [
+    foot
+  ];
+
   fonts.packages = with pkgs; [
     nerd-fonts.caskaydia-cove
     nerd-fonts.monaspace
