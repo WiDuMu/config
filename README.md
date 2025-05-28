@@ -18,7 +18,7 @@ Then checkout the head:
 ```bash
 git --git-dir=$HOME/.cfg/ --work-tree=$HOME checkout
 ```
-This should install all the dotfiles nessecary to use the configuration. After initial install, restart any `bash` shells and you should be able to use the alias `cfg` for git. This includes `cfg add`, `cfg commit`, etc, etc.
+This should install all the dotfiles nessecary to use the configuration. After initial install, restart any `bash` shells and you should be able to use the alias `cfg` for git when working with config. This includes `cfg add`, `cfg commit`, etc, etc.
 
 ### Home-manager intialization
 Install nix however do, with flakes enabled. Then run:
