@@ -30,6 +30,7 @@
 
   environment.systemPackages = with pkgs; [
     kitty
+    ghostty
   ];
 
   fonts.packages = with pkgs; [

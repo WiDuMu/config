@@ -95,4 +95,31 @@
     dockerCompat = true;
     dockerSocket.enable = true;
   };
+
+  # Auto update
+  system.autoUpgrade = {
+    enable = true;
+    allowReboot = false;
+    flake = "../";
+    flags = [
+      "--update-input"
+      "nixpkgs"
+    ];
+    dates = "02:00";
+    randomizedDelaySec = "60min";
+  };
+
+  # Enable garbage collection automatically
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    # interval = { Weekday = 1; Hour = 1; Minute = 1; };
+    options = "--delete-older-than 14d";
+    persistent = true;
+  };
+
+  nix.optimise = {
+    automatic = true;
+    dates = ["00:30"];
+  };
 }
