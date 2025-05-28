@@ -1,4 +1,4 @@
-export SNOWY_FLAKE="$HOME/.dotfiles/flakes/snowy"
+export SNOWY_FLAKE="$HOME/.dotfiles/snowy"
 develop() {
         VERSION=$1
 	    shift 1
