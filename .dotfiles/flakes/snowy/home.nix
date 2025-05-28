@@ -131,6 +131,7 @@
     cfs = "cfg sa";
     gp = "git push";
     cfp = "cfg push";
+    cfps = "cfs && cfp";
     ".." = "cd ..";
     py = "python";
     ff = "ffmpeg";
