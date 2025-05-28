@@ -9,8 +9,6 @@
       # Search options
       ignorecase = true;
       smartcase = true;
-
-      # viAlias = true;
     };
   };
 }

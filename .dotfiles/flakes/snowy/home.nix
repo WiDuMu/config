@@ -44,14 +44,17 @@
       libjxl
       lldb
       luajit
+      marksman
       mask
       mediainfo
       meson
       micro
+      moar
       nasm
       ninja
       rr
       rustc
+      tldr
       tokei
       typst
       valgrind
@@ -111,6 +114,7 @@
   home.sessionVariables = {
     EDITOR = "micro";
     VISUAL = "micro";
+    PAGER = "moar";
   };
 
   home.shellAliases = {
@@ -134,6 +138,7 @@
     m = "micro";
     n = "nano";
     nrs = "sudo nixos-rebuild switch";
+    nfu = "nix flake update";
     wget = "wget -c";
     suspend = "systemctl suspend -i";
   };
@@ -144,6 +149,22 @@
     profiles.default = {
       extensions = import ./codine/extension.nix pkgs;
     };
+  };
+
+  programs.zsh = {
+    enable = true;
+    autocd = true;
+    autosuggestion.enable = true;
+    dotDir = ".config/zsh";
+    enableCompletion = true;
+  };
+
+  programs.helix = {
+    enable = true;
+    settings = {
+      theme = "base16_transparent";
+    };
+    package = pkgs.evil-helix;
   };
 
   # Let Home Manager install and manage itself.

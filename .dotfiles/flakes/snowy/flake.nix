@@ -25,7 +25,6 @@
 
   outputs = {
     self,
-    # codine,
     flake-utils,
     home-manager,
     nixpkgs,
