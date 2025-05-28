@@ -14,10 +14,9 @@
     ./home-manager/nushell.nix
   ];
 
-  # You should not change this value, even if you update Home Manager. If you do
-  # want to update the value, then make sure to first check the Home Manager
-  # release notes.
-  home.stateVersion = "24.11"; # Please read the comment before changing.
+  # You should not change this value. If you want to update the value,
+  # then check the Home Manager release notes for breaking changes,
+  home.stateVersion = "24.11";
 
   # Enable font management
   fonts.fontconfig.enable = true;
@@ -28,7 +27,6 @@
       av1an
       bat
       biome
-      # blesh
       bun
       clang
       clang-tools
