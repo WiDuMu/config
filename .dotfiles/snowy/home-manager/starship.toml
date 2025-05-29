@@ -12,9 +12,9 @@ $env_var\
 $jobs\
 $sudo\
 $username\
-$directory\
+$directory\ 
 $cmd_duration\
- $character"""
+$character """
 
 right_format = """
 $singularity\
@@ -93,7 +93,7 @@ $time"""
 symbol = ' '
 
 [character]
-format = "$symbol "
+format = "$symbol"
 success_symbol = "[λ](bold green)"
 error_symbol = "[λ](red)"
 vimcmd_symbol = "[λ](dimmed green)"
@@ -126,13 +126,13 @@ truncation_symbol = "../"
 read_only = " ◈"
 use_os_path_sep = true
 style = "blue"
-format = '[$path]($style)[$read_only]($read_only_style)'
+format = '[$path]($style)[$read_only]($read_only_style) '
 repo_root_style = 'bold blue'
 repo_root_format = '[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) [△](bold bright-blue)'
 disabled = false
 
 [cmd_duration]
-format = "[ $duration ](italic white)"
+format = "[$duration ](italic white)"
 
 [jobs]
 format = "[$symbol$number]($style) "
@@ -146,7 +146,7 @@ disabled = false
 
 [time]
 disabled = false
-format = "[ $time]($style)"
+format = "[$time]($style)"
 time_format = "%R"
 utc_time_offset = "local"
 style = "italic dimmed white"

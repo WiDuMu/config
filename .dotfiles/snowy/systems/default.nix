@@ -80,7 +80,13 @@
   # ld fix
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
+    libGL
+    libjpeg
+    libpng
+    libvpx
+    libwebp
     openssl
+    zlib
   ];
 
   environment.systemPackages = with pkgs; [
