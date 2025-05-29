@@ -99,6 +99,13 @@
         };
 
         modules = [
+          {
+            nix.gc = {
+              automatic = true;
+              frequency = "weekly";
+              randomizedDelaySec = "50min";
+            };
+          }
           ./home.nix
         ];
       };

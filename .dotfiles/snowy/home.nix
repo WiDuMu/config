@@ -45,12 +45,13 @@
       lldb
       luajit
       marksman
-      mask
+      # mask
       mediainfo
       meson
       micro
       moar
       nasm
+      nil
       ninja
       rr
       rustc

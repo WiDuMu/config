@@ -29,9 +29,7 @@ export_if_command() {
     fi
 }
 
-
 alias diffi="diff --color=always --minimal"
-alias m="micro"
 alias ls="ls -A"
 alias_if_command "nvim" "n" "nvim"
 alias_if_command "micro" "m" "micro"

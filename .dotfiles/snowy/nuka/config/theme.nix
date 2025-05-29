@@ -1,7 +1,0 @@
-{
-  colorschemes = {
-    modus = {
-      enable = true;
-    };
-  };
-}
