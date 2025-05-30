@@ -84,25 +84,9 @@
       eb-garamond
       quicksand
       vista-fonts
-    ])
-    ++ [
-      # input-packages.nuka.packages.${system}.default
-    ];
-
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
-  };
+    ]);
+    # # Import any package in the input packages automagickally
+    # ++ (builtins.map (p: p.packages.${system}.default) input-packages);
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
@@ -129,11 +113,12 @@
     gl = "git pull";
     cfl = "cfg pull";
     gs = "git sa";
+    hm = "home-manager";
     hms = "home-manager switch";
     cfs = "cfg sa";
     gp = "git push";
     cfp = "cfg push";
-    cfps = "cfs && cfp";
+    cfsp = "cfs && cfp";
     ".." = "cd ..";
     py = "python";
     ff = "ffmpeg";

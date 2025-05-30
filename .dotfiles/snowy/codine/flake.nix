@@ -1,4 +1,5 @@
 {
+  description = "A Nix flake that builds VSCode with a set of extensions";
   inputs = {
     nix-vscode-extensions = {
       #TODO: remove this pin when the nix-vscode repo fixes their latex extension.
@@ -14,7 +15,6 @@
   outputs = inputs:
     inputs.flake-utils.lib.eachDefaultSystem (
       system: let
-        # pkgs = inputs.nixpkgs.legacyPackages.${system};
         pkgs = import inputs.nixpkgs {
           system = system;
           config.allowUnfree = true;

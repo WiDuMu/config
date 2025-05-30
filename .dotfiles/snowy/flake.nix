@@ -9,12 +9,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    nuka = {
-      url = "path:./nuka/";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
+    # nuka = {
+    #   url = "path:./nuka/";
+    #   inputs = {
+    #     nixpkgs.follows = "nixpkgs";
+    #   };
+    # };
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions/001f9f541edd406ff00aab49d968f535658778fa";
       inputs = {
@@ -29,11 +29,11 @@
     flake-utils,
     home-manager,
     nixpkgs,
-    nuka,
+    # nuka,
     ...
   } @ inputs: let
     eachDefaultSystem = flake-utils.lib.eachDefaultSystem;
-    input-packages = {inherit nuka;};
+    input-packages = {};
     opkgs = system:
       import nixpkgs {
         inherit system;
@@ -88,8 +88,7 @@
       formatter = pkgs.alejandra;
       # Dev shell (`nix develop`)
       devShells =
-        ((mkShells shellPackages)
-          // (mkShellsPlusPackage "-vim" inputs.nuka.packages.${system}.default shellPackages))
+        (mkShells shellPackages)
         // (mkShellsPlusPackage "-code" codium
           shellPackages);
       # Home-manager configuration

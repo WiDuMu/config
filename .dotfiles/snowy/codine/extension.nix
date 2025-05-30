@@ -11,10 +11,9 @@
     biomejs.biome
     blueglassblock.better-json5
     bradlc.vscode-tailwindcss
-    catppuccin.catppuccin-vsc-icons
+    # catppuccin.catppuccin-vsc-icons
     chamboug.js-auto-backticks
     chrmarti.regex
-    # donjayamanne.githistory
     formulahendry.auto-rename-tag
     github.vscode-pull-request-github
     golang.go
