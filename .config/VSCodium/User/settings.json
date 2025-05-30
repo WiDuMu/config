@@ -18,4 +18,5 @@
     "editor.wordWrap": "on",
     "biome.lsp.bin": "biome",
     "terminal.integrated.fontLigatures.enabled": true,
+    "workbench.colorTheme": "AMOLED Github Theme",
 }
