@@ -2,6 +2,7 @@
   description = "A Nix-flake-based development environment intended for deployment on a silverblue-based envrionment.";
 
   inputs = {
+    # TODO Switch this for flake-parts
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -99,6 +100,7 @@
         };
 
         modules = [
+          # Run the Nix GC on an interval
           {
             nix.gc = {
               automatic = true;
@@ -110,6 +112,7 @@
         ];
       };
     })
+    # NixOS configurations
     // (let
       system = "x86_64-linux";
       pkgs = opkgs system;
