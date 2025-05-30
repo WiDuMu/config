@@ -40,17 +40,16 @@
       ffmpeg-full
       gdb
       hyperfine
-      # jan
       libjxl
       lldb
       luajit
       marksman
-      # mask
       mediainfo
       meson
       micro
       moar
       nasm
+      nh
       nil
       ninja
       rr
@@ -73,6 +72,7 @@
       # '')
     ]
     ++ (with pkgs; [
+      corefonts
       nerd-fonts.caskaydia-cove
       nerd-fonts.monaspace
       nerd-fonts.fira-code
@@ -83,9 +83,10 @@
       ubuntu-sans
       eb-garamond
       quicksand
+      vista-fonts
     ])
     ++ [
-      input-packages.nuka.packages.${system}.default
+      # input-packages.nuka.packages.${system}.default
     ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
