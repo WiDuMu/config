@@ -22,6 +22,10 @@
         flake-utils.follows = "flake-utils";
       };
     };
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -31,6 +35,7 @@
     nixpkgs,
     # nuka,
     nix-vscode-extensions,
+    stylix,
     ...
   } @ inputs: let
     eachDefaultSystem = flake-utils.lib.eachDefaultSystem;
@@ -58,6 +63,12 @@
             inherit input-packages system;
           };
         }
+        stylix.nixosModules.stylix
+        {
+          stylix.enable = true;
+          stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+        }
+
       ]
       ++ defaultHomeManager system);
   in
