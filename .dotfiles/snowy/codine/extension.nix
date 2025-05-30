@@ -14,7 +14,7 @@
     catppuccin.catppuccin-vsc-icons
     chamboug.js-auto-backticks
     chrmarti.regex
-    donjayamanne.githistory
+    # donjayamanne.githistory
     formulahendry.auto-rename-tag
     github.vscode-pull-request-github
     golang.go
