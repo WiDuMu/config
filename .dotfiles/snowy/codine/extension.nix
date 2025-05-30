@@ -11,7 +11,6 @@
     biomejs.biome
     blueglassblock.better-json5
     bradlc.vscode-tailwindcss
-    # catppuccin.catppuccin-vsc-icons
     chamboug.js-auto-backticks
     chrmarti.regex
     formulahendry.auto-rename-tag

@@ -30,16 +30,17 @@
     home-manager,
     nixpkgs,
     # nuka,
+    nix-vscode-extensions,
     ...
   } @ inputs: let
     eachDefaultSystem = flake-utils.lib.eachDefaultSystem;
-    input-packages = {};
+    input-packages = [];
     opkgs = system:
       import nixpkgs {
         inherit system;
         config.allowUnfree = true;
         overlays = [
-          inputs.nix-vscode-extensions.overlays.default
+          nix-vscode-extensions.overlays.default
         ];
       };
     defaultHomeManager = system: [

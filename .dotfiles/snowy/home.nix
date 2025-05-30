@@ -84,9 +84,9 @@
       eb-garamond
       quicksand
       vista-fonts
-    ]);
+    ])
     # # Import any package in the input packages automagickally
-    # ++ (builtins.map (p: p.packages.${system}.default) input-packages);
+    ++ (builtins.map (p: p.packages.${system}.default) input-packages);
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
