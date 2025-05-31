@@ -53,5 +53,5 @@
   programs.firefox.enable = true;
 
   stylix.enable = true;
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/darkviolet.yaml";
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/framer.yaml";
 }
