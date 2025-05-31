@@ -52,6 +52,7 @@
       nh
       nil
       ninja
+      nix-tree
       rr
       rustc
       tldr
@@ -152,7 +153,7 @@
   programs.helix = {
     enable = true;
     settings = {
-      # theme = "base16_transparent";
+      theme = "base16_transparent";
       editor.cursor-shape = {
         insert = "bar";
         normal = "block";
