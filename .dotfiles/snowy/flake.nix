@@ -2,6 +2,7 @@
   description = "A Nix-flake-based development environment intended for deployment on a silverblue-based envrionment.";
 
   inputs = {
+    # flake-parts.url = "github:hercules-ci/flake-parts";
     # TODO Switch this for flake-parts
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
@@ -22,20 +23,21 @@
         flake-utils.follows = "flake-utils";
       };
     };
-    stylix = {
-      url = "github:danth/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # stylix = {
+    #   url = "github:danth/stylix";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
   outputs = {
     self,
     flake-utils,
+    flake-parts,
     home-manager,
     nixpkgs,
     # nuka,
     nix-vscode-extensions,
-    stylix,
+    # stylix,
     ...
   } @ inputs: let
     eachDefaultSystem = flake-utils.lib.eachDefaultSystem;
@@ -63,7 +65,7 @@
             inherit input-packages system;
           };
         }
-        stylix.nixosModules.stylix
+        # stylix.nixosModules.stylix
       ]
       ++ defaultHomeManager system);
   in
@@ -133,4 +135,21 @@
           ++ (defaultNixOS system);
       };
     });
+  # // flake-parts.lib.mkFlake {inherit inputs;} {
+  #   systems = [
+  #     "x86_64-linux"
+  #     "aarch64-linux"
+  #     "x86_64-darwin"
+  #     "aarch64-darwin"
+  #   ];
+
+  #   imports = [
+  #     inputs.home-manager.flakeModules.home-manager
+  #   ];
+
+  #   flake = {
+  #     homeConfigurations = {
+  #     };
+  #   };
+  # };
 }
