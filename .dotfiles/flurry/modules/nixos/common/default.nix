@@ -31,4 +31,5 @@
   };
 
   services.pulseaudio.enable = false;
+  pkgs.config.allowUnfree = true;
 }
