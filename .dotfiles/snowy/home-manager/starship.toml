@@ -98,9 +98,9 @@ success_symbol = "[λ](bold green)"
 error_symbol = "[λ](red)"
 vimcmd_symbol = "[λ](dimmed green)"
 # not supported in zsh
-vimcmd_replace_one_symbol = "◌"
-vimcmd_replace_symbol = "□"
-vimcmd_visual_symbol = "▼"
+# vimcmd_replace_one_symbol = "◌"
+# vimcmd_replace_symbol = "□"
+# vimcmd_visual_symbol = "▼"
 
 [env_var.VIMSHELL]
 format = "[$env_value]($style)"
