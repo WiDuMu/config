@@ -2,12 +2,14 @@
   imports = [
     ./myusers.nix
   ];
+  # Default nixOS configuration for both desktop and headless devices
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Enable flakes
   nix.settings.experimental-features = ["nix-command" "flakes"];
+  nixpkgs.config.allowUnfree = true;
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -30,6 +32,106 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  services.openssh = {
+    enable = true;
+    settings.PasswordAuthentication = false;
+  };
+
+  services.tailscale = {
+    enable = true;
+    openFirewall = true;
+    useRoutingFeatures = "both";
+    extraSetFlags = ["--advertise-exit-node"];
+  };
+
+  services.fail2ban.enable = true;
+
+  # Configure keymap in X11
+  services.xserver.xkb = {
+    layout = "us";
+    variant = "";
+  };
+
+  # Enable the X11 windowing system.
+  # You can disable this if you're only using the Wayland session.
+  services.xserver.enable = false;
+
   services.pulseaudio.enable = false;
-  nixpkgs.config.allowUnfree = true;
+
+  security.sudo = {
+    enable = true;
+    extraRules = [
+      {
+        commands = [
+          {
+            command = "${pkgs.systemd}/bin/systemctl suspend";
+            options = ["NOPASSWD"];
+          }
+          {
+            command = "${pkgs.systemd}/bin/reboot";
+            options = ["NOPASSWD"];
+          }
+          {
+            command = "${pkgs.systemd}/bin/poweroff";
+            options = ["NOPASSWD"];
+          }
+        ];
+        groups = ["wheel"];
+      }
+    ];
+  };
+
+  # ld fix
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    libGL
+    libjpeg
+    libpng
+    libvpx
+    libwebp
+    openssl
+    zlib
+  ];
+
+  environment.systemPackages = with pkgs; [
+    bottom
+    fastfetch
+    htop
+    micro
+    wget
+    git
+  ];
+
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+    dockerSocket.enable = true;
+  };
+
+  # Auto update
+  system.autoUpgrade = {
+    enable = true;
+    allowReboot = false;
+    flake = "../";
+    flags = [
+      "--update-input"
+      "nixpkgs"
+    ];
+    dates = "02:00";
+    randomizedDelaySec = "60min";
+  };
+
+  # Enable garbage collection automatically
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    # interval = { Weekday = 1; Hour = 1; Minute = 1; };
+    options = "--delete-older-than 14d";
+    persistent = true;
+  };
+
+  nix.optimise = {
+    automatic = true;
+    dates = ["00:30"];
+  };
 }

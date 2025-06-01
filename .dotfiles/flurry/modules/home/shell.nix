@@ -1,12 +1,40 @@
 {...}: {
+  home.shellAliases = {
+    ed25519-keygen = "ssh-keygen -t ed25519";
+    la = "ls -alh";
+    gc = "git clone";
+    ga = "git add";
+    cfa = "cfg add";
+    cfg = "git --git-dir=$HOME/.cfg/ --work-tree=$HOME";
+    gl = "git pull";
+    cfl = "cfg pull";
+    gs = "git sa";
+    hm = "home-manager";
+    hms = "home-manager switch";
+    cfs = "cfg sa";
+    gp = "git push";
+    cfp = "cfg push";
+    cfsp = "cfg saps";
+    ".." = "cd ..";
+    py = "python";
+    ff = "ffmpeg";
+    mi = "mediainfo";
+    m = "micro";
+    n = "nano";
+    nrs = "sudo nixos-rebuild switch";
+    nfu = "nix flake update";
+    wget = "wget -c";
+    suspend = "systemctl suspend -i";
+  };
+
   programs = {
     # on macOS, you probably don't need this
-    # bash = {
-    #   enable = true;
-    #   initExtra = ''
-    #     # Custom bash profile goes here
-    #   '';
-    # };
+    bash = {
+      enable = true;
+      # initExtra = ''
+      #   # Custom bash profile goes here
+      # '';
+    };
 
     # # For macOS's default shell.
     # zsh = {

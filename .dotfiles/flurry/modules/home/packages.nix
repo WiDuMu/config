@@ -2,6 +2,7 @@
   # Search for packages here: https://search.nixos.org/packages
   home.packages = with pkgs;
     [
+      nh
     ]
     ++ (with pkgs; [
       corefonts
@@ -18,8 +19,23 @@
       vista-fonts
     ]);
 
+  fonts.fontconfig.enable = true;
+
   # Programs natively supported by home-manager.
   # They can be configured in `programs.*` instead of using home.packages.
   programs = {
+    helix = {
+      enable = true;
+      settings = {
+        theme = "base16_transparent";
+        editor.cursor-shape = {
+          insert = "bar";
+          normal = "block";
+          select = "underline";
+        };
+        editor.file-picker.hidden = false;
+      };
+      package = pkgs.evil-helix;
+    };
   };
 }
