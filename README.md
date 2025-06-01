@@ -32,3 +32,6 @@ Set hostname to the desired hostname in the build setup. Link the `snowy` direct
 ```bash
 sudo nixos-rebuild switch
 ```
+
+### Silverblue
+To apply Nix to a silverblue based distro post-f42, follow the following guide: (https://gist.github.com/queeup/1666bc0a5558464817494037d612f094)
