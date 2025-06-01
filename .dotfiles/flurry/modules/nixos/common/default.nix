@@ -31,5 +31,5 @@
   };
 
   services.pulseaudio.enable = false;
-  pkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = true;
 }
