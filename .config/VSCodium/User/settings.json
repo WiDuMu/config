@@ -19,6 +19,8 @@
     "biome.lsp.bin": "biome",
     "terminal.integrated.fontLigatures.enabled": true,
     "editor.codeActionsOnSave": {
-        
+
     },
+    "workbench.colorTheme": "AMOLED Github Theme",
+    "explorer.confirmDelete": false,
 }
