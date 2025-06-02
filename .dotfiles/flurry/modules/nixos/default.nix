@@ -1,9 +1,8 @@
 # This is your nixos configuration.
 # For home configuration, see /modules/home/*
-{ flake, ... }:
-{
+{flake, ...}: {
   imports = [
     flake.inputs.self.nixosModules.common
   ];
-  services.openssh.enable = true;
+  # services.openssh.enable = true;
 }

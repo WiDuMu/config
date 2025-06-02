@@ -14,9 +14,13 @@
     # Software inputs
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
-    # nixvim.url = "github:nix-community/nixvim";
-    # nixvim.inputs.nixpkgs.follows = "nixpkgs";
-    # nixvim.inputs.flake-parts.follows = "flake-parts";
+    nix-vscode-extensions = {
+      url = "github:nix-community/nix-vscode-extensions/001f9f541edd406ff00aab49d968f535658778fa";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        # flake-utils.follows = "flake-utils";
+      };
+    };
   };
 
   # Wired using https://nixos-unified.org/autowiring.html

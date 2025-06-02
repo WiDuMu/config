@@ -32,22 +32,22 @@
     #media-session.enable = true;
   };
 
-  environment.systemPackages = with pkgs; [
-    ghostty
-  ];
+  # environment.systemPackages = with pkgs; [
+  #   ghostty
+  # ];
 
-  fonts.packages = with pkgs; [
-    nerd-fonts.caskaydia-cove
-    nerd-fonts.monaspace
-    nerd-fonts.fira-code
-    nerd-fonts.jetbrains-mono
-    nerd-fonts.space-mono
-    noto-fonts
-    roboto-flex
-    ubuntu-sans
-    eb-garamond
-    quicksand
-  ];
+  # fonts.packages = with pkgs; [
+  #   nerd-fonts.caskaydia-cove
+  #   nerd-fonts.monaspace
+  #   nerd-fonts.fira-code
+  #   nerd-fonts.jetbrains-mono
+  #   nerd-fonts.space-mono
+  #   noto-fonts
+  #   roboto-flex
+  #   ubuntu-sans
+  #   eb-garamond
+  #   quicksand
+  # ];
 
   programs.firefox.enable = true;
 }
