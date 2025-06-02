@@ -4,15 +4,13 @@
   system,
   input-packages,
   ...
-}: {
+}: let
+  dirToList = import ./lib/dirToList.nix;
+in {
   home.username = "aurora";
   home.homeDirectory = "/home/aurora";
 
-  imports = [
-    ./home-manager/starship.nix
-    ./home-manager/fish.nix
-    ./home-manager/nushell.nix
-  ];
+  imports = dirToList ./home-manager;
 
   # You should not change this value. If you want to update the value,
   # then check the Home Manager release notes for breaking changes,
@@ -132,30 +130,11 @@
     suspend = "systemctl suspend -i";
   };
 
-  programs.vscode = {
-    package = pkgs.vscodium;
-    enable = true;
-    profiles.default = {
-      extensions = import ./codine/extension.nix pkgs;
-    };
-  };
-
-  programs.bash.enable = true;
-
-  programs.helix = {
-    enable = true;
-    settings = {
-      theme = "base16_transparent";
-      editor.cursor-shape = {
-        insert = "bar";
-        normal = "block";
-        select = "underline";
-      };
-      editor.file-picker.hidden = false;
-    };
-    package = pkgs.evil-helix;
-  };
-
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  catppuccin.flavor = "mocha";
+  catppuccin.accent = "mauve";
+  catppuccin.enable = true;
+  catppuccin.vscode.enable = false;
 }

@@ -23,6 +23,10 @@
         flake-utils.follows = "flake-utils";
       };
     };
+    catppuccin = {
+      url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # stylix = {
     #   url = "github:danth/stylix";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -57,6 +61,7 @@
     ];
     defaultNixOS = system: ([
         home-manager.nixosModules.home-manager
+        inputs.catppuccin.homeModules.catppuccin
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
@@ -109,6 +114,7 @@
 
         modules = [
           # Run the Nix GC on an interval
+          inputs.catppuccin.homeModules.catppuccin
           {
             nix.gc = {
               automatic = true;

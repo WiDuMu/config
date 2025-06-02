@@ -3,6 +3,7 @@
 
   imports = [
     ./default.nix
+    ./hyprland.nix
   ];
 
   # Enable the KDE Plasma Desktop Environment.
