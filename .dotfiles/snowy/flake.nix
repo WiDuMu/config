@@ -70,14 +70,7 @@
 
         modules = [
           inputs.catppuccin.homeModules.catppuccin
-          # Run the Nix GC on an interval
-          {
-            nix.gc = {
-              automatic = true;
-              frequency = "weekly";
-              randomizedDelaySec = "50min";
-            };
-          }
+          ./shared/nix.nix
           ./home.nix
         ];
       };

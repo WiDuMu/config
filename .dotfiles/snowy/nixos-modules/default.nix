@@ -3,6 +3,7 @@
 
   imports = [
     ./users.nix
+    ./shared/nix.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
@@ -46,7 +47,7 @@
 
   services.fail2ban.enable = true;
 
-  # Configure keymap in X11
+  # Keymap
   services.xserver.xkb = {
     layout = "us";
     variant = "";
@@ -119,15 +120,6 @@
     ];
     dates = "02:00";
     randomizedDelaySec = "60min";
-  };
-
-  # Enable garbage collection automatically
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    # interval = { Weekday = 1; Hour = 1; Minute = 1; };
-    options = "--delete-older-than 14d";
-    persistent = true;
   };
 
   nix.optimise = {
