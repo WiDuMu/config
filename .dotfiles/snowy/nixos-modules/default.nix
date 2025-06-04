@@ -3,7 +3,7 @@
 
   imports = [
     ./users.nix
-    ./shared/nix.nix
+    ../shared/nix.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
