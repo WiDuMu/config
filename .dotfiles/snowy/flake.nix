@@ -40,19 +40,25 @@
           nix-vscode-extensions.overlays.default
         ];
       };
-    defaultNixOS = system: [
-      home-manager.nixosModules.home-manager
-      inputs.catppuccin.nixosModules.catppuccin
-      {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.backupFileExtension = "hmbak";
-        home-manager.extraSpecialArgs = {
-          inherit input-packages system;
-        };
-        home-manager.users.aurora = {imports = [./home.nix inputs.catppuccin.homeModules.catppuccin];};
-      }
+    defaultHomeManager = system: [
+      ./home.nix
+      inputs.catppuccin.homeModules.catppuccin
     ];
+    defaultNixOS = system:
+      [
+        home-manager.nixosModules.home-manager
+        inputs.catppuccin.nixosModules.catppuccin
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "hmbak";
+          home-manager.extraSpecialArgs = {
+            inherit input-packages system;
+          };
+          home-manager.users.aurora = {modules = defaultHomeManager system;};
+        }
+      ]
+      ++ (defaultHomeManager system);
   in
     eachDefaultSystem (system: let
       pkgs = opkgs system;
@@ -68,11 +74,11 @@
           inherit input-packages system;
         };
 
-        modules = [
-          inputs.catppuccin.homeModules.catppuccin
-          ./shared/nix.nix
-          ./home.nix
-        ];
+        modules =
+          [
+            ./shared/nix.nix
+          ]
+          ++ (defaultHomeManager system);
       };
     })
     # NixOS configurations
