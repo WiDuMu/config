@@ -27,7 +27,6 @@ in {
       clang
       clang-tools
       cmake
-      eza
       dav1d
       delta
       dua
@@ -89,14 +88,13 @@ in {
   #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
   #  /etc/profiles/per-user/aurora/etc/profile.d/hm-session-vars.sh
   home.sessionVariables = {
-    EDITOR = "micro";
-    VISUAL = "micro";
+    DOTFILES = "$HOME/.dotfiles";
+    SNOWY = "$HOME/.dotfiles/snowy";
     PAGER = "moar";
   };
 
   home.shellAliases = {
     d = "delta";
-    ls = "eza -a";
     ed25519-keygen = "ssh-keygen -t ed25519";
     la = "ls -alh";
     gc = "git clone";
@@ -104,6 +102,7 @@ in {
     cfa = "cfg add";
     cfg = "git --git-dir=$HOME/.cfg/ --work-tree=$HOME";
     cfui = ''gitui -d "$HOME/.cfg" -w "$HOME"'';
+    cfd = "cfg diff";
     gui = "gitui";
     gl = "git pull";
     cfl = "cfg pull";
@@ -118,12 +117,12 @@ in {
     py = "python";
     ff = "ffmpeg";
     mi = "mediainfo";
-    m = "micro";
     n = "nano";
     nrs = "sudo nixos-rebuild switch";
     nfu = "nix flake update";
     wget = "wget -c";
     suspend = "systemctl suspend -i";
+    snowyedit = "codium $SNOWY";
   };
 
   # Let Home Manager install and manage itself.

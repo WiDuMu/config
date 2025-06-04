@@ -14,7 +14,6 @@
     chamboug.js-auto-backticks
     chrmarti.regex
     formulahendry.auto-rename-tag
-    github.vscode-pull-request-github
     golang.go
     kamadorueda.alejandra
     levrotech.zig-znippets
@@ -51,6 +50,5 @@
   ++ (with pkgs.open-vsx; [
     amerey.markdown-emoji
     amerey.markdown-math-snippets
-    gitlab.gitlab-workflow
   ])
 )
