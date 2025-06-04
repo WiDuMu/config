@@ -8,5 +8,3 @@ develop() {
 snowy-update() {
     nix flake update --flake "$SNOWY_FLAKE"
 }
-alias_if_command "develop" "d" "develop"
-alias_if_command "develop" "dev" "develop"
