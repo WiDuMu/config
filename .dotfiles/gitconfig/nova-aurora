@@ -1,8 +1,0 @@
-[user]
-   name = "nova-aurora"
-   email = "62871042+Nova-Aurora@users.noreply.github.com"
-   signingkey = ~/.ssh/nova-aurora/nova-aurora-deploy-key.pub
-[commit]
-   gpgsign = true
-[core]
-   sshCommand = ~/var/home/aurora/.ssh/nova-aurora/nova-aurora-deploy-key.pub
