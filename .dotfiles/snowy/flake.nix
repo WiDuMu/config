@@ -45,8 +45,9 @@
       inputs.catppuccin.homeModules.catppuccin
     ];
     defaultNixOS = system: [
-      home-manager.nixosModules.home-manager
       inputs.catppuccin.nixosModules.catppuccin
+      inputs.home-manager.nixosModules.home-manager
+      ./nixos-modules/home-manager.nix
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
@@ -87,6 +88,8 @@
       # spare thinkpad
       nixosConfigurations.ruby = nixpkgs.lib.nixosSystem {
         inherit system pkgs;
+        specialArgs = [input-packages inputs];
+
         modules =
           [
             ./systems/ruby
