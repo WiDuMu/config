@@ -10,4 +10,3 @@ snowy-update() {
 }
 alias_if_command "develop" "d" "develop"
 alias_if_command "develop" "dev" "develop"
-alias_if_command "develop" "codev" "develop vscodium -c codium"

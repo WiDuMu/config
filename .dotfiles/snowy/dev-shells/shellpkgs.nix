@@ -1,5 +1,5 @@
 # Lists of packages for dev shells
-{pkgs}: {
+{pkgs, ...}: let
   ocaml = with pkgs; [ocaml ocamlformat] ++ (with pkgs.ocamlPackages; [dune_3 odoc utop ocaml-lsp]);
   rust = with pkgs; [cargo];
   js = with pkgs; [bun biome];
@@ -9,4 +9,6 @@
   zig = with pkgs; [zig zls];
   default = with pkgs; [bat eza fd zoxide] ++ c ++ js ++ nix ++ rust;
   full = with pkgs; [tokei] ++ default ++ ocaml ++ vlang ++ zig;
+in {
+  inherit ocaml rust js nix c vlang zig default full;
 }

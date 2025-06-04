@@ -3,7 +3,6 @@
 
   imports = [
     ./default.nix
-    ./hyprland.nix
   ];
 
   # Enable the KDE Plasma Desktop Environment.
@@ -25,30 +24,7 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
-
-  # environment.systemPackages = with pkgs; [
-  #   ghostty
-  # ];
-
-  # fonts.packages = with pkgs; [
-  #   nerd-fonts.caskaydia-cove
-  #   nerd-fonts.monaspace
-  #   nerd-fonts.fira-code
-  #   nerd-fonts.jetbrains-mono
-  #   nerd-fonts.space-mono
-  #   noto-fonts
-  #   roboto-flex
-  #   ubuntu-sans
-  #   eb-garamond
-  #   quicksand
-  # ];
 
   programs.firefox.enable = true;
 }

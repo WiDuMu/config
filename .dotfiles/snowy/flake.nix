@@ -2,7 +2,6 @@
   description = "A Nix-flake-based development environment intended for deployment on a silverblue-based envrionment.";
 
   inputs = {
-    # flake-parts.url = "github:hercules-ci/flake-parts";
     # TODO Switch this for flake-parts
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
@@ -10,12 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    # nuka = {
-    #   url = "path:./nuka/";
-    #   inputs = {
-    #     nixpkgs.follows = "nixpkgs";
-    #   };
-    # };
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions/001f9f541edd406ff00aab49d968f535658778fa";
       inputs = {
@@ -27,23 +20,16 @@
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # stylix = {
-    #   url = "github:danth/stylix";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
   };
 
-  outputs = {
+  outputs = inputs @ {
     self,
     flake-utils,
-    flake-parts,
     home-manager,
     nixpkgs,
-    # nuka,
     nix-vscode-extensions,
-    # stylix,
     ...
-  } @ inputs: let
+  }: let
     eachDefaultSystem = flake-utils.lib.eachDefaultSystem;
     input-packages = [];
     opkgs = system:
@@ -54,58 +40,28 @@
           nix-vscode-extensions.overlays.default
         ];
       };
-    defaultHomeManager = system: [
+    defaultNixOS = system: [
+      home-manager.nixosModules.home-manager
+      inputs.catppuccin.homeModules.catppuccin
       {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.backupFileExtension = "hmbak";
+        home-manager.extraSpecialArgs = {
+          inherit input-packages system;
+        };
         home-manager.users.aurora = import ./home.nix;
       }
     ];
-    defaultNixOS = system: ([
-        home-manager.nixosModules.home-manager
-        inputs.catppuccin.homeModules.catppuccin
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = "hmbak";
-          home-manager.extraSpecialArgs = {
-            inherit input-packages system;
-          };
-        }
-        # stylix.nixosModules.stylix
-      ]
-      ++ defaultHomeManager system);
   in
     eachDefaultSystem (system: let
       pkgs = opkgs system;
-      # Make a dev shell given a list of packages
-      shell = shell-packages:
-        pkgs.mkShell {
-          buildInputs = with pkgs; [bashInteractive];
-          packages = shell-packages;
-        };
-      # Make a set of dev shells given an attribute set of package lists.
-      mkShells = builtins.mapAttrs (name: packages: (shell packages));
-      # Make a set of dev shells given an attribute set of package lists, adding a package to each, suffixing the shells
-      mkShellsPlusPackage = suffix: package:
-        nixpkgs.lib.attrsets.mapAttrs' (name: packages: {
-          name = "${name}${suffix}";
-          value = shell (packages ++ [package]);
-        });
-      # Package lists for various languages
-      shellPackages = (import ./shellpkgs.nix) {pkgs = nixpkgs.legacyPackages.${system};};
-      # VSCodium with extensions for devShells
-      codium = pkgs.vscode-with-extensions.override {
-        vscode = pkgs.vscodium;
-        vscodeExtensions = import ./codine/extension.nix pkgs;
-      };
     in {
       # Formatter for a system
       formatter = pkgs.alejandra;
       # Dev shell (`nix develop`)
-      devShells =
-        (mkShells shellPackages)
-        // (mkShellsPlusPackage "-code" codium
-          shellPackages);
-      # Home-manager configuration
+      devShells = (import ./dev-shells) pkgs;
+      # Standalone home-manager configuration
       packages.homeConfigurations."aurora" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = {
@@ -113,8 +69,8 @@
         };
 
         modules = [
-          # Run the Nix GC on an interval
           inputs.catppuccin.homeModules.catppuccin
+          # Run the Nix GC on an interval
           {
             nix.gc = {
               automatic = true;
@@ -141,21 +97,4 @@
           ++ (defaultNixOS system);
       };
     });
-  # // flake-parts.lib.mkFlake {inherit inputs;} {
-  #   systems = [
-  #     "x86_64-linux"
-  #     "aarch64-linux"
-  #     "x86_64-darwin"
-  #     "aarch64-darwin"
-  #   ];
-
-  #   imports = [
-  #     inputs.home-manager.flakeModules.home-manager
-  #   ];
-
-  #   flake = {
-  #     homeConfigurations = {
-  #     };
-  #   };
-  # };
 }

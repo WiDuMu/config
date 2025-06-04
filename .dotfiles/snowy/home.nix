@@ -10,13 +10,11 @@ in {
   home.username = "aurora";
   home.homeDirectory = "/home/aurora";
 
-  imports = dirToList ./home-manager;
+  imports = dirToList ./home-manager-modules;
 
-  # You should not change this value. If you want to update the value,
-  # then check the Home Manager release notes for breaking changes,
+  # You should not change this value.
   home.stateVersion = "24.11";
 
-  # Enable font management
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs;
@@ -30,7 +28,6 @@ in {
       clang-tools
       cmake
       eza
-      # cargo
       dav1d
       delta
       dua
@@ -53,7 +50,6 @@ in {
       nix-tree
       rr
       rustup
-      # rustc
       tinymist
       tldr
       tokei
@@ -64,17 +60,10 @@ in {
       zig
       zls
       zoxide
-
+      # Simple 'backup' command
       (pkgs.writeShellScriptBin "bak" ''
         mv "$1" "$1.bak"
       '')
-
-      # # You can also create simple shell scripts directly inside your
-      # # configuration. For example, this adds a command 'my-hello' to your
-      # # environment:
-      # (pkgs.writeShellScriptBin "my-hello" ''
-      #   echo "Hello, ${config.home.username}!"
-      # '')
     ]
     ++ (with pkgs; [
       corefonts
@@ -93,12 +82,9 @@ in {
     # # Import any package in the input packages automagickally
     ++ (builtins.map (p: p.packages.${system}.default) input-packages);
 
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. These will be explicitly sourced when using a
-  # shell provided by Home Manager. If you don't want to manage your shell
+  # If you don't want to manage your shell
   # through Home Manager then you have to manually source 'hm-session-vars.sh'
-  # located at either:
-  #
+  # located at:
   #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
   #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
   #  /etc/profiles/per-user/aurora/etc/profile.d/hm-session-vars.sh

@@ -3,7 +3,7 @@
     package = pkgs.vscodium;
     enable = true;
     profiles.default = {
-      extensions = import ../codine/extension.nix pkgs;
+      extensions = import ../shared/extension.nix pkgs;
     };
   };
 }

@@ -1,15 +1,15 @@
 {pkgs, ...}: {
-  imports = [
-    ./myusers.nix
-  ];
   # Default nixOS configuration for both desktop and headless devices
+
+  imports = [
+    ./users.nix
+  ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Enable flakes
   nix.settings.experimental-features = ["nix-command" "flakes"];
-  nixpkgs.config.allowUnfree = true;
 
   # Enable networking
   networking.networkmanager.enable = true;
