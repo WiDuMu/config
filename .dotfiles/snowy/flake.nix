@@ -49,12 +49,6 @@
       inputs.home-manager.nixosModules.home-manager
       ./nixos-modules/home-manager.nix
       {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.backupFileExtension = "hmbak";
-        home-manager.extraSpecialArgs = {
-          inherit input-packages system;
-        };
         home-manager.users.aurora = {imports = defaultHomeManager system;};
       }
     ];
