@@ -42,7 +42,7 @@
       };
     defaultNixOS = system: [
       home-manager.nixosModules.home-manager
-      inputs.catppuccin.homeModules.catppuccin
+      inputs.catppuccin.nixosModules.catppuccin
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
@@ -52,7 +52,6 @@
         };
         home-manager.users.aurora = {imports = [./home.nix inputs.catppuccin.homeModules.catppuccin];};
       }
-      home-manager.nixosModules.home-manager
     ];
   in
     eachDefaultSystem (system: let
