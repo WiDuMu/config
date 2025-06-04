@@ -50,8 +50,9 @@
         home-manager.extraSpecialArgs = {
           inherit input-packages system;
         };
-        home-manager.users.aurora = import ./home.nix;
+        home-manager.users.aurora = {imports = [./home.nix inputs.catppuccin.homeModules.catppuccin];};
       }
+      home-manager.nixosModules.home-manager
     ];
   in
     eachDefaultSystem (system: let
