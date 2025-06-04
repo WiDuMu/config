@@ -44,21 +44,19 @@
       ./home.nix
       inputs.catppuccin.homeModules.catppuccin
     ];
-    defaultNixOS = system:
-      [
-        home-manager.nixosModules.home-manager
-        inputs.catppuccin.nixosModules.catppuccin
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = "hmbak";
-          home-manager.extraSpecialArgs = {
-            inherit input-packages system;
-          };
-          home-manager.users.aurora = {modules = defaultHomeManager system;};
-        }
-      ]
-      ++ (defaultHomeManager system);
+    defaultNixOS = system: [
+      home-manager.nixosModules.home-manager
+      inputs.catppuccin.nixosModules.catppuccin
+      {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.backupFileExtension = "hmbak";
+        home-manager.extraSpecialArgs = {
+          inherit input-packages system;
+        };
+        home-manager.users.aurora = {modules = defaultHomeManager system;};
+      }
+    ];
   in
     eachDefaultSystem (system: let
       pkgs = opkgs system;
