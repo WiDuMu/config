@@ -30,7 +30,7 @@ in {
       clang-tools
       cmake
       eza
-      cargo
+      # cargo
       dav1d
       delta
       dua
@@ -41,7 +41,7 @@ in {
       libjxl
       lldb
       luajit
-      marksman
+      markdown-oxide
       mediainfo
       meson
       micro
@@ -52,7 +52,9 @@ in {
       ninja
       nix-tree
       rr
-      rustc
+      rustup
+      # rustc
+      tinymist
       tldr
       tokei
       typst
