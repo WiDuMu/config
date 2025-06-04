@@ -103,6 +103,8 @@ in {
     ga = "git add";
     cfa = "cfg add";
     cfg = "git --git-dir=$HOME/.cfg/ --work-tree=$HOME";
+    cfui = ''gitui -d "$HOME/.cfg" -w "$HOME"'';
+    gui = "gitui";
     gl = "git pull";
     cfl = "cfg pull";
     gs = "git sa";
