@@ -54,7 +54,7 @@
         home-manager.extraSpecialArgs = {
           inherit input-packages system;
         };
-        home-manager.users.aurora = {modules = defaultHomeManager system;};
+        home-manager.users.aurora = {imports = defaultHomeManager system;};
       }
     ];
   in
