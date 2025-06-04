@@ -1,4 +1,4 @@
-{
+module-inputs @ {
   config,
   pkgs,
   system,
@@ -10,7 +10,17 @@ in {
   home.username = "aurora";
   home.homeDirectory = "/home/aurora";
 
-  imports = dirToList ./home-manager-modules;
+  imports =
+    (dirToList ./home-manager-modules)
+    ++ (
+      if (module-inputs ? osConfig)
+      then [
+        {
+          home.shellAliases.nrs = "sudo nixos-rebuild switch";
+        }
+      ]
+      else []
+    );
 
   # You should not change this value.
   home.stateVersion = "24.11";
@@ -118,7 +128,6 @@ in {
     ff = "ffmpeg";
     mi = "mediainfo";
     n = "nano";
-    nrs = "sudo nixos-rebuild switch";
     nfu = "nix flake update";
     wget = "wget -c";
     suspend = "systemctl suspend -i";
