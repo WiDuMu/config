@@ -28,10 +28,3 @@ export_if_command() {
             export "$2"="$3"
     fi
 }
-
-alias diffi="diff --color=always --minimal"
-alias ls="ls -A"
-alias_if_command "nvim" "n" "nvim"
-alias_if_command "micro" "m" "micro"
-alias_if_command "git" "g" "git"
-alias_if_command "zoxide" "z" "zoxide"

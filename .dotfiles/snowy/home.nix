@@ -65,6 +65,10 @@ in {
       zls
       zoxide
 
+      (pkgs.writeShellScriptBin "bak" ''
+        mv "$1" "$1.bak"
+      '')
+
       # # You can also create simple shell scripts directly inside your
       # # configuration. For example, this adds a command 'my-hello' to your
       # # environment:
@@ -105,6 +109,8 @@ in {
   };
 
   home.shellAliases = {
+    d = "delta";
+    ls = "eza -a";
     ed25519-keygen = "ssh-keygen -t ed25519";
     la = "ls -alh";
     gc = "git clone";
