@@ -5,6 +5,8 @@
     defaultBranch = main
 [push]
     autoSetupRemote = true
+[diff]
+   algorithm = minimal
 [gpg]
    format = ssh
 [user]
@@ -21,10 +23,14 @@
     l = log --decorate --date=short
     c = commit
     b = branch
+    bd = branch -b
+    bD = branch -D
     branch-delete = branch -D
     cl = clone
     co = checkout
     cob = checkout -b
+    graph = log --all --decorate --oneline --graph
+    g = graph
     d = diff
     f = fetch
     update = add -u
