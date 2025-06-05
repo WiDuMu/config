@@ -17,9 +17,15 @@ in {
       then [
         {
           home.shellAliases.nrs = "sudo nixos-rebuild switch";
+          # programs.kitty.enable = true;
+          programs.ghostty.enable = true;
         }
       ]
-      else []
+      else [
+        {
+          home.shellAliases.hms = "home-manager switch";
+        }
+      ]
     );
 
   # You should not change this value.
@@ -117,8 +123,6 @@ in {
     gl = "git pull";
     cfl = "cfg pull";
     gs = "git sa";
-    hm = "home-manager";
-    hms = "home-manager switch";
     cfs = "cfg sa";
     gp = "git push";
     cfp = "cfg push";

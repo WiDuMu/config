@@ -21,6 +21,6 @@
     "editor.codeActionsOnSave": {
 
     },
-    "workbench.colorTheme": "AMOLED Github Theme",
     "explorer.confirmDelete": false,
+    "workbench.colorTheme": "AMOLED Github Theme",
 }

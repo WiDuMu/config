@@ -2,7 +2,7 @@
 This is a set of dotfiles and nix configurations created for my personal use.
 
 ## Architecture
-This set of dotfiles is strange by both dotfiles and nix's standards. This is due to the multitude of functions used in this repository. These indclude:
+This set of dotfiles is strange by both dotfiles and nix's standards. This is due to the multitude of functions used in this repository. These include:
 * A set of non-nix dotfiles.
 * A standalone nix home-manager configuration
 * A NixOS configuration for desktops
@@ -18,7 +18,7 @@ Then checkout the head:
 ```bash
 git --git-dir=$HOME/.cfg/ --work-tree=$HOME checkout
 ```
-This should install all the dotfiles nessecary to use the configuration. After initial install, restart any `bash` shells and you should be able to use the alias `cfg` for git when working with config. This includes `cfg add`, `cfg commit`, etc, etc.
+This contains a set of shell scripts in `~/.dotfiles/.bashrc.d`. If you do not use home-manager, source these in your `~/.bashrc`. Restart any `bash` shells and you should be able to use the alias `cfg` for git when working with config. This includes `cfg add`, `cfg commit`, etc, etc.
 
 ### Home-manager intialization
 Install nix however do, with flakes enabled. Then run:
