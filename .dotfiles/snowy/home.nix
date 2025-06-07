@@ -24,6 +24,7 @@ in {
       else [
         {
           home.shellAliases.hms = "home-manager switch";
+          nix.nixPath = ["nixpkgs=${module-inputs.inputs.nixpkgs}"];
         }
       ]
     );

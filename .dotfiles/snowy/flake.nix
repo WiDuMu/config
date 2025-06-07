@@ -48,11 +48,12 @@
       home-manager.nixosModules.home-manager
       inputs.catppuccin.nixosModules.catppuccin
       {
+        nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.backupFileExtension = "hmbak";
         home-manager.extraSpecialArgs = {
-          inherit input-packages system;
+          inherit inputs input-packages system;
         };
         home-manager.users.aurora = {imports = defaultHomeManager system;};
       }
@@ -69,7 +70,7 @@
       packages.homeConfigurations."aurora" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = {
-          inherit input-packages system;
+          inherit inputs input-packages system;
         };
 
         modules =

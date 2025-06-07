@@ -1,5 +1,5 @@
 {pkgs}: {
-     programs.hyprland.enable = true; # enable Hyprland
+  programs.hyprland.enable = true; # enable Hyprland
 
   environment.systemPackages = [
     # ... other packages
