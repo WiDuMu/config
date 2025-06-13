@@ -1,8 +1,16 @@
-{pkgs}: {
+{pkgs, ...}: {
   programs.hyprland.enable = true; # enable Hyprland
+  programs.waybar = {
+    enable = true;
+  };
+  # programs.eww.enable = true;
 
-  environment.systemPackages = [
+  environment.systemPackages = with pkgs; [
     # ... other packages
-    pkgs.kitty # required for the default Hyprland config
+    kitty # required for the default Hyprland config
+    hyprpicker
+    hyprcursor
+    hyprpaper
+    eww
   ];
 }
