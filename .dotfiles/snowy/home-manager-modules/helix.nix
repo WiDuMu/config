@@ -9,6 +9,7 @@
         select = "underline";
       };
       editor.file-picker.hidden = false;
+      editor.soft-wrap.enable = true;
     };
     package = pkgs.evil-helix;
   };
