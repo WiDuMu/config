@@ -64,8 +64,8 @@ in {
       nil
       ninja
       nix-tree
-      node
-      npm
+      nodejs
+      nodePackages_latest.npm
       rr
       rustup
       tinymist
