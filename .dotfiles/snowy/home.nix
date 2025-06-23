@@ -72,6 +72,7 @@ in {
       typst
       valgrind
       vlang
+      wrangler
       yt-dlp
       zig
       zls

@@ -20,6 +20,10 @@
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nvf = {
+      url = "github:notashelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -43,6 +47,8 @@
     defaultHomeManager = system: [
       ./home.nix
       inputs.catppuccin.homeModules.catppuccin
+      inputs.nvf.homeManagerModules.default
+      # ./shared/nvf.nix
     ];
     defaultNixOS = system: [
       home-manager.nixosModules.home-manager
@@ -66,6 +72,7 @@
       formatter = pkgs.alejandra;
       # Dev shell (`nix develop`)
       devShells = (import ./dev-shells) pkgs;
+      packages.nuka = inputs.nvf.lib.neovimConfiguration (import ./shared/nvf.nix);
       # Standalone home-manager configuration
       packages.homeConfigurations."aurora" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
