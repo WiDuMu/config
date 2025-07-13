@@ -14,6 +14,7 @@
     chamboug.js-auto-backticks
     chrmarti.regex
     formulahendry.auto-rename-tag
+    fwcd.kotlin
     golang.go
     kamadorueda.alejandra
     levrotech.zig-znippets

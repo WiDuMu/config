@@ -67,14 +67,7 @@
   in
     eachDefaultSystem (system: let
       pkgs = opkgs system;
-    in {
-      # Formatter for a system
-      formatter = pkgs.alejandra;
-      # Dev shell (`nix develop`)
-      devShells = (import ./dev-shells) pkgs;
-      packages.nuka = inputs.nvf.lib.neovimConfiguration (import ./shared/nvf.nix);
-      # Standalone home-manager configuration
-      packages.homeConfigurations."aurora" = home-manager.lib.homeManagerConfiguration {
+      mkHome = home-packages: (home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = {
           inherit inputs input-packages system;
@@ -83,9 +76,21 @@
         modules =
           [
             ./shared/nix.nix
+            {
+              home.packages = home-packages;
+            }
           ]
           ++ (defaultHomeManager system);
-      };
+      });
+    in {
+      # Formatter for a system
+      formatter = pkgs.alejandra;
+      # Dev shell (`nix develop`)
+      devShells = (import ./dev-shells) pkgs;
+      packages.nuka = inputs.nvf.lib.neovimConfiguration (import ./shared/nvf.nix);
+      # Standalone home-manager configuration
+      packages.homeConfigurations."aurora" = mkHome [];
+      packages.homeConfigurations."aurora@zara" = mkHome [pkgs.jan];
     })
     # NixOS configurations
     // (let

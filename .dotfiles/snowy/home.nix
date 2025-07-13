@@ -47,6 +47,7 @@ in {
       dav1d
       delta
       dua
+      efficient-compression-tool
       fd
       ffmpeg-full
       gdb
@@ -66,6 +67,8 @@ in {
       nix-tree
       nodejs
       nodePackages_latest.npm
+      oxipng
+      parallel
       rr
       rustup
       tinymist
@@ -74,7 +77,6 @@ in {
       typst
       valgrind
       vlang
-      wrangler
       yt-dlp
       zig
       zls
