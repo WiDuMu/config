@@ -41,7 +41,7 @@
     svelte.svelte-vscode
     t3m1n4l.amoled-github
     tamasfe.even-better-toml
-    vadimcn.vscode-lldb
+    # vadimcn.vscode-lldb
     vlanguage.vscode-vlang
     tomoki1207.pdf
     vue.volar
