@@ -10,7 +10,7 @@
     };
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nix-vscode-extensions = {
-      url = "github:nix-community/nix-vscode-extensions/001f9f541edd406ff00aab49d968f535658778fa";
+      url = "github:nix-community/nix-vscode-extensions";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-utils.follows = "flake-utils";
