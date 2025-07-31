@@ -52,4 +52,7 @@
     amerey.markdown-emoji
     amerey.markdown-math-snippets
   ])
+  ++ [
+    pkgs.vscode-extensions.vadimcn.vscode-lldb
+  ]
 )

@@ -26,6 +26,6 @@
     "[svelte]": {
         "editor.defaultFormatter": "biomejs.biome"
     },
-    "workbench.colorTheme": "AMOLED Github Theme",
     "workbench.startupEditor": "none",
+    "workbench.colorTheme": "AMOLED Github Theme",
 }
