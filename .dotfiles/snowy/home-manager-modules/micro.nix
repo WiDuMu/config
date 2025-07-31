@@ -3,6 +3,7 @@
     enable = true;
     settings = {
       softwrap = true;
+      colorscheme = "simple";
     };
   };
   home.sessionVariables = {
@@ -12,5 +13,5 @@
   home.shellAliases = {
     m = "micro";
   };
-  catppuccin.micro.transparent = true;
+  # catppuccin.micro.transparent = true;
 }
