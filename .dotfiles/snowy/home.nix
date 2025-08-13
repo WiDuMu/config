@@ -50,6 +50,7 @@ in {
       fd
       ffmpeg-full
       gdb
+      git-lfs
       hyperfine
       libjxl
       lldb

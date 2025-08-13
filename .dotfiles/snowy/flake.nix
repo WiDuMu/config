@@ -90,7 +90,7 @@
       packages.nuka = inputs.nvf.lib.neovimConfiguration (import ./shared/nvf.nix);
       # Standalone home-manager configuration
       packages.homeConfigurations."aurora" = mkHome [];
-      packages.homeConfigurations."aurora@zara" = mkHome [pkgs.ollama];
+      packages.homeConfigurations."aurora@zara" = mkHome [pkgs.oterm pkgs.ollama pkgs.llama-cpp];
     })
     # NixOS configurations
     // (let
