@@ -111,5 +111,13 @@
           ]
           ++ (defaultNixOS system);
       };
+      nixosConfigurations.esme = nixpkgs.lib.nixosSystem {
+        inherit system pkgs;
+        modules =
+          [
+            ./systems/ruby
+          ]
+          ++ (defaultNixOS system);
+      };
     });
 }

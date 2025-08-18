@@ -147,9 +147,4 @@ in {
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
-  # catppuccin.flavor = "mocha";
-  # catppuccin.accent = "mauve";
-  # catppuccin.enable = true;
-  # catppuccin.vscode.profiles.default.enable = false;
 }
