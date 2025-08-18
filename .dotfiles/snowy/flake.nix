@@ -2,6 +2,10 @@
   description = "A Nix-flake-based development environment intended for deployment on a silverblue-based envrionment.";
 
   inputs = {
+    disko = {
+      url = "github:nix-community/disko/latest";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # TODO Switch this for flake-parts
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
@@ -16,10 +20,10 @@
         flake-utils.follows = "flake-utils";
       };
     };
-    catppuccin = {
-      url = "github:catppuccin/nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # catppuccin = {
+    #   url = "github:catppuccin/nix";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     nvf = {
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -51,6 +55,7 @@
       # ./shared/nvf.nix
     ];
     defaultNixOS = system: [
+      disko.nixosModules.disko
       home-manager.nixosModules.home-manager
       inputs.catppuccin.nixosModules.catppuccin
       {
