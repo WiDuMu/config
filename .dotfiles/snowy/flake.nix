@@ -2,6 +2,10 @@
   description = "A Nix-flake-based development environment intended for deployment on a silverblue-based envrionment.";
 
   inputs = {
+    disko = {
+      url = "github:nix-community/disko/latest";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # TODO Switch this for flake-parts
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
@@ -40,6 +44,7 @@
       ./home.nix
     ];
     defaultNixOS = system: [
+      disko.nixosModules.disko
       home-manager.nixosModules.home-manager
       {
         nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
@@ -78,7 +83,7 @@
       packages.nuka = inputs.nvf.lib.neovimConfiguration (import ./shared/nvf.nix);
       # Standalone home-manager configuration
       packages.homeConfigurations."aurora" = mkHome [];
-      packages.homeConfigurations."aurora@zara" = mkHome [pkgs.jan];
+      packages.homeConfigurations."aurora@zara" = mkHome [pkgs.oterm pkgs.ollama pkgs.llama-cpp];
     })
     # NixOS configurations
     // (let

@@ -50,6 +50,7 @@ in {
       fd
       ffmpeg-full
       gdb
+      git-lfs
       hyperfine
       libjxl
       lldb
@@ -138,6 +139,7 @@ in {
     mi = "mediainfo";
     n = "nano";
     nfu = "nix flake update";
+    snowy = "cd $SNOWY";
     wget = "wget -c";
     suspend = "systemctl suspend -i";
     snowyedit = "codium $SNOWY";
