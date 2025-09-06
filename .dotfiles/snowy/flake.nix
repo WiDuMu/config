@@ -10,19 +10,11 @@
     };
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nix-vscode-extensions = {
-      url = "github:nix-community/nix-vscode-extensions";
+      url = "github:nix-community/nix-vscode-extensions/e54263b2980ec0f39f3148775045bd8f6e1fc567";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-utils.follows = "flake-utils";
       };
-    };
-    catppuccin = {
-      url = "github:catppuccin/nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nvf = {
-      url = "github:notashelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -46,13 +38,9 @@
       };
     defaultHomeManager = system: [
       ./home.nix
-      inputs.catppuccin.homeModules.catppuccin
-      inputs.nvf.homeManagerModules.default
-      # ./shared/nvf.nix
     ];
     defaultNixOS = system: [
       home-manager.nixosModules.home-manager
-      inputs.catppuccin.nixosModules.catppuccin
       {
         nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
         home-manager.useGlobalPkgs = true;

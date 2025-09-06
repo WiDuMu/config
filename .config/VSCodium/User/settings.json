@@ -28,4 +28,7 @@
     },
     "workbench.startupEditor": "none",
     "workbench.colorTheme": "AMOLED Github Theme",
+    "[css]": {
+        "editor.defaultFormatter": "biomejs.biome"
+    },
 }
