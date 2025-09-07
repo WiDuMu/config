@@ -2,11 +2,6 @@
   description = "A Nix-flake-based development environment intended for deployment on a silverblue-based envrionment.";
 
   inputs = {
-    disko = {
-      url = "github:nix-community/disko/latest";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    # TODO Switch this for flake-parts
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -44,7 +39,6 @@
       ./home.nix
     ];
     defaultNixOS = system: [
-      disko.nixosModules.disko
       home-manager.nixosModules.home-manager
       {
         nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
@@ -75,15 +69,16 @@
           ]
           ++ (defaultHomeManager system);
       });
+      # Used for systems with dedicated GPUs
+      mkDesktop = home-packages: (mkHome home-packages ++ [pkgs.ollama]);
     in {
       # Formatter for a system
       formatter = pkgs.alejandra;
       # Dev shell (`nix develop`)
       devShells = (import ./dev-shells) pkgs;
-      packages.nuka = inputs.nvf.lib.neovimConfiguration (import ./shared/nvf.nix);
       # Standalone home-manager configuration
       packages.homeConfigurations."aurora" = mkHome [];
-      packages.homeConfigurations."aurora@zara" = mkHome [pkgs.oterm pkgs.ollama];
+      packages.homeConfigurations."aurora@zara" = mkDesktop [];
     })
     # NixOS configurations
     // (let
