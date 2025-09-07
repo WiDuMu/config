@@ -70,7 +70,11 @@
           ++ (defaultHomeManager system);
       });
       # Used for systems with dedicated GPUs
-      mkDesktop = home-packages: (mkHome home-packages ++ [pkgs.ollama]);
+      mkDesktop = home-packages: (mkHome (home-packages ++ [pkgs.ollama]));
+      mkNixOS = system: pkgs: modules: (nixpkgs.lib.nixosSystem {
+        inherit system pkgs;
+        modules = modules ++ (defaultNixOS system);
+      });
     in {
       # Formatter for a system
       formatter = pkgs.alejandra;
@@ -81,26 +85,13 @@
       packages.homeConfigurations."aurora@zara" = mkDesktop [];
     })
     # NixOS configurations
+    # x86_64-linux systems
     // (let
       system = "x86_64-linux";
       pkgs = opkgs system;
     in {
-      # spare thinkpad
-      nixosConfigurations.ruby = nixpkgs.lib.nixosSystem {
-        inherit system pkgs;
-        modules =
-          [
-            ./systems/ruby
-          ]
-          ++ (defaultNixOS system);
-      };
-      nixosConfigurations.esme = nixpkgs.lib.nixosSystem {
-        inherit system pkgs;
-        modules =
-          [
-            ./systems/ruby
-          ]
-          ++ (defaultNixOS system);
+      nixosConfigurations = {
+        ruby = mkNixOS system pkgs ./systems/ruby;
       };
     });
 }
