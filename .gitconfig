@@ -18,6 +18,10 @@
    path = ~/.dotfiles/gitconfig/WiDuMu
 [includeIf "gitdir/i:**/WiDuMu/**"]
    path = ~/.dotfiles/gitconfig/WiDuMu
+[includeIf "gitdir/i:**/classes/**"]
+   path = ~/.dotfiles/gitconfig/WiDuMu
+[includeIf "gitdir/i:**/murp1561/**"]
+   path = ~/.dotfiles/gitconfig/murp1561
 [alias]
     s = status
     l = log --decorate --date=short

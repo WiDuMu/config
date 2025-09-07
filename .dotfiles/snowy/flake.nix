@@ -2,11 +2,6 @@
   description = "A Nix-flake-based development environment intended for deployment on a silverblue-based envrionment.";
 
   inputs = {
-    disko = {
-      url = "github:nix-community/disko/latest";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    # TODO Switch this for flake-parts
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -14,19 +9,11 @@
     };
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nix-vscode-extensions = {
-      url = "github:nix-community/nix-vscode-extensions";
+      url = "github:nix-community/nix-vscode-extensions/e54263b2980ec0f39f3148775045bd8f6e1fc567";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-utils.follows = "flake-utils";
       };
-    };
-    # catppuccin = {
-    #   url = "github:catppuccin/nix";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-    nvf = {
-      url = "github:notashelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -50,14 +37,9 @@
       };
     defaultHomeManager = system: [
       ./home.nix
-      inputs.catppuccin.homeModules.catppuccin
-      inputs.nvf.homeManagerModules.default
-      # ./shared/nvf.nix
     ];
     defaultNixOS = system: [
-      disko.nixosModules.disko
       home-manager.nixosModules.home-manager
-      inputs.catppuccin.nixosModules.catppuccin
       {
         nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
         home-manager.useGlobalPkgs = true;
@@ -87,15 +69,16 @@
           ]
           ++ (defaultHomeManager system);
       });
+      # Used for systems with dedicated GPUs
+      mkDesktop = home-packages: (mkHome home-packages ++ [pkgs.ollama]);
     in {
       # Formatter for a system
       formatter = pkgs.alejandra;
       # Dev shell (`nix develop`)
       devShells = (import ./dev-shells) pkgs;
-      packages.nuka = inputs.nvf.lib.neovimConfiguration (import ./shared/nvf.nix);
       # Standalone home-manager configuration
       packages.homeConfigurations."aurora" = mkHome [];
-      packages.homeConfigurations."aurora@zara" = mkHome [pkgs.oterm pkgs.ollama pkgs.llama-cpp];
+      packages.homeConfigurations."aurora@zara" = mkDesktop [];
     })
     # NixOS configurations
     // (let

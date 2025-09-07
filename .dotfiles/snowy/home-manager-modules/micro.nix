@@ -13,5 +13,4 @@
   home.shellAliases = {
     m = "micro";
   };
-  # catppuccin.micro.transparent = true;
 }

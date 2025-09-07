@@ -53,8 +53,7 @@
     variant = "";
   };
 
-  # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
+  # Disable the X11 windowing system.
   services.xserver.enable = false;
 
   services.pulseaudio.enable = false;

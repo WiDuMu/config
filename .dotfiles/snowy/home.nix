@@ -8,7 +8,7 @@ module-inputs @ {
   dirToList = import ./lib/dirToList.nix;
 in {
   home.username = "aurora";
-  home.homeDirectory = "/home/aurora";
+  home.homeDirectory = "/home/${config.home.username}";
 
   imports =
     (dirToList ./home-manager-modules)
@@ -35,6 +35,7 @@ in {
 
   home.packages = with pkgs;
     [
+      age
       alejandra
       av1an
       bat
@@ -71,6 +72,8 @@ in {
       parallel
       rr
       rustup
+      sops
+      ssh-to-age
       tinymist
       tldr
       tokei
@@ -143,6 +146,7 @@ in {
     wget = "wget -c";
     suspend = "systemctl suspend -i";
     snowyedit = "codium $SNOWY";
+    snow = "cd $SNOWY";
   };
 
   # Let Home Manager install and manage itself.
