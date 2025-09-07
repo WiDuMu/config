@@ -88,6 +88,8 @@ in {
       (pkgs.writeShellScriptBin "bak" ''
         mv "$1" "$1.bak"
       '')
+      # Suspend after a given amount of time
+      (pkgs.writeShellScriptBin "suspend_timed" ./shared/scripts/suspend_timed)
     ]
     ++ (with pkgs; [
       corefonts

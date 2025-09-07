@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# This script suspends a systemd-based Linux system after a specified delay.
+
+# Check if a time argument was provided
+if [ "$#" -ne 1 ]; then
+    echo "Usage: ./suspend_timed <time>"
+    exit 1
+fi
+
+# Get the delay time from the first argument
+DELAY="$1"
+
+# Check if the argument is a positive integer
+if ! [[ "$DELAY" =~ ^[0-9]+(s|m|h|d|w)?$ ]]; then
+    echo "Error: The argument must be a positive integer."
+    exit 1
+fi
+
+if [[ "$DELAY" =~ ^[0-9]+(s|m|h|d|w)$ ]]; then
+   echo "Inhibiting automatic suspend for ${DELAY}"
+else
+   echo "Inhibiting automatic suspend for ${DELAY} seconds..."
+fi
+
+echo "Press Ctrl+C to cancel."
+
+# systemd-inhibit: Blocks suspend and idle actions.
+# --what=idle:sleep: Specifies what to inhibit (idle-triggered suspend and manual suspend).
+# sleep "${DELAY}": A command to keep the inhibitor active for the specified time.
+# && systemctl suspend: This command is only executed if 'systemd-inhibit' exits successfully,
+#                       which happens when the 'sleep' command finishes. This triggers the suspend.
+systemd-inhibit --what=idle:sleep --who="Suspend-script" \
+                --why="Suspending after user-specified delay" sleep "${DELAY}" \
+                && systemctl suspend
+
+# Check the exit status of the combined command
+if [ $? -eq 0 ]; then
+    echo "System suspended successfully."
+else
+    echo "The script was interrupted. System might not have been suspended."
+fi

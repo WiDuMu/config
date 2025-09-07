@@ -51,6 +51,10 @@
         home-manager.users.aurora = {imports = defaultHomeManager system;};
       }
     ];
+    mkNixOS = system: pkgs: modules: (nixpkgs.lib.nixosSystem {
+      inherit system pkgs;
+      modules = modules ++ (defaultNixOS system);
+    });
   in
     eachDefaultSystem (system: let
       pkgs = opkgs system;
@@ -71,10 +75,6 @@
       });
       # Used for systems with dedicated GPUs
       mkDesktop = home-packages: (mkHome (home-packages ++ [pkgs.ollama]));
-      mkNixOS = system: pkgs: modules: (nixpkgs.lib.nixosSystem {
-        inherit system pkgs;
-        modules = modules ++ (defaultNixOS system);
-      });
     in {
       # Formatter for a system
       formatter = pkgs.alejandra;
