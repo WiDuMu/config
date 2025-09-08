@@ -66,8 +66,7 @@ in {
       nil
       ninja
       nix-tree
-      # nodejs
-      # nodePackages_latest.npm
+      nodePackages_latest.nodejs
       oxipng
       parallel
       rr
