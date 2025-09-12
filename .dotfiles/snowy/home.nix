@@ -50,6 +50,7 @@ in {
       efficient-compression-tool
       fd
       ffmpeg-full
+      gcc
       gdb
       git-lfs
       hyperfine
