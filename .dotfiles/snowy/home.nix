@@ -18,6 +18,11 @@ in {
         {
           home.shellAliases.nrs = "sudo nixos-rebuild switch";
           programs.ghostty.enable = true;
+          programs.mpv.enable = true;
+          home.packages = with pkgs; [
+            bitwarden-desktop
+            kdePackages.partitionmanager
+          ];
         }
       ]
       else [

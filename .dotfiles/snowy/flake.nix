@@ -90,8 +90,7 @@
       system = "x86_64-linux";
       pkgs = opkgs system;
     in {
-      nixosConfigurations = {
-        ruby = mkNixOS system pkgs ./systems/ruby;
-      };
+      nixosConfigurations.ruby = mkNixOS system pkgs [./systems/ruby];
+      nixosConfigurations.anna = mkNixOS system pkgs [./systems/anna];
     });
 }
