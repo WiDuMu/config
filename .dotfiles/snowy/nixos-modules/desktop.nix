@@ -10,6 +10,10 @@
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
+  services.flatpak.enable = true;
+
+  programs.partition-manager.enable = true;
+
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     elisa
   ];
@@ -26,6 +30,4 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-
-  programs.firefox.enable = true;
 }
