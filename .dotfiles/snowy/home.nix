@@ -50,7 +50,7 @@ in {
       efficient-compression-tool
       fd
       ffmpeg-full
-      (hiPrio gcc)
+      (hiPrio gcc) # Set GCC to have a higher priority for clang if fighting over binary paths
       gdb
       git-lfs
       hyperfine
