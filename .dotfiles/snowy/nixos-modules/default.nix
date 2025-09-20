@@ -42,7 +42,6 @@
     enable = true;
     openFirewall = true;
     useRoutingFeatures = "both";
-    extraSetFlags = ["--advertise-exit-node"];
   };
 
   services.fail2ban.enable = true;
@@ -85,6 +84,7 @@
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
     libGL
+    glfw
     libjpeg
     libpng
     libvpx
@@ -104,8 +104,13 @@
 
   virtualisation.podman = {
     enable = true;
-    dockerCompat = true;
-    dockerSocket.enable = true;
+    # dockerCompat = true;
+    # dockerSocket.enable = true;
+  };
+
+  virtualisation.docker.rootless = {
+    enable = true;
+    setSocketVariable = true;
   };
 
   # Auto update

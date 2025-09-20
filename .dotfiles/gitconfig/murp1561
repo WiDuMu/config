@@ -1,0 +1,8 @@
+[user]
+   name = "Duncan Murphy"
+   email = "97642890+WiDuMu@users.noreply.github.com"
+   signingkey = "~/.ssh/murp1561/murp1561"
+[commit]
+   gpgsign = true
+[core]
+   sshCommand = ssh -i "~/.ssh/murp1561/murp1561"

@@ -53,6 +53,9 @@
     ];
     mkNixOS = system: pkgs: modules: (nixpkgs.lib.nixosSystem {
       inherit system pkgs;
+      specialArgs = {
+        inherit inputs;
+      };
       modules = modules ++ (defaultNixOS system);
     });
   in

@@ -33,5 +33,5 @@
     "workbench.colorTheme": "AMOLED Github Theme",
     "dev.containers.dockerComposePath": "podman-compose",
     "dev.containers.dockerPath": "podman",
-    "dev.containers.dockerSocketPath": "/var/run/podman.sock",
+    "dev.containers.dockerSocketPath": "/run/podman/podman.sock",
 }

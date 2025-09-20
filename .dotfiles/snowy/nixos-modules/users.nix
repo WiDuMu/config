@@ -2,7 +2,7 @@
   users.users.aurora = {
     isNormalUser = true;
     description = "aurora";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "docker"];
     packages = with pkgs; [
       kdePackages.kate
     ];

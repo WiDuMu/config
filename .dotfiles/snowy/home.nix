@@ -17,17 +17,13 @@ in {
       then [
         {
           home.shellAliases.nrs = "sudo nixos-rebuild switch";
-          programs.ghostty.enable = true;
-          programs.mpv.enable = true;
-          home.packages = with pkgs; [
-            bitwarden-desktop
-            kdePackages.partitionmanager
-          ];
+          home.shellAliases.rs = "sudo nixos-rebuild switch";
         }
       ]
       else [
         {
           home.shellAliases.hms = "home-manager switch";
+          home.shellAliases.rs = "home-manager switch";
           nix.nixPath = ["nixpkgs=${module-inputs.inputs.nixpkgs}"];
         }
       ]
@@ -62,6 +58,7 @@ in {
       libjxl
       lldb
       luajit
+      gnumake
       markdown-oxide
       mediainfo
       meson
@@ -153,7 +150,7 @@ in {
     snowy = "cd $SNOWY";
     wget = "wget -c";
     suspend = "systemctl suspend -i";
-    snowyedit = "codium $SNOWY";
+    # snowyedit = "codium $SNOWY";
     snow = "cd $SNOWY";
   };
 
