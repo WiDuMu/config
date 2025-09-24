@@ -30,6 +30,7 @@
         g4music
         google-chrome
         jan
+        krita
         ungoogled-chromium
         libreoffice
         obsidian
