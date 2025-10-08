@@ -35,6 +35,7 @@
         libreoffice
         obsidian
         protonvpn-gui
+        python3
         qview
         trayscale
         vitetris
