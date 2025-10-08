@@ -7,6 +7,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixgl.url = "github:nix-community/nixGL";
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions/e54263b2980ec0f39f3148775045bd8f6e1fc567";
@@ -21,6 +22,7 @@
     self,
     flake-utils,
     home-manager,
+    nixgl,
     nixpkgs,
     nix-vscode-extensions,
     ...
@@ -32,6 +34,7 @@
         inherit system;
         config.allowUnfree = true;
         overlays = [
+          nixgl.overlay
           nix-vscode-extensions.overlays.default
         ];
       };

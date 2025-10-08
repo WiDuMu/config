@@ -24,6 +24,11 @@ in {
         {
           home.shellAliases.hms = "home-manager switch";
           home.shellAliases.rs = "home-manager switch";
+          home.packages = with pkgs; [
+            #            (hiPrio gcc)
+            #            clang
+            clang-tools
+          ];
           nix.nixPath = ["nixpkgs=${module-inputs.inputs.nixpkgs}"];
         }
       ]
@@ -41,17 +46,15 @@ in {
       av1an
       bat
       biome
+      binaryen
       bun
-      clang
-      clang-tools
-      cmake
       dav1d
       delta
       dua
       efficient-compression-tool
+      emscripten
       fd
       ffmpeg-full
-      (hiPrio gcc) # Set GCC to have a higher priority for clang if fighting over binary paths
       gdb
       git-lfs
       hyperfine
