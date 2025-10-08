@@ -27,7 +27,11 @@
         apostrophe
         bitwarden-desktop
         brave
+        (hiPrio clang) # Set Clang to have a higher priority for c compilers if fighting over binary paths
+        clang-tools
+        cmake
         g4music
+        gcc
         google-chrome
         jan
         krita
