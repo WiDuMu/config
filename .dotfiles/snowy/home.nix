@@ -27,7 +27,7 @@ in {
           home.packages = with pkgs; [
             #            (hiPrio gcc)
             #            clang
-            clang-tools
+            # clang-tools
           ];
           nix.nixPath = ["nixpkgs=${module-inputs.inputs.nixpkgs}"];
         }
@@ -46,13 +46,13 @@ in {
       av1an
       bat
       biome
-      binaryen
+      # binaryen
       bun
       dav1d
       delta
       dua
       efficient-compression-tool
-      emscripten
+      # emscripten
       fd
       ffmpeg-full
       gdb
@@ -65,7 +65,7 @@ in {
       markdown-oxide
       mediainfo
       meson
-      micro
+      # micro
       moar
       nasm
       nh
@@ -76,9 +76,9 @@ in {
       oxipng
       parallel
       rr
-      rustup
-      sops
-      ssh-to-age
+      # rustup
+      # sops
+      # ssh-to-age
       tinymist
       tldr
       tokei

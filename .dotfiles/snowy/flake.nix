@@ -16,6 +16,10 @@
         flake-utils.follows = "flake-utils";
       };
     };
+    nvf = {
+        url = "github:notashelf/nvf";
+        inputs.nixpkgs.follows = "nixpkgs";
+     };
   };
 
   outputs = inputs @ {
@@ -39,6 +43,7 @@
         ];
       };
     defaultHomeManager = system: [
+       inputs.nvf.homeManagerModules.default
       ./home.nix
     ];
     defaultNixOS = system: [
@@ -74,7 +79,7 @@
           [
             ./shared/nix.nix
             {
-              home.packages = home-packages;
+              home.packages = home-packages ++ [];
             }
           ]
           ++ (defaultHomeManager system);
