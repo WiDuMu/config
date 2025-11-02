@@ -9,6 +9,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ../../nixos-modules/default.nix
   ];
 
   networking.hostName = "nori"; # Define your hostname.
