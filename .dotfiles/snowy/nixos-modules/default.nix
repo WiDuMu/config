@@ -95,6 +95,7 @@
 
   environment.systemPackages = with pkgs; [
     bottom
+    evil-helix
     fastfetch
     htop
     micro
@@ -102,16 +103,21 @@
     git
   ];
 
-  virtualisation.podman = {
-    enable = true;
-    # dockerCompat = true;
-    # dockerSocket.enable = true;
+  environment.sessionVariables = {
+    EDITOR = "micro";
+    VISUAL = "micro";
   };
 
-  virtualisation.docker.rootless = {
+  virtualisation.podman = {
     enable = true;
-    setSocketVariable = true;
+    dockerCompat = true;
+    dockerSocket.enable = true;
   };
+
+  # virtualisation.docker.rootless = {
+  #   enable = true;
+  #   setSocketVariable = true;
+  # };
 
   # Auto update
   system.autoUpgrade = {

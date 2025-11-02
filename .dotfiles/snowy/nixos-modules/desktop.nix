@@ -62,6 +62,7 @@
 
   environment.systemPackages = with pkgs; [
     distrobox
+    kdePackages.kate
   ];
 
   programs.partition-manager.enable = true;
