@@ -25,9 +25,6 @@ in {
           home.shellAliases.hms = "home-manager switch";
           home.shellAliases.rs = "home-manager switch";
           home.packages = with pkgs; [
-            #            (hiPrio gcc)
-            #            clang
-            # clang-tools
           ];
           nix.nixPath = ["nixpkgs=${module-inputs.inputs.nixpkgs}"];
         }
@@ -46,13 +43,11 @@ in {
       av1an
       bat
       biome
-      # binaryen
       bun
       dav1d
       delta
       dua
       efficient-compression-tool
-      # emscripten
       fd
       ffmpeg-full
       gdb
@@ -65,7 +60,6 @@ in {
       markdown-oxide
       mediainfo
       meson
-      # micro
       moar
       nasm
       nh
@@ -76,9 +70,6 @@ in {
       oxipng
       parallel
       rr
-      # rustup
-      # sops
-      # ssh-to-age
       tinymist
       tldr
       tokei

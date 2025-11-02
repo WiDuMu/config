@@ -17,9 +17,9 @@
       };
     };
     nvf = {
-        url = "github:notashelf/nvf";
-        inputs.nixpkgs.follows = "nixpkgs";
-     };
+      url = "github:notashelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -43,7 +43,7 @@
         ];
       };
     defaultHomeManager = system: [
-       inputs.nvf.homeManagerModules.default
+      inputs.nvf.homeManagerModules.default
       ./home.nix
     ];
     defaultNixOS = system: [
@@ -65,6 +65,13 @@
         inherit inputs;
       };
       modules = modules ++ (defaultNixOS system);
+    });
+    mkNoHMNixOS = system: pkgs: modules: (nixpkgs.lib.nixosSystem {
+      inherit system pkgs;
+      specialArgs = {
+        inherit inputs;
+      };
+      modules = modules;
     });
   in
     eachDefaultSystem (system: let
@@ -103,5 +110,6 @@
     in {
       nixosConfigurations.ruby = mkNixOS system pkgs [./systems/ruby];
       nixosConfigurations.anna = mkNixOS system pkgs [./systems/anna];
+      nixosConfigurations.nori = mkNoHMNixOS system pkgs [./systems/nori];
     });
 }
