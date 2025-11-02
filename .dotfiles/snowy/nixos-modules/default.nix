@@ -105,6 +105,10 @@
     git
   ];
 
+  environment.shellAliases = {
+    cfg = "git --git-dir=$HOME/.cfg/ --work-tree=$HOME";
+  };
+
   environment.sessionVariables = {
     EDITOR = "micro";
     VISUAL = "micro";
