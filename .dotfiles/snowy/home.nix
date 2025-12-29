@@ -117,6 +117,10 @@ in {
     PAGER = "moar";
   };
 
+  home.sessionPath = [
+    "$HOME/.cargo/bin"
+  ];
+
   home.shellAliases = {
     d = "delta";
     ed25519-keygen = "ssh-keygen -t ed25519";
