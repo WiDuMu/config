@@ -1,10 +1,14 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   services.minecraft-server = {
     enable = true;
     eula = true;
     openFirewall = true;
     declarative = true;
-    package = pkgs.minecraftServers.vanilla-1-21;
+    package = pkgs.fabricServers.fabric-1_20_11;
     serverProperties = {
       #   server-port = 43000;
       difficulty = 2;
