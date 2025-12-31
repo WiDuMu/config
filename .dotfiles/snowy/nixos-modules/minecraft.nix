@@ -8,7 +8,7 @@
     eula = true;
     openFirewall = true;
     declarative = true;
-    package = pkgs.fabricServers.fabric-1_20_11;
+    package = pkgs.fabricServers.fabric-1_21_11;
     serverProperties = {
       #   server-port = 43000;
       difficulty = 2;
