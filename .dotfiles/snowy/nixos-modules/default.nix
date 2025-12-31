@@ -103,10 +103,14 @@
     micro
     wget
     git
+    podman-tui
+    podman-compose
   ];
 
   environment.shellAliases = {
     cfg = "git --git-dir=$HOME/.cfg/ --work-tree=$HOME";
+    nrs = "sudo nixos-rebuild switch";
+    rs = "sudo nixos-rebuild switch";
   };
 
   environment.sessionVariables = {
@@ -118,6 +122,7 @@
     enable = true;
     dockerCompat = true;
     dockerSocket.enable = true;
+    defaultNetwork.settings.dns_enabled = true;
   };
 
   # virtualisation.docker.rootless = {
