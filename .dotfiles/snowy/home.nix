@@ -48,6 +48,7 @@ in {
       biome
       # binaryen
       bun
+      cargo
       dav1d
       delta
       dua
