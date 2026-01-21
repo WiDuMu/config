@@ -9,17 +9,17 @@
     };
     nixgl.url = "github:nix-community/nixGL";
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     nix-vscode-extensions = {
-      url = "github:nix-community/nix-vscode-extensions/e54263b2980ec0f39f3148775045bd8f6e1fc567";
+      url = "github:nix-community/nix-vscode-extensions/6b07c9fdf88e9c1e75e164e9ef387e29e0c2a613";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
       };
     };
     nvf = {
-        url = "github:notashelf/nvf";
-        inputs.nixpkgs.follows = "nixpkgs";
-     };
+      url = "github:notashelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -40,10 +40,11 @@
         overlays = [
           nixgl.overlay
           nix-vscode-extensions.overlays.default
+          inputs.nix-minecraft.overlay
         ];
       };
     defaultHomeManager = system: [
-       inputs.nvf.homeManagerModules.default
+      inputs.nvf.homeManagerModules.default
       ./home.nix
     ];
     defaultNixOS = system: [
@@ -65,6 +66,13 @@
         inherit inputs;
       };
       modules = modules ++ (defaultNixOS system);
+    });
+    mkNoHMNixOS = system: pkgs: modules: (nixpkgs.lib.nixosSystem {
+      inherit system pkgs;
+      specialArgs = {
+        inherit inputs;
+      };
+      modules = modules;
     });
   in
     eachDefaultSystem (system: let
@@ -103,5 +111,6 @@
     in {
       nixosConfigurations.ruby = mkNixOS system pkgs [./systems/ruby];
       nixosConfigurations.anna = mkNixOS system pkgs [./systems/anna];
+      nixosConfigurations.nori = mkNoHMNixOS system pkgs [./systems/nori];
     });
 }

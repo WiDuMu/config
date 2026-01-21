@@ -6,6 +6,8 @@
     ../shared/nix.nix
   ];
 
+  system.stateVersion = "24.11"; # Did you read the comment?
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -95,23 +97,38 @@
 
   environment.systemPackages = with pkgs; [
     bottom
+    evil-helix
     fastfetch
     htop
     micro
     wget
     git
+    podman-tui
+    podman-compose
   ];
+
+  environment.shellAliases = {
+    cfg = "git --git-dir=$HOME/.cfg/ --work-tree=$HOME";
+    nrs = "sudo nixos-rebuild switch";
+    rs = "sudo nixos-rebuild switch";
+  };
+
+  environment.sessionVariables = {
+    EDITOR = "micro";
+    VISUAL = "micro";
+  };
 
   virtualisation.podman = {
     enable = true;
-    # dockerCompat = true;
-    # dockerSocket.enable = true;
+    dockerCompat = true;
+    dockerSocket.enable = true;
+    defaultNetwork.settings.dns_enabled = true;
   };
 
-  virtualisation.docker.rootless = {
-    enable = true;
-    setSocketVariable = true;
-  };
+  # virtualisation.docker.rootless = {
+  #   enable = true;
+  #   setSocketVariable = true;
+  # };
 
   # Auto update
   system.autoUpgrade = {
