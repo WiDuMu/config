@@ -62,7 +62,7 @@
         typst.enable = true;
         rust = {
           enable = true;
-          crates.enable = true;
+          extensions.crates-nvim.enable = true;
         };
 
         # Language modules that are not as common.
@@ -185,7 +185,7 @@
         yanky-nvim.enable = false;
         icon-picker.enable = true;
         surround.enable = true; # helps with surrounding text elements: https://github.com/kylechui/nvim-surround
-        leetcode-nvim.enable = true; # https://github.com/kawre/leetcode.nvim
+        leetcode-nvim.enable = false; # https://github.com/kawre/leetcode.nvim
         multicursors.enable = true;
         smart-splits.enable = true;
         undotree.enable = true;

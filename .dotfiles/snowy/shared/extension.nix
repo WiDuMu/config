@@ -24,6 +24,7 @@
     ms-azuretools.vscode-docker
     ms-python.debugpy
     ms-python.python
+    ms-toolsai.jupyter
     astral-sh.ty
     ms-vscode-remote.remote-containers
     ms-vscode-remote.remote-ssh

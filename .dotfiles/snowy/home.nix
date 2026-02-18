@@ -40,7 +40,7 @@ in {
     [
       age
       alejandra
-      av1an
+      # av1an
       bat
       biome
       bun
@@ -61,7 +61,7 @@ in {
       markdown-oxide
       mediainfo
       meson
-      moar
+      moor
       nasm
       nh
       nil
