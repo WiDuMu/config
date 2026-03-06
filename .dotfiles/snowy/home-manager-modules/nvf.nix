@@ -162,7 +162,8 @@
 
       minimap = {
         minimap-vim.enable = false;
-        codewindow.enable = true; # lighter, faster, and uses lua for configuration
+        #FIXME: This causes crashes for some reason.
+        codewindow.enable = false; # lighter, faster, and uses lua for configuration
       };
 
       dashboard = {
