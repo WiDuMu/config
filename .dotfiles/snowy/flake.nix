@@ -93,7 +93,7 @@
           ++ (defaultHomeManager system);
       });
       # Used for systems with dedicated GPUs
-      mkDesktop = home-packages: (mkHome (home-packages ++ [pkgs.ollama]));
+      mkDesktop = home-packages: (mkHome (home-packages ++ []));
     in {
       # Formatter for a system
       formatter = pkgs.alejandra;
@@ -101,7 +101,7 @@
       devShells = (import ./dev-shells) pkgs;
       # Standalone home-manager configuration
       packages.homeConfigurations."aurora" = mkHome [];
-      packages.homeConfigurations."aurora@zara" = mkDesktop [];
+      packages.homeConfigurations."aurora@zara" = mkDesktop [pkgs.ollama];
     })
     # NixOS configurations
     # x86_64-linux systems
