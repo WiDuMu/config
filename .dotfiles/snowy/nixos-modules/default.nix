@@ -16,6 +16,8 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  networking.firewall.enable = true;
+  
 
   # Set your time zone.
   time.timeZone = "America/Chicago";
@@ -38,6 +40,7 @@
   services.openssh = {
     enable = true;
     settings.PasswordAuthentication = false;
+    settings.KbdInteractiveAuthentication = false;
   };
 
   services.tailscale = {
@@ -116,6 +119,7 @@
   environment.sessionVariables = {
     EDITOR = "micro";
     VISUAL = "micro";
+    SNOWY = "/etc/nixos/";
   };
 
   virtualisation.podman = {

@@ -111,5 +111,6 @@
       nixosConfigurations.ruby = mkNixOS system pkgs [./systems/ruby];
       nixosConfigurations.anna = mkNixOS system pkgs [./systems/anna];
       nixosConfigurations.nori = mkNoHMNixOS system pkgs [./systems/nori];
+      nixosConfigurations.iris = mkNoHMNixOS system pkgs [./systems/iris];
     });
 }
