@@ -76,7 +76,7 @@
       specialArgs = {
         inherit inputs;
       };
-      modules = modules;
+      modules = modules ++ [ inputs.sops-nix.nixosModules.sops ];
     });
   in
     eachDefaultSystem (system: let
