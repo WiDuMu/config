@@ -50,20 +50,24 @@
       inputs.nvf.homeManagerModules.default
       ./home.nix
     ];
-    defaultNixOS = system: [
-      home-manager.nixosModules.home-manager
-      {
-        nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.backupFileExtension = "hmbak";
-        home-manager.extraSpecialArgs = {
-          inherit inputs input-packages system;
-        };
-        home-manager.users.aurora = {imports = defaultHomeManager system;};
-      }
+    noHMNixOsModules = system: [
       inputs.sops-nix.nixosModules.sops
     ];
+    defaultNixOS = system:
+      [
+        home-manager.nixosModules.home-manager
+        {
+          nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "hmbak";
+          home-manager.extraSpecialArgs = {
+            inherit inputs input-packages system;
+          };
+          home-manager.users.aurora = {imports = defaultHomeManager system;};
+        }
+      ]
+      ++ (noHMNixOsModules system);
     mkNixOS = system: pkgs: modules: (nixpkgs.lib.nixosSystem {
       inherit system pkgs;
       specialArgs = {
@@ -76,7 +80,7 @@
       specialArgs = {
         inherit inputs;
       };
-      modules = modules ++ [ inputs.sops-nix.nixosModules.sops ];
+      modules = modules ++ (noHMNixOsModules system);
     });
   in
     eachDefaultSystem (system: let
@@ -89,7 +93,7 @@
 
         modules =
           [
-          	inputs.sops-nix.homeManagerModules.sops
+            inputs.sops-nix.homeManagerModules.sops
             ./shared/nix.nix
             {
               home.packages = home-packages ++ [];
