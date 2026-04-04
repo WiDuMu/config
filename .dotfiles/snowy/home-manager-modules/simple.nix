@@ -6,5 +6,6 @@
     eza.enable = true;
     gitui.enable = true;
     yazi.enable = true;
+    yazi.shellWrapperName = "y"; # silence warning due to changing nix defaults
   };
 }
