@@ -71,6 +71,8 @@ in {
       oxipng
       parallel
       rr
+      sops
+      ssh-to-age
       tinymist
       tldr
       tokei
