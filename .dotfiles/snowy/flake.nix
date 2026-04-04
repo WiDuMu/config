@@ -19,6 +19,10 @@
     nvf = {
       url = "github:notashelf/nvf";
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -58,6 +62,7 @@
         };
         home-manager.users.aurora = {imports = defaultHomeManager system;};
       }
+      inputs.sops-nix.nixosModules.sops
     ];
     mkNixOS = system: pkgs: modules: (nixpkgs.lib.nixosSystem {
       inherit system pkgs;
@@ -84,6 +89,7 @@
 
         modules =
           [
+          	inputs.sops-nix.homeManagerModules.sops
             ./shared/nix.nix
             {
               home.packages = home-packages ++ [];
@@ -92,7 +98,7 @@
           ++ (defaultHomeManager system);
       });
       # Used for systems with dedicated GPUs
-      mkDesktop = home-packages: (mkHome (home-packages ++ [pkgs.ollama]));
+      mkDesktop = home-packages: (mkHome (home-packages ++ []));
     in {
       # Formatter for a system
       formatter = pkgs.alejandra;
@@ -100,7 +106,7 @@
       devShells = (import ./dev-shells) pkgs;
       # Standalone home-manager configuration
       packages.homeConfigurations."aurora" = mkHome [];
-      packages.homeConfigurations."aurora@zara" = mkDesktop [];
+      packages.homeConfigurations."aurora@zara" = mkDesktop [pkgs.ollama];
     })
     # NixOS configurations
     # x86_64-linux systems
