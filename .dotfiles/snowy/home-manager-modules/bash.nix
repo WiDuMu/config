@@ -1,4 +1,6 @@
 {
-  programs.bash.enable = true;
-  programs.bash.bashrcExtra = "PATH=$PATH:$HOME/.cargo/bin";
+  programs.bash = {
+    enable = true;
+    bashrcExtra = ''source ~/.nix-profile/etc/profile.d/hm-session-vars.sh'';
+  };
 }

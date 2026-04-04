@@ -117,7 +117,8 @@ in {
   home.sessionVariables = {
     DOTFILES = "$HOME/.dotfiles";
     SNOWY = "$HOME/.dotfiles/snowy";
-    PAGER = "moar";
+    PAGER = "moor";
+    GIT_PAGER = "delta";
   };
 
   home.sessionPath = [
@@ -151,7 +152,6 @@ in {
     snowy = "cd $SNOWY";
     wget = "wget -c";
     suspend = "systemctl suspend -i";
-    # snowyedit = "codium $SNOWY";
     snow = "cd $SNOWY";
   };
 
