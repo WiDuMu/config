@@ -105,6 +105,8 @@
     git
     podman-tui
     podman-compose
+    sops
+    ssh-to-age
   ];
 
   environment.shellAliases = {

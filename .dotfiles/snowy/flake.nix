@@ -19,6 +19,10 @@
     nvf = {
       url = "github:notashelf/nvf";
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -58,6 +62,7 @@
         };
         home-manager.users.aurora = {imports = defaultHomeManager system;};
       }
+      inputs.sops-nix.nixosModules.sops
     ];
     mkNixOS = system: pkgs: modules: (nixpkgs.lib.nixosSystem {
       inherit system pkgs;
@@ -84,6 +89,7 @@
 
         modules =
           [
+          	inputs.sops-nix.homeManagerModules.sops
             ./shared/nix.nix
             {
               home.packages = home-packages ++ [];
