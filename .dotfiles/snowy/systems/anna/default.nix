@@ -12,8 +12,4 @@
   ];
 
   networking.hostName = "anna";
-
-  # Leave this at the install value
-  system.stateVersion = "24.11";
 }
-

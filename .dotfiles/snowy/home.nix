@@ -63,8 +63,6 @@ in {
       meson
       moor
       nasm
-      nh
-      nil
       ninja
       nix-tree
       nodePackages_latest.nodejs
@@ -77,6 +75,7 @@ in {
       tldr
       tokei
       typst
+      uv
       valgrind
       vlang
       yt-dlp
