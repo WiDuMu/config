@@ -15,8 +15,7 @@ in {
     [
       inputs.nvf.homeManagerModules.default
     ]
-    ++
-    (dirToList ./home-manager-modules)
+    ++ (dirToList ./home-manager-modules)
     ++ (
       if (module-inputs ? osConfig)
       then [
@@ -111,8 +110,6 @@ in {
   #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
   #  /etc/profiles/per-user/aurora/etc/profile.d/hm-session-vars.sh
   home.sessionVariables = {
-    DOTFILES = "$HOME/.dotfiles";
-    SNOWY = "$HOME/.dotfiles/snowy";
     PAGER = "moor";
     GIT_PAGER = "delta";
   };
@@ -127,28 +124,18 @@ in {
     la = "ls -alh";
     gc = "git clone";
     ga = "git add";
-    cfa = "cfg add";
-    cfg = "git --git-dir=$HOME/.cfg/ --work-tree=$HOME";
-    cfui = ''gitui -d "$HOME/.cfg" -w "$HOME"'';
-    cfd = "cfg diff";
     gui = "gitui";
     gl = "git pull";
-    cfl = "cfg pull";
     gs = "git sa";
-    cfs = "cfg sa";
     gp = "git push";
-    cfp = "cfg push";
-    cfsp = "cfg saps";
     ".." = "cd ..";
     py = "python";
     ff = "ffmpeg";
     mi = "mediainfo";
     n = "nano";
     nfu = "nix flake update";
-    snowy = "cd $SNOWY";
     wget = "wget -c";
     suspend = "systemctl suspend -i";
-    snow = "cd $SNOWY";
   };
 
   # Let Home Manager install and manage itself.
