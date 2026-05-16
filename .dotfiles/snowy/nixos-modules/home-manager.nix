@@ -18,4 +18,5 @@
     inherit input-packages;
     system = pkgs.system;
   };
+  home-manager.users.aurora = {imports = [../home.nix];};
 }

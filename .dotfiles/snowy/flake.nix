@@ -46,28 +46,11 @@
           inputs.nix-minecraft.overlay
         ];
       };
-    noHMNixOsModules = system: [
-    ];
-    defaultNixOS = system:
-      [
-        {
-          home-manager.users.aurora = {imports = [./home.nix];};
-        }
-      ]
-      ++ (noHMNixOsModules system);
     mkNixOS = system: pkgs: modules: (nixpkgs.lib.nixosSystem {
-      inherit system pkgs;
+      inherit system pkgs modules;
       specialArgs = {
         inherit inputs;
       };
-      modules = modules ++ (defaultNixOS system);
-    });
-    mkNoHMNixOS = system: pkgs: modules: (nixpkgs.lib.nixosSystem {
-      inherit system pkgs;
-      specialArgs = {
-        inherit inputs;
-      };
-      modules = modules ++ (noHMNixOsModules system);
     });
   in
     eachDefaultSystem (system: let
@@ -107,7 +90,7 @@
     in {
       nixosConfigurations.ruby = mkNixOS system pkgs [./systems/ruby];
       nixosConfigurations.anna = mkNixOS system pkgs [./systems/anna];
-      nixosConfigurations.nori = mkNoHMNixOS system pkgs [./systems/nori];
-      nixosConfigurations.iris = mkNoHMNixOS system pkgs [./systems/iris];
+      nixosConfigurations.nori = mkNixOS system pkgs [./systems/nori];
+      nixosConfigurations.iris = mkNixOS system pkgs [./systems/iris];
     });
 }
