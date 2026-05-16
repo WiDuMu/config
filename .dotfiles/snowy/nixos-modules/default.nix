@@ -1,7 +1,8 @@
-{pkgs, ...}: {
+{pkgs, inputs, ...}: {
   # Default nixOS configuration for both desktop and headless devices
 
   imports = [
+    inputs.sops-nix.nixosModules.sops
     ./users.nix
     ../shared/nix.nix
   ];
@@ -17,7 +18,7 @@
   # Enable networking
   networking.networkmanager.enable = true;
   networking.firewall.enable = true;
-  
+
 
   # Set your time zone.
   time.timeZone = "America/Chicago";

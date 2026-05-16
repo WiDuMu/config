@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+set -e
+
+function print_usage() {
+    echo -e "USAGE:\n\tbak [files to backup]"
+}
+
+if [[ $# -le 1 ]] then
+    echo "Error: specify file to backup"
+    print_usage
+    exit 1
+fi
+
+for i in "$@"; do
+    if [[ ! -f "$i" ]] then
+        echo "Error: file \"$i\" does not exist"
+        exit 1
+    fi
+done
+
+for i in "$@"; do
+    echo "Backing up $i..."
+    mv "$i" "$i.bak"
+done

@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+set -e
+
+function print_usage() {
+    echo -e "USAGE:\n\tunbak [files to restore]"
+}
+
+if [[ $# -le 1 ]] then
+    echo "Error: specify file to restore"
+    exit 1
+fi
+
+# Check if any of our arguments are wrong before running
+for i in "$@"; do
+    if [[ ! -f "$i" ]] then
+        echo "Error: file \"$i\" does not exist"
+        exit 1
+    fi
+
+    if [[ $i != *.bak ]]
+    then
+        echo "Error: file \"$i\" is not a backup file"
+        exit 1
+    fi
+
+    if [[ -f ${i%.bak} ]] then
+        echo "Error: file \"${i%.bak}\" already exists"
+        exit 1
+    fi
+done
+
+for i in "$@"; do
+    echo "Restoring \"$i\""
+    mv $i ${i%.bak}
+done

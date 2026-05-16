@@ -3,6 +3,7 @@ module-inputs @ {
   pkgs,
   system,
   input-packages,
+  inputs,
   ...
 }: let
   dirToList = import ./lib/dirToList.nix;
@@ -11,6 +12,10 @@ in {
   home.homeDirectory = "/home/${config.home.username}";
 
   imports =
+    [
+      inputs.nvf.homeManagerModules.default
+    ]
+    ++
     (dirToList ./home-manager-modules)
     ++ (
       if (module-inputs ? osConfig)
@@ -40,7 +45,6 @@ in {
     [
       age
       alejandra
-      # av1an
       bat
       biome
       bun
@@ -56,7 +60,6 @@ in {
       hyperfine
       libjxl
       lldb
-      luajit
       gnumake
       markdown-oxide
       mediainfo
@@ -82,14 +85,8 @@ in {
       zig
       zls
       zoxide
-      # Simple 'backup' command
-      (pkgs.writeShellScriptBin "bak" ''
-        echo "Backing up $1..."
-        mv "$1" "$1.bak"
-      '')
-      # Suspend after a given amount of time. Don't ask me why I have to read this like this
-      (pkgs.writeScriptBin "suspend_timed" (builtins.readFile ./shared/scripts/suspend_timed))
     ]
+    ++ ((import ./lib/dirToFnResultList.nix) ./shared/scripts pkgs.writeShellScriptBin)
     ++ (with pkgs; [
       corefonts
       nerd-fonts.caskaydia-cove

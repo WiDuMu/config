@@ -46,25 +46,12 @@
           inputs.nix-minecraft.overlay
         ];
       };
-    defaultHomeManager = system: [
-      inputs.nvf.homeManagerModules.default
-      ./home.nix
-    ];
     noHMNixOsModules = system: [
-      inputs.sops-nix.nixosModules.sops
     ];
     defaultNixOS = system:
       [
-        home-manager.nixosModules.home-manager
         {
-          nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = "hmbak";
-          home-manager.extraSpecialArgs = {
-            inherit inputs input-packages system;
-          };
-          home-manager.users.aurora = {imports = defaultHomeManager system;};
+          home-manager.users.aurora = {imports = [./home.nix];};
         }
       ]
       ++ (noHMNixOsModules system);
@@ -96,10 +83,10 @@
             inputs.sops-nix.homeManagerModules.sops
             ./shared/nix.nix
             {
-              home.packages = home-packages ++ [];
+              home.packages = home-packages;
             }
-          ]
-          ++ (defaultHomeManager system);
+            ./home.nix
+          ];
       });
       # Used for systems with dedicated GPUs
       mkDesktop = home-packages: (mkHome (home-packages ++ []));

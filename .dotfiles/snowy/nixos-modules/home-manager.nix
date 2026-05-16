@@ -2,13 +2,20 @@
 {
   pkgs,
   input-packages,
-  system,
+  inputs,
   ...
 }: {
+
+  imports = [
+    home-manager.nixosModules.home-manager
+  ];
+
+  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.backupFileExtension = "hmbak";
   home-manager.extraSpecialArgs = {
-    inherit input-packages system;
+    inherit input-packages;
+    system = pkgs.system;
   };
 }
