@@ -48,7 +48,6 @@ in {
       biome
       bun
       cargo
-      dav1d
       delta
       dua
       efficient-compression-tool
@@ -63,11 +62,12 @@ in {
       markdown-oxide
       mediainfo
       meson
+      micro
       moor
       nasm
       ninja
       nix-tree
-      nodePackages_latest.nodejs
+      nodejs
       oxipng
       parallel
       rr
@@ -110,6 +110,7 @@ in {
   #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
   #  /etc/profiles/per-user/aurora/etc/profile.d/hm-session-vars.sh
   home.sessionVariables = {
+    EDITOR = "micro";
     PAGER = "moor";
     GIT_PAGER = "delta";
   };
@@ -128,6 +129,7 @@ in {
     gl = "git pull";
     gs = "git sa";
     gp = "git push";
+    hm = "home-manager";
     ".." = "cd ..";
     py = "python";
     ff = "ffmpeg";

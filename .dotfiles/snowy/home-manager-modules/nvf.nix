@@ -17,11 +17,11 @@
         enable = true;
 
         formatOnSave = true;
-        lspkind.enable = false;
+        lspkind.enable = true;
         lightbulb.enable = true;
         lspsaga.enable = false;
         trouble.enable = true;
-        lspSignature.enable = false; # conflicts with blink in maximal
+        lspSignature.enable = true; # conflicts with blink in maximal
         otter-nvim.enable = true;
         nvim-docs-view.enable = true;
 
@@ -54,7 +54,7 @@
         sql.enable = true;
         java.enable = true;
         kotlin.enable = false;
-        ts.enable = true;
+        typescript.enable = true;
         go.enable = false;
         lua.enable = false;
         zig.enable = false;
@@ -82,7 +82,6 @@
         ruby.enable = false;
         fsharp.enable = false;
 
-        tailwind.enable = false;
         svelte.enable = false;
 
         # Nim LSP is broken on Darwin and therefore
@@ -207,7 +206,6 @@
         obsidian.enable = false; # FIXME: neovim fails to build if obsidian is enabled
         neorg.enable = false;
         orgmode.enable = false;
-        mind-nvim.enable = false; # Cool but not right now
         todo-comments.enable = true;
       };
 

@@ -7,7 +7,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixgl.url = "github:nix-community/nixGL";
+    # nixgl.url = "github:nix-community/nixGL";
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     nix-vscode-extensions = {
@@ -29,7 +29,7 @@
     self,
     flake-utils,
     home-manager,
-    nixgl,
+    #nixgl,
     nixpkgs,
     nix-vscode-extensions,
     ...
@@ -41,7 +41,7 @@
         inherit system;
         config.allowUnfree = true;
         overlays = [
-          nixgl.overlay
+          # nixgl.overlay
           nix-vscode-extensions.overlays.default
           inputs.nix-minecraft.overlay
         ];
@@ -61,15 +61,14 @@
           inherit inputs input-packages system;
         };
 
-        modules =
-          [
-            inputs.sops-nix.homeManagerModules.sops
-            ./shared/nix.nix
-            {
-              home.packages = home-packages;
-            }
-            ./home.nix
-          ];
+        modules = [
+          inputs.sops-nix.homeManagerModules.sops
+          ./shared/nix.nix
+          {
+            home.packages = home-packages;
+          }
+          ./home.nix
+        ];
       });
       # Used for systems with dedicated GPUs
       mkDesktop = home-packages: (mkHome (home-packages ++ []));
