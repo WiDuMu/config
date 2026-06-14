@@ -73,7 +73,6 @@ in {
       rr
       sops
       ssh-to-age
-      tinymist
       tldr
       tokei
       typst
@@ -85,7 +84,7 @@ in {
       zls
       zoxide
     ]
-    ++ ((import ./lib/dirToFnResultList.nix) ./shared/scripts pkgs.writeShellScriptBin)
+    ++ ((import ./lib/dirToFnResultList.nix) ./shared/scripts pkgs.writeScriptBin)
     ++ (with pkgs; [
       corefonts
       nerd-fonts.caskaydia-cove
