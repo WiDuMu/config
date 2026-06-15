@@ -58,12 +58,20 @@
       mkHome = home-packages: (home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = {
-          inherit inputs input-packages system;
+          inherit inputs input-packages system nixgl;
         };
 
         modules = [
           inputs.sops-nix.homeManagerModules.sops
           ./shared/nix.nix
+          {
+            # NixGL, while it would be nice to be able to use nvidia it is both impure and broken RN
+            nixGL.packages = nixgl.packages;
+            nixGL.defaultWrapper = "mesa";
+            nixGL.offloadWrapper = "mesa";
+            nixGL.installScripts = ["mesa"];
+            home.packages = [pkgs.nixgl.nixGLIntel];
+          }
           {
             home.packages = home-packages;
           }
