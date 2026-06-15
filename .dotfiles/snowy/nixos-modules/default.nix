@@ -2,7 +2,7 @@
   # Default nixOS configuration for both desktop and headless devices
 
   imports = [
-    inputs.sops-nix.nixosModules.sops
+     inputs.sops-nix.nixosModules.sops
     ./users.nix
     ../shared/nix.nix
   ];

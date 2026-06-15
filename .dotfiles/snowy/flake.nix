@@ -1,8 +1,8 @@
 {
-  description = "A Nix-flake-based development environment intended for deployment on a silverblue-based envrionment.";
+  description = "A Nix-flake-based set of devShells, home-manager configurations and nixos configs.";
 
   inputs = {
-    flake-utils.url = "github:numtide/flake-utils";
+    flake-parts.url = "github:hercules-ci/flake-parts";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -27,17 +27,25 @@
 
   outputs = inputs @ {
     self,
-    flake-utils,
     home-manager,
     nixgl,
     nixpkgs,
     nix-vscode-extensions,
     ...
-  }: let
-    eachDefaultSystem = flake-utils.lib.eachDefaultSystem;
-    input-packages = [];
-    opkgs = system:
-      import nixpkgs {
+  }: (inputs.flake-parts.lib.mkFlake {inherit inputs;} ({...}: {
+    imports = [
+      inputs.home-manager.flakeModules.home-manager
+    ];
+
+    systems = ["x86_64-linux" "aarch64-linux"];
+
+    perSystem = {
+      pkgs,
+      system,
+      ...
+    }: {
+      # Configure the pkgs instance.
+      _module.args.pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
         overlays = [
@@ -46,58 +54,44 @@
           inputs.nix-minecraft.overlay
         ];
       };
-    mkNixOS = system: pkgs: modules: (nixpkgs.lib.nixosSystem {
-      inherit system pkgs modules;
-      specialArgs = {
-        inherit inputs;
-      };
-    });
-  in
-    eachDefaultSystem (system: let
-      pkgs = opkgs system;
-      mkHome = home-packages: (home-manager.lib.homeManagerConfiguration {
+
+      devShells = (import ./dev-shells) pkgs;
+
+      formatter = pkgs.alejandra;
+
+      legacyPackages.homeConfigurations."aurora" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = {
-          inherit inputs input-packages system nixgl;
+          inherit inputs nixgl;
         };
 
         modules = [
-          inputs.sops-nix.homeManagerModules.sops
-          ./shared/nix.nix
-          {
-            # NixGL, while it would be nice to be able to use nvidia it is both impure and broken RN
-            nixGL.packages = nixgl.packages;
-            nixGL.defaultWrapper = "mesa";
-            nixGL.offloadWrapper = "mesa";
-            nixGL.installScripts = ["mesa"];
-            home.packages = [pkgs.nixgl.nixGLIntel];
-          }
-          {
-            home.packages = home-packages;
-          }
-          ./home.nix
+          ./aurora.nix
         ];
+      };
+    };
+
+    flake.nixosConfigurations = let
+      pkgs = import nixpkgs {
+        system = "x86-64_linux";
+        config.allowUnfree = true;
+        overlays = [
+          nixgl.overlay
+          nix-vscode-extensions.overlays.default
+          inputs.nix-minecraft.overlay
+        ];
+      };
+      mkSystem = name: (inputs.nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        inherit pkgs;
+        specialArgs = {inherit inputs;};
+        modules = [./systems/${name}];
       });
-      # Used for systems with dedicated GPUs
-      mkDesktop = home-packages: (mkHome (home-packages ++ []));
     in {
-      # Formatter for a system
-      formatter = pkgs.alejandra;
-      # Dev shell (`nix develop`)
-      devShells = (import ./dev-shells) pkgs;
-      # Standalone home-manager configuration
-      packages.homeConfigurations."aurora" = mkHome [];
-      packages.homeConfigurations."aurora@zara" = mkDesktop [pkgs.ollama];
-    })
-    # NixOS configurations
-    # x86_64-linux systems
-    // (let
-      system = "x86_64-linux";
-      pkgs = opkgs system;
-    in {
-      nixosConfigurations.ruby = mkNixOS system pkgs [./systems/ruby];
-      nixosConfigurations.anna = mkNixOS system pkgs [./systems/anna];
-      nixosConfigurations.nori = mkNixOS system pkgs [./systems/nori];
-      nixosConfigurations.iris = mkNixOS system pkgs [./systems/iris];
-    });
+      anna = mkSystem "anna";
+      iris = mkSystem "iris";
+      nori = mkSystem "nori";
+      ruby = mkSystem "ruby";
+    };
+  }));
 }
