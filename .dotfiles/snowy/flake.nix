@@ -2,6 +2,10 @@
   description = "A Nix-flake-based set of devShells, home-manager configurations and nixos configs.";
 
   inputs = {
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     flake-parts.url = "github:hercules-ci/flake-parts";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -34,6 +38,7 @@
     ...
   }: (inputs.flake-parts.lib.mkFlake {inherit inputs;} ({...}: {
     imports = [
+      inputs.disko.flakeModules.default
       inputs.home-manager.flakeModules.home-manager
     ];
 
@@ -92,6 +97,10 @@
       iris = mkSystem "iris";
       nori = mkSystem "nori";
       ruby = mkSystem "ruby";
+    };
+
+    flake.diskoConfigurations = {
+      btrfs = import (./disko/luks-btrfs-subvolumes.nix);
     };
   }));
 }
