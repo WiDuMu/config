@@ -68,9 +68,25 @@
         inherit pkgs;
         extraSpecialArgs = {
           inherit inputs nixgl;
+
         };
 
         modules = [
+        	./aurora.nix
+        ];
+      };
+
+
+      legacyPackages.homeConfigurations."aurora@zara" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        extraSpecialArgs = {
+          inherit inputs nixgl;
+        };
+
+        modules = [
+          {
+          	home.packages = [ pkgs.ollama ];
+          }
           ./aurora.nix
         ];
       };
