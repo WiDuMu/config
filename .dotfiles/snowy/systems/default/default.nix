@@ -1,6 +1,6 @@
 {pkgs, inputs, ...}: {
   imports = [
-    disko.nixosModules.disko
+    inputs.disko.nixosModules.disko
     ../../nixos-modules/desktop.nix
     ./hardware-configuration.nix
   ];
