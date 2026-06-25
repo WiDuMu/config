@@ -110,6 +110,7 @@
       });
     in {
       anna = mkSystem "anna";
+      default = mkSystem "default";
       iris = mkSystem "iris";
       nori = mkSystem "nori";
       ruby = mkSystem "ruby";
