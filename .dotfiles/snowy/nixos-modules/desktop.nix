@@ -7,6 +7,7 @@
 
   imports = [
     ./default.nix
+    ./home-manager.nix
   ];
 
   # Not in home.nix because these are handled or not needed in a standalone hm
@@ -25,24 +26,16 @@
 
       home.packages = with pkgs; [
         apostrophe
-        bitwarden-desktop
-        brave
-        (hiPrio clang) # Set Clang to have a higher priority for c compilers if fighting over binary paths
         clang-tools
         cmake
-        g4music
+        gapless
         gcc
-        google-chrome
-        jan
         krita
-        ungoogled-chromium
         libreoffice
-        obsidian
         protonvpn-gui
         python3
         qview
         trayscale
-        vitetris
       ];
     }
   ];
@@ -55,7 +48,7 @@
   # };
 
   # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
+  services.displayManager.plasma-login-manager.enable = true;
   services.desktopManager.plasma6.enable = true;
 
   services.flatpak.enable = true;

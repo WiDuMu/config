@@ -94,7 +94,7 @@
 
     flake.nixosConfigurations = let
       pkgs = import nixpkgs {
-        system = "x86-64_linux";
+        system = "x86_64-linux";
         config.allowUnfree = true;
         overlays = [
           nixgl.overlay
@@ -111,6 +111,7 @@
     in {
       anna = mkSystem "anna";
       default = mkSystem "default";
+      esme = mkSystem "esme";
       iris = mkSystem "iris";
       nori = mkSystem "nori";
       ruby = mkSystem "ruby";
