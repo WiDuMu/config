@@ -10,6 +10,8 @@
             ESP = {
               size = "1024M";
               type = "EF00";
+              name = "ESP";
+              start = "1M";
               content = {
                 type = "filesystem";
                 format = "vfat";
