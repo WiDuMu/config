@@ -1,7 +1,15 @@
 {
   programs.nvf = {
     enable = true;
+
     settings.vim = {
+      luaConfigRC = {
+        save = "vim.keymap.set({ 'n', 'i', 'v' }, '<C-s>', '<cmd>update<cr><esc>', { desc = 'Save file' })";
+        quit = "vim.keymap.set({ 'n', 'i', 'v' }, '<C-q>', '<cmd>quit<cr><esc>', { desc = 'Quit editor' })";
+        comment = "vim.keymap.set({ 'n', 'i' }, '<C-/>', '<cmd>gcc<cr><esc>', { desc = 'Comment line' })";
+        # save = "vim.keymap.set({ 'n', 'i', 'v' }, '<C-s>', '<cmd>update<cr><esc>', { desc = 'Save file' })";
+      };
+
       viAlias = true;
       vimAlias = false;
       lineNumberMode = "number";
