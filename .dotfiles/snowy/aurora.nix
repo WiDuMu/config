@@ -55,6 +55,7 @@ in {
       gdb
       git-lfs
       hyperfine
+      jan
       libjxl
       gnumake
       mediainfo
@@ -90,6 +91,9 @@ in {
       # nerd-fonts.space-mono
       noto-fonts
       roboto-flex
+      roboto-mono
+      roboto-serif
+      roboto-slab
       ubuntu-sans
       eb-garamond
       quicksand
