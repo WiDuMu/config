@@ -15,7 +15,8 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     nix-vscode-extensions = {
-      url = "github:nix-community/nix-vscode-extensions/6b07c9fdf88e9c1e75e164e9ef387e29e0c2a613";
+      # url = "github:nix-community/nix-vscode-extensions/6b07c9fdf88e9c1e75e164e9ef387e29e0c2a613";
+      url = "github:nix-community/nix-vscode-extensions";
       inputs = {
         nixpkgs.follows = "nixpkgs";
       };
