@@ -46,7 +46,7 @@ in {
       alejandra
       bat
       bun
-      cargo
+      # cargo
       delta
       dua
       efficient-compression-tool
