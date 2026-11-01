@@ -1,6 +1,6 @@
 {
   programs.nushell = {
-    enable = false;
+    enable = true;
     settings = {
       show_banner = false;
       completions.external = {

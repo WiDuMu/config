@@ -74,8 +74,8 @@
         };
 
         # Language modules that are not as common.
-        assembly.enable = false;
-        astro.enable = false;
+        assembly.enable = true;
+        astro.enable = true;
         nu.enable = false;
         csharp.enable = false;
         julia.enable = false;
@@ -90,7 +90,7 @@
         ruby.enable = false;
         fsharp.enable = false;
 
-        svelte.enable = false;
+        svelte.enable = true;
 
         # Nim LSP is broken on Darwin and therefore
         # should be disabled by default. Users may still enable
@@ -117,7 +117,9 @@
       statusline = {
         lualine = {
           enable = true;
-          theme = "catppuccin";
+          integrations.breadcrumbs.navbuddy.enable = true;
+          integrations.breadcrumbs.nvim-navic.enable = true;
+          setupOpts.options.theme = "catppuccin";
         };
       };
 
@@ -230,10 +232,6 @@
         colorizer.enable = true;
         modes-nvim.enable = false; # the theme looks terrible with catppuccin
         illuminate.enable = true;
-        breadcrumbs = {
-          enable = true;
-          navbuddy.enable = true;
-        };
         smartcolumn = {
           enable = true;
           setupOpts.custom_colorcolumn = {
