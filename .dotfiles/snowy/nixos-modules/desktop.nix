@@ -1,4 +1,5 @@
 {
+  lib,
   pkgs,
   inputs,
   ...
@@ -20,7 +21,7 @@
         enable = true;
         settings = {
           font-family = "MonaspiceAr Nerd Font";
-          theme = "dark:3024 Night,light:3024 Day";
+          theme = "Builtin Pastel Dark";
         };
       };
 
@@ -32,7 +33,7 @@
         gcc
         krita
         libreoffice
-        protonvpn-gui
+        #         protonvpn
         python3
         qview
         trayscale
@@ -50,6 +51,8 @@
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.plasma-login-manager.enable = true;
   services.desktopManager.plasma6.enable = true;
+
+  services.displayManager.defaultSession = lib.mkForce "plasma";
 
   services.flatpak.enable = true;
 

@@ -2,7 +2,7 @@
   programs.zoxide = {
     enable = true;
     enableZshIntegration = true;
-    enableNushellIntegration = true;
+    # enableNushellIntegration = true;
     enableBashIntegration = true;
     enableFishIntegration = true;
   };
