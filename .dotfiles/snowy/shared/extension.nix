@@ -2,7 +2,6 @@
 # A set function that returns the extensions wanted by VSCode. Nix-VSCode-Extensions overlay required
 (
   (with pkgs.vscode-marketplace; [
-    attilabuti.brainfuck-syntax
     barbosshack.crates-io
     batisteo.vscode-django
     bbenoist.nix
@@ -52,7 +51,7 @@
     amerey.markdown-emoji
     amerey.markdown-math-snippets
   ])
-  ++ [
-    pkgs.vscode-extensions.vadimcn.vscode-lldb
-  ]
+  ++ (with pkgs.vscode-extensions; [
+     vadimcn.vscode-lldb
+  ])
 )

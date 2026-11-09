@@ -30,7 +30,6 @@
     "[css]": {
         "editor.defaultFormatter": "biomejs.biome"
     },
-    "workbench.colorTheme": "AMOLED Github Theme",
     "dev.containers.dockerComposePath": "podman-compose",
     "dev.containers.dockerPath": "podman",
     "dev.containers.dockerSocketPath": "/run/podman/podman.sock",
@@ -44,4 +43,5 @@
         "https://developer.microsoft.com/json-schemas/": true,
         "https://biomejs.dev": true
     },
+    "workbench.colorTheme": "AMOLED Github Theme",
 }

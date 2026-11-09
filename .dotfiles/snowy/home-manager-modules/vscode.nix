@@ -1,8 +1,6 @@
 {pkgs, ...}: {
-  programs.vscode = {
-    # package = pkgs.vscode;
-    package = pkgs.vscode;
-    # enable = true;
+  programs.vscodium = {
+    enable = true;
     profiles.default = {
       extensions = import ../shared/extension.nix pkgs;
     };
