@@ -1,5 +1,5 @@
 {
-  "format_on_save": true,
+  "format_on_save": "on",
   "disable_ai": true,
   "buffer_font_family": "JetBrainsMono Nerd Font",
   "outline_panel": {
