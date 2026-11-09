@@ -3,9 +3,7 @@ module-inputs @ {
   pkgs,
   inputs,
   ...
-}: let
-  dirToList = import ./lib/dirToList.nix;
-in {
+}: {
   home.username = "aurora";
   home.homeDirectory = "/home/${config.home.username}";
 
@@ -14,8 +12,8 @@ in {
       inputs.nvf.homeManagerModules.default
       inputs.sops-nix.homeManagerModules.sops
       ./shared/nix.nix
+      ./home-manager-modules
     ]
-    ++ (dirToList ./home-manager-modules)
     ++ (
       if (module-inputs ? osConfig)
       then [

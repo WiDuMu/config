@@ -15,7 +15,7 @@
     # "${builtins.fetchTarball "https://github.com/nix-community/disko/archive/master.tar.gz"}/module.nix"
     ./luks-btrfs-subvolumes.nix
     ../../nixos-modules/desktop.nix
-    ../../nixos-modules/hyprland.nix
+    ../../nixos-modules/hyprland
     ../../nixos-modules/zed.nix
     ../../nixos-modules/niri
     ../../nixos-modules/cosmic
