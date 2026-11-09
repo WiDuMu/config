@@ -43,4 +43,5 @@
         "https://developer.microsoft.com/json-schemas/": true,
         "https://biomejs.dev": true
     },
+    "workbench.colorTheme": "AMOLED Github Theme",
 }
