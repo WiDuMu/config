@@ -1,7 +1,21 @@
 {
+  "ui_font_family": "MonaspiceNe Nerd Font",
+  "buffer_font_features": {
+    "calt": true,
+    "liga": true,
+    "ss01": true,
+    "ss02": true,
+    "ss03": true,
+    "ss04": true,
+    "ss05": true,
+    "ss06": true,
+    "ss07": true,
+    "ss08": true,
+    "ss09": true,
+  },
   "format_on_save": "on",
   "disable_ai": true,
-  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "buffer_font_family": "MonaspiceNe Nerd Font",
   "outline_panel": {
     "dock": "left"
   },
@@ -36,7 +50,7 @@
   "buffer_font_size": 14.0,
   "theme": {
     "mode": "system",
-    "light": "GitHub Dark Tritanopia",
+    "light": "GitHub Light High Contrast",
     "dark": "GitHub Dark Tritanopia"
   },
   "auto_install_extensions": {
