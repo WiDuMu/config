@@ -79,7 +79,7 @@ module-inputs @ {
       zig
       zoxide
     ]
-    ++ ((import ./lib/dirToFnResultList.nix) ./shared/scripts pkgs.writeScriptBin)
+    ++ (map (file: pkgs.writeScriptBin file.name file.value) ((import ./lib/dirToListReadingFile.nix) ./shared/scripts))
     ++ (with pkgs; [
       corefonts
       nerd-fonts.caskaydia-cove

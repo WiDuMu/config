@@ -12,17 +12,6 @@
 
   networking.hostName = "nori"; # Define your hostname.
 
-  # environment.etc."nextcloud-admin-pass".text = "YourNextCloudIsASheep";
-  # services.nextcloud = {
-  # 	enable = true;
-  # 	hostName = "nori";
-  # 	extraApps = {
-  # 	    inherit (config.services.nextcloud.package.packages.apps) onlyoffice;
-  # 	};
-  # 	config.adminpassFile = "/etc/nextcloud-admin-pass";
-  # 	config.dbtype = "sqlite";
-  # };
-
   services.tailscale = {
     enable = true;
     openFirewall = true;

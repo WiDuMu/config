@@ -6,7 +6,7 @@ function print_usage() {
     echo -e "USAGE:\n\tbak [files to backup]"
 }
 
-if [[ $# -le 1 ]] then
+if [[ $# -le 0 ]] then
     echo "Error: specify file to backup"
     print_usage
     exit 1

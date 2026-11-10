@@ -6,7 +6,6 @@ echo "$@"
 
 # Check if a time argument was provided
 if [ $# -lt 1 ]; then
-        echo "$# arguments provided"
         echo "Usage: ./suspend_timed <time>"
         exit 1
 fi

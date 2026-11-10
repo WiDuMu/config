@@ -11,6 +11,7 @@
     ./simple.nix
     ./starship.nix
     ./vscode.nix
+    ./zed.nix
     ./zellij.nix
     ./zoxide.nix
   ];

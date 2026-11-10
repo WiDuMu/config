@@ -6,7 +6,7 @@ function print_usage() {
     echo -e "USAGE:\n\tunbak [files to restore]"
 }
 
-if [[ $# -le 1 ]] then
+if [[ $# -le 0 ]] then
     echo "Error: specify file to restore"
     exit 1
 fi
@@ -32,5 +32,5 @@ done
 
 for i in "$@"; do
     echo "Restoring \"$i\""
-    mv $i ${i%.bak}
+    mv "$i" "${i%.bak}"
 done
