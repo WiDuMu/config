@@ -1,0 +1,84 @@
+{
+  "agent": {
+    "dock": "right",
+    "favorite_models": [],
+    "model_parameters": []
+  },
+  "auto_install_extensions": {
+    "catppuccin-icons": true,
+    "github-theme": true,
+    "nix": true,
+    "rust": true,
+    "symbols": true,
+    "toml": true
+  },
+  "buffer_font_family": "MonaspiceNe Nerd Font",
+  "buffer_font_features": {
+    "calt": true,
+    "liga": true,
+    "ss01": true,
+    "ss02": true,
+    "ss03": true,
+    "ss04": true,
+    "ss05": true,
+    "ss06": true,
+    "ss07": true,
+    "ss08": true,
+    "ss09": true
+  },
+  "buffer_font_size": 14,
+  "debugger": {
+    "dock": "right"
+  },
+  "disable_ai": true,
+  "format_on_save": "on",
+  "git_panel": {
+    "dock": "left"
+  },
+  "icon_theme": {
+    "dark": "Symbols Icon Theme",
+    "light": "Symbols Icon Theme",
+    "mode": "system"
+  },
+  "languages": {
+    "Nix": {
+      "formatter": {
+        "external": {
+          "arguments": ["--quiet", "--"],
+          "command": "alejandra"
+        }
+      },
+      "language_servers": ["nixd", "!nil"]
+    }
+  },
+  "lsp": {
+    "nixd": {
+      "settings": {
+        "formatting": {
+          "command": ["alejandra", "--quiet", "--"]
+        }
+      }
+    }
+  },
+  "outline_panel": {
+    "dock": "left"
+  },
+  "project_panel": {
+    "dock": "left"
+  },
+  "session": {
+    "trust_all_worktrees": true
+  },
+  "telemetry": {
+    "anthropic_retention": false,
+    "diagnostics": false,
+    "metrics": false
+  },
+  "theme": {
+    "dark": "GitHub Dark Tritanopia",
+    "light": "GitHub Light High Contrast",
+    "mode": "system"
+  },
+  "ui_font_family": "MonaspiceNe Nerd Font",
+  "ui_font_size": 16
+}
